@@ -1,3 +1,8 @@
+// pages/index.tsx
+// This is the home page of the app.
+// It displays the welcome message and the button to let the user get started.
+// The button is a link to the upload page.
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-slate-950 to-black px-6 py-12 text-white">

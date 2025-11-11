@@ -465,6 +465,10 @@ function triggerUpdate(msg) {
 "[project]/pages/index.tsx [client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
+// pages/index.tsx
+// This is the home page of the app.
+// It displays the welcome message and the button to let the user get started.
+// The button is a link to the upload page.
 __turbopack_context__.s([
     "default",
     ()=>Home
@@ -482,7 +486,7 @@ function Home() {
                     children: "Welcome to DJ-JPG"
                 }, void 0, false, {
                     fileName: "[project]/pages/index.tsx",
-                    lineNumber: 5,
+                    lineNumber: 10,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -490,7 +494,7 @@ function Home() {
                     children: "Creating playlists one pixel at a time."
                 }, void 0, false, {
                     fileName: "[project]/pages/index.tsx",
-                    lineNumber: 8,
+                    lineNumber: 13,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -498,7 +502,7 @@ function Home() {
                     children: "Upload your photos and create playlists with songs that match your photos mood."
                 }, void 0, false, {
                     fileName: "[project]/pages/index.tsx",
-                    lineNumber: 11,
+                    lineNumber: 16,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -509,23 +513,23 @@ function Home() {
                         children: "Let's get started!"
                     }, void 0, false, {
                         fileName: "[project]/pages/index.tsx",
-                        lineNumber: 15,
+                        lineNumber: 20,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/pages/index.tsx",
-                    lineNumber: 14,
+                    lineNumber: 19,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/pages/index.tsx",
-            lineNumber: 4,
+            lineNumber: 9,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/pages/index.tsx",
-        lineNumber: 3,
+        lineNumber: 8,
         columnNumber: 5
     }, this);
 }
