@@ -43,7 +43,7 @@ function Home() {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("a", {
                         href: "#",
                         className: "rounded-full bg-sky-400 px-8 py-3 font-medium text-slate-950 transition hover:bg-sky-300",
-                        children: "View Gallery"
+                        children: "Let's get started!"
                     }, void 0, false, {
                         fileName: "[project]/pages/index.tsx",
                         lineNumber: 15,

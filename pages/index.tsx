@@ -16,7 +16,7 @@ export default function Home() {
             href="#"
             className="rounded-full bg-sky-400 px-8 py-3 font-medium text-slate-950 transition hover:bg-sky-300"
           >
-            View Gallery
+            Let's get started!
           </a>
         </div>
       </section>
