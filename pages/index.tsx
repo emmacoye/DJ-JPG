@@ -1,7 +1,4 @@
-// pages/index.tsx
-// This is the home page of the app.
-// It displays the welcome message and the button to let the user get started.
-// The button is a link to the upload page.
+import { Button } from "@/components/Button";
 
 export default function Home() {
   return (
@@ -16,13 +13,8 @@ export default function Home() {
         <p className="mt-4 text-lg text-slate-300">
           Upload your photos and create playlists with songs that match your photos mood.
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="#"
-            className="rounded-full bg-sky-400 px-8 py-3 font-medium text-slate-950 transition hover:bg-sky-300"
-          >
-            Let's get started!
-          </a>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-base">
+          <Button href="#">Let's get started!</Button>
         </div>
       </section>
     </main>

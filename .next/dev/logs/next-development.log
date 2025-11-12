@@ -1,5 +1,3 @@
-[00:00:00.579] Server  LOG      ✓ Ready in 433ms
-[00:01:24.321] Server  LOG      ✓ Compiled in 11ms
-[00:09:53.419] Server  LOG      ✓ Compiled in 15ms
-[00:13:16.527] Server  LOG      ✓ Compiled in 8ms
-[00:13:16.597] Browser LOG     Refreshing page data due to server-side change
+[00:00:02.140] Server  LOG      ✓ Ready in 1877ms
+[00:01:44.553] Server  LOG      ✓ Compiled in 17ms
+[00:01:44.610] Browser LOG     Refreshing page data due to server-side change
