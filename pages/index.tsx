@@ -2,7 +2,14 @@ import { Button } from "@/components/Button";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col lg:flex-row">
+    <main className="flex min-h-screen flex-col lg:flex-row relative">
+      {/* Test Button - Small button in top right corner */}
+      <a
+        href="/upload"
+        className="absolute top-4 right-4 z-10 px-3 py-1.5 text-xs bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md transition-colors"
+      >
+        Test Upload
+      </a>
       {/* Left Section - Yellow Background */}
       <section className="flex flex-1 flex-col items-center justify-center bg-gradient-to-br from-[#FFD740] to-[#FFE8A0] px-6 py-12 lg:px-8 lg:py-16">
         <div className="flex w-full max-w-xl flex-col text-center">
@@ -145,7 +152,7 @@ export default function Home() {
           <div className="mt-16 sm:mt-20">
             <a
               href="/api/auth/login"
-              className="flex items-center justify-center gap-3 rounded-xl bg-[#968A7F] px-6 py-4 text-white transition-colors hover:bg-[#7A7168]"
+              className="flex items-center justify-center gap-3 rounded-xl bg-[#504E76] px-6 py-4 text-white transition-colors hover:bg-[#64628A]"
             >
               <span className="text-lg font-medium">Login with Spotify</span>
               {/* Spotify Logo */}

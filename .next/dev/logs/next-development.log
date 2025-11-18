@@ -1,4 +1,6 @@
-[00:00:00.587] Server  LOG      ✓ Ready in 442ms
-[00:00:08.117] Server  LOG     Using Redirect URI: "http://localhost:3000/api/auth/callback"
-[00:00:08.117] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:00:08.117] Server  LOG       http://localhost:3000/api/auth/callback
+[00:00:00.874] Server  LOG      ✓ Ready in 726ms
+[00:00:06.921] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:00:06.921] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:00:06.921] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:00:56.791] Server  LOG      ✓ Compiled in 79ms
+[00:02:00.948] Server  LOG      ✓ Compiled in 60ms
