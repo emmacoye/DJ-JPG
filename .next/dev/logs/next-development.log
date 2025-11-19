@@ -1,6 +1,33 @@
-[00:00:00.874] Server  LOG      ✓ Ready in 726ms
-[00:00:06.921] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:00:06.921] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:00:06.921] Server  LOG       http://127.0.0.1:3000/api/auth/callback
-[00:00:56.791] Server  LOG      ✓ Compiled in 79ms
-[00:02:00.948] Server  LOG      ✓ Compiled in 60ms
+[00:00:00.943] Server  LOG      ✓ Ready in 723ms
+[00:01:13.237] Server  WARN     ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:01:15.064] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:01:15.064] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:01:15.064] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:01:15.064] Server  LOG     Request host: "127.0.0.1:3000"
+[00:01:15.064] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:01:15.064] Server  LOG     Setting state cookie: "4651l8n1oh7h2wumisv4m"
+[00:01:15.064] Server  LOG     Cookie string: "spotify_auth_state=4651l8n1oh7h2wumisv4m; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:01:15.271] Server  LOG     Callback received - Query params: {}
+[00:01:15.272] Server  LOG     All cookies: {}
+[00:01:15.272] Server  LOG     Cookie header: "spotify_access_token=BQAs2lEc_hWpSS15CX-cmk0Jpkhl84gu6QuxpQ9nuGfEKLIH6vLLGxfLhpgbApuI2B4eorgd8u6OT8ff_f_AXFfoHl_nJ5bh30MJ6LjAx63m8XbWh1HiWzKQzBD9Iwfy6-L-NfSNyEt6doqXbrL7mh7DhvpwiGfvpufgZDR6Ksrw-j8Q8FSf4iP-FdQ_jlkMHgBBg9xkWgJgoQp7Buh3lNRC1L4NqDo5IUYZCg7O85Qcip1sKymyLs26vjpBNY7b7WI92igBoWC6HQtOLF3cKzOiL_em8rDmVBqmOyhLTwcc5Mp16yzMSBXq0ceXRritEApj_eNQphJqOIAxEWo; spotify_refresh_token=AQCPCmqRq-s60L81yl5jT3b2wqNsFH_VnTGFfz7H1jnga7Rv0QapL4ms0t7bRuZH7iD69FGQezPJN-3Rmm9ivjVOT3SNRbULnVstNrBtyIxqP72iQkJmCBAOPlJYTfPHX5c; spotify_auth_state=4651l8n1oh7h2wumisv4m"
+[00:01:51.754] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:01:51.754] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:01:51.754] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:01:51.754] Server  LOG     Request host: "127.0.0.1:3000"
+[00:01:51.754] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:01:51.755] Server  LOG     Setting state cookie: "umznfl7bdpyy0ndq5trdb"
+[00:01:51.755] Server  LOG     Cookie string: "spotify_auth_state=umznfl7bdpyy0ndq5trdb; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:01:51.871] Server  LOG     Callback received - Query params: {}
+[00:01:51.871] Server  LOG     All cookies: {}
+[00:01:51.871] Server  LOG     Cookie header: "spotify_access_token=BQCbalU2exm-W9LR3MTdx9dD3uWd9Cf4JByKbWCKuVwthFHo-SpSeRXMIGJUnRC8R7ms3OwoRACSTiIQa7b7GsabD1uh6sVKkpWym_fVcsyO7ttfHeJjkNjFsxIMwUQf62Cs2ffyb6eQYDSYkgIO3AbfmKxdLzPTRycWsERRbu1twYUX55FBOvUJe0C-s1D1oZsH3OciraEnh3k_enaSX3rr40GDaV0dVhO5ILMs4muUoqk2oCwf_dYLfucAq8z1139KZLgMwnMBRGdlzfauRjVUB7afz106dVXiMUESjhXNoXcMj0xDPlH6mI5LEpzbhbt9Y8TtU3RbAbGZ7i8; spotify_refresh_token=AQCcPF4Py63shsMCJHpbB3r8VYA_N6zu6sjc1LBAKear0jcd0WIaDkoTZfolFVQZ3jzcro4Y29lfyN7BeOk7ijNh2KEcGTiTtWg8d0Sn-C_VVm83eVMxRMRbaY27QCAx3Tc; spotify_auth_state=umznfl7bdpyy0ndq5trdb"
+[00:03:29.345] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:03:29.345] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:03:29.345] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:03:29.345] Server  LOG     Request host: "127.0.0.1:3000"
+[00:03:29.345] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:03:29.346] Server  LOG     Setting state cookie: "flxunykg2drpod979gyfko"
+[00:03:29.346] Server  LOG     Cookie string: "spotify_auth_state=flxunykg2drpod979gyfko; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:03:29.478] Server  LOG     Callback received - Query params: {}
+[00:03:29.478] Server  LOG     All cookies: {}
+[00:03:29.478] Server  LOG     Cookie header: "spotify_access_token=BQAxMdcJpqkKW54GlCNDmeYxC4UAOLTqkt8PVYWHq_TOdHiNP7apCC_GgIWVI6ELkIKM_TL9M_5wuUi0KAG2-nfAqnCLQMUB259ILj4zAnt03uENpVX0Mn4uWJDFaAaJmzFNaGsnF42yHLAB1BW8T4t9FVvCLpA-rAusR-a_n1I5fpN1WKHCo_zFvmOqJul1XC9HaKdYnjnYDIUbIl3Yy7PhSfPAllSBJ7W5EcKkTsATT_qFomn73Ot0_Rn4JA7uEJSHSmSv08ZTOm0UcmN-6lc0u6UHD_Jq7mZEc43_SQZHC83rP776i_VjHNiGSkTx15ifRhjrbTJkypsij0o; spotify_refresh_token=AQAGjXl7mWpTh_2lGprBAziWMmHTDksRVN6VkY-O-lux2FrUQDMykIAYDiRtF_2VPjGUQ-rk0PPH3TUmqQRaqfz1HWVNzIQAQV7wAWMZHkEh1BYi6cgDoZiD44j1sdQ1Vzw; spotify_auth_state=flxunykg2drpod979gyfko"

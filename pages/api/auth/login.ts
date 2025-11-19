@@ -40,15 +40,46 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   const SPOTIFY_REDIRECT_URI = getRedirectUri(req);
+  const currentHost = req.headers.host || '';
+  
+  // Safely extract host from redirect URI
+  let redirectHost = '';
+  try {
+    redirectHost = new URL(SPOTIFY_REDIRECT_URI).host;
+  } catch (error) {
+    console.error('Error parsing redirect URI:', SPOTIFY_REDIRECT_URI, error);
+    return res.status(500).json({ error: 'Invalid redirect URI configuration' });
+  }
 
   // Log the redirect URI for debugging (remove in production)
   if (process.env.NODE_ENV !== 'production') {
     console.log('Using Redirect URI:', SPOTIFY_REDIRECT_URI);
     console.log('Make sure this EXACT URI is added in your Spotify app settings:');
     console.log(`  ${SPOTIFY_REDIRECT_URI}`);
+    console.log('Request host:', currentHost);
+    console.log('Redirect host:', redirectHost);
   }
 
-  const state = Math.random().toString(36).substring(2, 15);
+  // Check for host mismatch (localhost vs 127.0.0.1)
+  // If there's a mismatch, redirect to the correct host
+  if (currentHost !== redirectHost && 
+      (currentHost.includes('localhost') || currentHost.includes('127.0.0.1')) &&
+      (redirectHost.includes('localhost') || redirectHost.includes('127.0.0.1'))) {
+    const protocol = req.headers['x-forwarded-proto'] || 
+      (currentHost.includes('localhost') || currentHost.includes('127.0.0.1') ? 'http' : 'https');
+    // Use the full request URL or default to /api/auth/login
+    const requestUrl = req.url || '/api/auth/login';
+    const correctUrl = `${protocol}://${redirectHost}${requestUrl}`;
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Host mismatch detected. Redirecting to:', correctUrl);
+    }
+    return res.redirect(correctUrl);
+  }
+
+  // Clear any existing state cookie first
+  res.setHeader('Set-Cookie', 'spotify_auth_state=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax');
+
+  const state = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
   const authUrl = `https://accounts.spotify.com/authorize?` +
     `response_type=code` +
     `&client_id=${encodeURIComponent(SPOTIFY_CLIENT_ID)}` +
@@ -57,7 +88,30 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     `&state=${encodeURIComponent(state)}`;
 
   // Store state in a cookie for validation (or use a session store)
-  res.setHeader('Set-Cookie', `spotify_auth_state=${state}; HttpOnly; Path=/; Max-Age=600`);
+  // SameSite=Lax is important for OAuth redirects to work properly
+  // Set cookie for both localhost and 127.0.0.1 to handle domain mismatch
+  const cookieOptions = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax' as const,
+    path: '/',
+    maxAge: 600, // 10 minutes
+  };
+  
+  // Build cookie string properly - only include Secure if it's true
+  let cookieString = `spotify_auth_state=${state}; HttpOnly; SameSite=${cookieOptions.sameSite}; Path=${cookieOptions.path}; Max-Age=${cookieOptions.maxAge}`;
+  if (cookieOptions.secure) {
+    cookieString += '; Secure';
+  }
+  
+  // Set cookie without domain (works for both localhost and 127.0.0.1)
+  res.setHeader('Set-Cookie', cookieString);
+  
+  // Debug logging
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('Setting state cookie:', state);
+    console.log('Cookie string:', cookieString);
+  }
   
   res.redirect(authUrl);
 }

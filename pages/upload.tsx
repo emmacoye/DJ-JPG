@@ -29,7 +29,7 @@ export default function Upload() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F1E8] border-2 border-blue-200">
+    <div className="min-h-screen">
       {/* Header */}
       <div className="flex items-center justify-between p-6">
         <a href="/" className="text-gray-700 hover:text-gray-900">
