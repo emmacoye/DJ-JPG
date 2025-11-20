@@ -79,13 +79,34 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // Clear any existing state cookie first
   res.setHeader('Set-Cookie', 'spotify_auth_state=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax');
 
+  // Check if we should force re-authentication (clear existing tokens)
+  const forceReauth = req.query.force === 'true' || req.query.reauth === 'true';
+  
+  // If forcing re-auth, clear existing tokens
+  if (forceReauth) {
+    res.setHeader('Set-Cookie', [
+      'spotify_access_token=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax',
+      'spotify_refresh_token=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax',
+    ]);
+  }
+
   const state = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  
+  // Build authorization URL with show_dialog=true to always show consent screen
+  // This ensures users see and grant permissions every time
   const authUrl = `https://accounts.spotify.com/authorize?` +
     `response_type=code` +
     `&client_id=${encodeURIComponent(SPOTIFY_CLIENT_ID)}` +
     `&scope=${encodeURIComponent(SPOTIFY_SCOPES)}` +
     `&redirect_uri=${encodeURIComponent(SPOTIFY_REDIRECT_URI)}` +
-    `&state=${encodeURIComponent(state)}`;
+    `&state=${encodeURIComponent(state)}` +
+    `&show_dialog=true`; // Force consent screen every time
+  
+  // Log scopes for debugging
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('Requesting Spotify scopes:', SPOTIFY_SCOPES);
+    console.log('Authorization URL:', authUrl.replace(SPOTIFY_CLIENT_ID || '', 'CLIENT_ID_HIDDEN'));
+  }
 
   // Store state in a cookie for validation (or use a session store)
   // SameSite=Lax is important for OAuth redirects to work properly

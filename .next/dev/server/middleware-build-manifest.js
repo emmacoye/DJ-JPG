@@ -23,16 +23,29 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/pages__app_2da965e7._.js",
       "static/chunks/turbopack-pages__app_e361a1c7._.js"
     ],
+    "/analyze": [
+      "static/chunks/node_modules_next_dist_compiled_c629999b._.js",
+      "static/chunks/node_modules_next_dist_shared_lib_82dc2e9d._.js",
+      "static/chunks/node_modules_next_dist_client_d0aa886c._.js",
+      "static/chunks/node_modules_next_dist_6024eba3._.js",
+      "static/chunks/node_modules_next_router_104fab1c.js",
+      "static/chunks/node_modules_react-dom_4411d9bd._.js",
+      "static/chunks/node_modules_f1be3ba2._.js",
+      "static/chunks/[root-of-the-server]__a05ac825._.js",
+      "static/chunks/pages_analyze_2da965e7._.js",
+      "static/chunks/turbopack-pages_analyze_020d1885._.js"
+    ],
     "/upload": [
       "static/chunks/node_modules_next_dist_compiled_c629999b._.js",
       "static/chunks/node_modules_next_dist_shared_lib_82dc2e9d._.js",
       "static/chunks/node_modules_next_dist_client_d0aa886c._.js",
       "static/chunks/node_modules_next_dist_6024eba3._.js",
+      "static/chunks/node_modules_next_router_104fab1c.js",
       "static/chunks/node_modules_react-dom_4411d9bd._.js",
       "static/chunks/node_modules_f1be3ba2._.js",
       "static/chunks/[root-of-the-server]__de156705._.js",
       "static/chunks/pages_upload_2da965e7._.js",
-      "static/chunks/turbopack-pages_upload_a7ec8262._.js"
+      "static/chunks/turbopack-pages_upload_e33dad30._.js"
     ]
   },
   "devFiles": [],

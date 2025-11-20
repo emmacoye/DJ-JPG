@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const spotifyApi = getSpotifyApi(req);
+    const spotifyApi = await getSpotifyApi(req, res);
     const me = await spotifyApi.getMe();
 
     return res.json({

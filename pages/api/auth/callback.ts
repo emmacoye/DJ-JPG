@@ -109,6 +109,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const data = await spotifyApi.authorizationCodeGrant(code);
     const { access_token, refresh_token, expires_in } = data.body;
+    
+    // Log token info for debugging
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Token received:', {
+        accessTokenLength: access_token?.length || 0,
+        refreshTokenLength: refresh_token?.length || 0,
+        expiresIn: expires_in,
+        clientId: SPOTIFY_CLIENT_ID?.substring(0, 10) + '...',
+      });
+    }
 
     // Store tokens securely (in production, use a secure session store or database)
     // For now, we'll set them in cookies with httpOnly flag
@@ -120,10 +130,53 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       path: '/',
     };
 
-    res.setHeader('Set-Cookie', [
-      `spotify_access_token=${access_token}; ${Object.entries(cookieOptions).map(([k, v]) => `${k}=${v}`).join('; ')}`,
-      `spotify_refresh_token=${refresh_token}; HttpOnly; Secure=${cookieOptions.secure}; SameSite=${cookieOptions.sameSite}; Path=/; Max-Age=${60 * 60 * 24 * 7 * 1000}`, // 7 days
-    ]);
+    // Build cookie strings
+    const accessTokenCookie = `spotify_access_token=${access_token}; HttpOnly; Secure=${cookieOptions.secure}; SameSite=${cookieOptions.sameSite}; Path=${cookieOptions.path}; Max-Age=${cookieOptions.maxAge}`;
+    const refreshTokenCookie = `spotify_refresh_token=${refresh_token}; HttpOnly; Secure=${cookieOptions.secure}; SameSite=${cookieOptions.sameSite}; Path=/; Max-Age=${60 * 60 * 24 * 7 * 1000}`;
+
+    res.setHeader('Set-Cookie', [accessTokenCookie, refreshTokenCookie]);
+    
+    // Verify the token works by testing it
+    if (process.env.NODE_ENV !== 'production') {
+      try {
+        const testApi = new SpotifyWebApi({
+          clientId: SPOTIFY_CLIENT_ID,
+          clientSecret: SPOTIFY_CLIENT_SECRET,
+        });
+        testApi.setAccessToken(access_token);
+        const testMe = await testApi.getMe();
+        console.log('✅ Token verified - user:', testMe.body.display_name || testMe.body.id);
+      } catch (testError: any) {
+        console.error('❌ CRITICAL: Token verification failed immediately after receiving it!');
+        console.error('This means the token is invalid from the start.');
+        
+        // Extract actual error message from Spotify
+        let spotifyError = 'Unknown error';
+        if (testError.body) {
+          if (typeof testError.body === 'object') {
+            spotifyError = JSON.stringify(testError.body);
+          } else {
+            spotifyError = String(testError.body);
+          }
+        } else if (testError.message) {
+          spotifyError = String(testError.message);
+        }
+        
+        console.error('Error details:', {
+          statusCode: testError.statusCode,
+          body: testError.body,
+          spotifyError: spotifyError,
+          clientIdUsed: SPOTIFY_CLIENT_ID?.substring(0, 15) + '...',
+        });
+        console.error('Possible causes:');
+        console.error('1. Client ID/Secret in .env.local don\'t match your Spotify app');
+        console.error('2. The Spotify app Client ID in dashboard:', 'Check https://developer.spotify.com/dashboard');
+        console.error('3. Token was created but is invalid (very rare)');
+        
+        // Actually fail the callback if token is invalid
+        return res.redirect(`/?error=${encodeURIComponent('Token verification failed. Please check your Spotify app Client ID/Secret match your .env.local file.')}`);
+      }
+    }
 
     // Redirect to upload page after successful authentication
     res.redirect('/upload');
