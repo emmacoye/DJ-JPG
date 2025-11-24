@@ -269,85 +269,6 @@ export default function Analyze() {
           </div>
         </div>
 
-        {/* Decorative Cat Characters */}
-        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 hidden lg:block">
-          <div className="w-32 h-32 relative">
-            {/* Left Cat - Musician */}
-            <svg
-              width="128"
-              height="128"
-              viewBox="0 0 128 128"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Cat body */}
-              <ellipse cx="64" cy="80" rx="40" ry="35" fill="#FFB84D" />
-              {/* Cat head */}
-              <circle cx="64" cy="50" r="30" fill="#FFB84D" />
-              {/* Ears */}
-              <path
-                d="M45 35 L50 15 L55 35 Z"
-                fill="#FFB84D"
-              />
-              <path
-                d="M73 35 L78 15 L83 35 Z"
-                fill="#FFB84D"
-              />
-              {/* Headphones */}
-              <circle cx="64" cy="50" r="28" stroke="#90EE90" strokeWidth="4" fill="none" />
-              <rect x="36" y="45" width="8" height="12" fill="#90EE90" />
-              <rect x="84" y="45" width="8" height="12" fill="#90EE90" />
-              {/* Guitar */}
-              <ellipse cx="75" cy="95" rx="15" ry="20" fill="#8B4513" />
-              <rect x="70" y="85" width="10" height="25" fill="#654321" />
-            </svg>
-          </div>
-        </div>
-
-        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 hidden lg:block">
-          <div className="w-32 h-32 relative">
-            {/* Right Cat - Professor */}
-            <svg
-              width="128"
-              height="128"
-              viewBox="0 0 128 128"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Cat body */}
-              <ellipse cx="64" cy="80" rx="40" ry="35" fill="#FFB84D" />
-              {/* Cat head */}
-              <circle cx="64" cy="50" r="30" fill="#FFB84D" />
-              {/* Ears */}
-              <path
-                d="M45 35 L50 15 L55 35 Z"
-                fill="#FFB84D"
-              />
-              <path
-                d="M73 35 L78 15 L83 35 Z"
-                fill="#FFB84D"
-              />
-              {/* Glasses */}
-              <circle cx="54" cy="52" r="8" stroke="#333" strokeWidth="2" fill="none" />
-              <circle cx="74" cy="52" r="8" stroke="#333" strokeWidth="2" fill="none" />
-              <line x1="62" y1="52" x2="66" y2="52" stroke="#333" strokeWidth="2" />
-              {/* Headphones */}
-              <circle cx="64" cy="50" r="28" stroke="#90EE90" strokeWidth="4" fill="none" />
-              <rect x="36" y="45" width="8" height="12" fill="#90EE90" />
-              <rect x="84" y="45" width="8" height="12" fill="#90EE90" />
-              {/* Shirt */}
-              <rect x="44" y="75" width="40" height="30" fill="white" />
-              <rect x="54" y="85" width="20" height="20" fill="black" />
-              {/* Tie */}
-              <path d="M64 75 L60 95 L68 95 Z" fill="black" />
-              {/* Pointer stick */}
-              <line x1="90" y1="70" x2="110" y2="50" stroke="#8B4513" strokeWidth="3" strokeLinecap="round" />
-              {/* Book */}
-              <rect x="100" y="60" width="20" height="15" fill="#654321" />
-            </svg>
-          </div>
-        </div>
-
         {/* Step Indicator Dots */}
         <div className="flex gap-3 mt-12">
           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
@@ -466,11 +387,14 @@ export default function Analyze() {
               )}
             </div>
             <button
-              onClick={handleCreatePlaylist}
-              disabled={isCreatingPlaylist}
-              className="mt-6 bg-[#504E76] hover:bg-[#64628A] disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg transition-colors w-full"
+              onClick={() => {
+                // Store analysis in sessionStorage and navigate to playlist preview page
+                sessionStorage.setItem('analysisData', JSON.stringify(analysis));
+                router.push('/playlist');
+              }}
+              className="mt-6 bg-[#504E76] hover:bg-[#64628A] text-white px-6 py-3 rounded-lg transition-colors w-full"
             >
-              {isCreatingPlaylist ? 'Creating Playlist...' : 'Create Playlist'}
+              View Playlist Preview
             </button>
           </div>
         )}

@@ -160,17 +160,72 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         public: true,
       });
       
-      // createPlaylist signature: createPlaylist(userId, name, options)
-      playlistResponse = await spotifyApi.createPlaylist(userId, playlistTheme, {
-        description: description.substring(0, 300), // Spotify has a 300 char limit
-        public: true,
-      } as any);
+      // Use raw HTTP API call instead of library method (library has callback issues)
+      console.log('Creating playlist via raw HTTP API...');
+      
+      const accessToken = spotifyApi.getAccessToken();
+      if (!accessToken) {
+        throw new Error('No access token available');
+      }
+      
+      // Create playlist using Spotify Web API directly
+      const createPlaylistResponse = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: playlistTheme,
+          description: description.substring(0, 300), // Spotify has a 300 char limit
+          public: true,
+        }),
+      });
+      
+      if (!createPlaylistResponse.ok) {
+        const errorText = await createPlaylistResponse.text();
+        let errorJson;
+        try {
+          errorJson = JSON.parse(errorText);
+        } catch {
+          errorJson = { message: errorText };
+        }
+        
+        console.error('Spotify API error:', {
+          status: createPlaylistResponse.status,
+          statusText: createPlaylistResponse.statusText,
+          body: errorJson,
+        });
+        
+        // Throw an error that matches the library's error format
+        const spotifyError: any = new Error(errorJson.error?.message || errorText || 'Failed to create playlist');
+        spotifyError.statusCode = createPlaylistResponse.status;
+        spotifyError.body = errorJson;
+        throw spotifyError;
+      }
+      
+      const playlistData = await createPlaylistResponse.json();
+      console.log('Playlist created successfully via HTTP API:', playlistData.id, playlistData.name);
+      
+      // Format response to match library's expected format
+      playlistResponse = { body: playlistData };
+      
+      // Log what we got back
+      console.log('Playlist response received');
+      console.log('Type:', typeof playlistResponse);
+      console.log('Response:', playlistResponse);
+      
+      // Check if response is valid
+      if (!playlistResponse) {
+        throw new Error('createPlaylist returned undefined');
+      }
     } catch (createError: any) {
       console.error('Error creating playlist:', createError);
       console.error('Create error details:', {
         statusCode: createError.statusCode,
         body: createError.body,
         message: createError.message,
+        stack: createError.stack,
       });
       
       // If 403, it's a permissions issue
@@ -206,11 +261,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       throw createError;
     }
 
-    const playlist = (playlistResponse as any).body;
+    // Handle different response formats
+    let playlist: any;
+    if (playlistResponse && (playlistResponse as any).body) {
+      playlist = (playlistResponse as any).body;
+    } else if (playlistResponse && (playlistResponse as any).id) {
+      // If the response is the playlist object directly
+      playlist = playlistResponse;
+    } else {
+      console.error('Unexpected playlist response format:', playlistResponse);
+      throw new Error('Unexpected response format from createPlaylist');
+    }
     console.log('Playlist created successfully:', playlist.id, playlist.name);
 
     // Add tracks to playlist (Spotify allows up to 100 tracks per request)
-    const tracksToAdd = trackUris.slice(0, 50); // Limit to 50 tracks
+    const tracksToAdd = trackUris.slice(0, 20); // Limit to 20 tracks
     await spotifyApi.addTracksToPlaylist(playlist.id, tracksToAdd);
 
     return res.json({

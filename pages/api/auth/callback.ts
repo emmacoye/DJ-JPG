@@ -100,6 +100,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const SPOTIFY_REDIRECT_URI = getRedirectUri(req);
 
+    // Log redirect URI for debugging
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('🔍 Using Redirect URI for token exchange:', SPOTIFY_REDIRECT_URI);
+      console.log('⚠️  Make sure this EXACT URI is in your Spotify app settings:');
+      console.log(`   ${SPOTIFY_REDIRECT_URI}`);
+      console.log('   (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)');
+    }
+
     // Exchange authorization code for access token
     const spotifyApi = new SpotifyWebApi({
       clientId: SPOTIFY_CLIENT_ID,
@@ -107,7 +115,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       redirectUri: SPOTIFY_REDIRECT_URI,
     });
 
-    const data = await spotifyApi.authorizationCodeGrant(code);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('🔄 Exchanging authorization code for tokens...');
+      console.log('   Using redirect URI:', SPOTIFY_REDIRECT_URI);
+      console.log('   Client ID:', SPOTIFY_CLIENT_ID?.substring(0, 10) + '...');
+    }
+
+    let data;
+    try {
+      data = await spotifyApi.authorizationCodeGrant(code);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('✅ Token exchange successful');
+      }
+    } catch (exchangeError: any) {
+      console.error('❌ Token exchange FAILED!');
+      console.error('Error:', exchangeError.message);
+      console.error('Status:', exchangeError.statusCode);
+      console.error('Body:', JSON.stringify(exchangeError.body, null, 2));
+      console.error('This usually means the redirect URI in your Spotify app doesn\'t match:', SPOTIFY_REDIRECT_URI);
+      return res.redirect(`/?error=${encodeURIComponent(`Token exchange failed: ${exchangeError.message || 'Unknown error'}. Check that your redirect URI matches exactly: ${SPOTIFY_REDIRECT_URI}`)}`);
+    }
+
     const { access_token, refresh_token, expires_in } = data.body;
     
     // Log token info for debugging
@@ -139,42 +167,115 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Verify the token works by testing it
     if (process.env.NODE_ENV !== 'production') {
       try {
+        console.log('🔍 Verifying token...');
+        console.log('   Client ID used for token exchange:', SPOTIFY_CLIENT_ID?.substring(0, 15) + '...');
+        console.log('   Full Client ID from .env:', SPOTIFY_CLIENT_ID);
+        console.log('   Client Secret length:', SPOTIFY_CLIENT_SECRET?.length || 0);
+        console.log('   Token length:', access_token?.length || 0);
+        console.log('   Token starts with:', access_token?.substring(0, 20));
+        
+        // Try to decode the token (it's a JWT, but Spotify tokens aren't always JWTs)
+        // At least verify it's not empty or malformed
+        if (!access_token || access_token.length < 50) {
+          throw new Error('Token appears to be invalid (too short)');
+        }
+        
         const testApi = new SpotifyWebApi({
           clientId: SPOTIFY_CLIENT_ID,
           clientSecret: SPOTIFY_CLIENT_SECRET,
         });
         testApi.setAccessToken(access_token);
-        const testMe = await testApi.getMe();
-        console.log('✅ Token verified - user:', testMe.body.display_name || testMe.body.id);
+        
+        console.log('   Making getMe() call to verify token...');
+        
+        // Try using the token directly with a raw HTTP request first
+        // This helps us see if it's a library issue or a token issue
+        try {
+          const fetchResponse = await fetch('https://api.spotify.com/v1/me', {
+            headers: {
+              'Authorization': `Bearer ${access_token}`,
+              'Content-Type': 'application/json',
+            },
+          });
+          
+          console.log('   Raw HTTP request status:', fetchResponse.status);
+          if (!fetchResponse.ok) {
+            const errorText = await fetchResponse.text();
+            console.log('   Raw HTTP error response:', errorText);
+            console.log('   Raw HTTP error headers:', Object.fromEntries(fetchResponse.headers.entries()));
+            
+            // Try to parse as JSON
+            let errorJson;
+            try {
+              errorJson = JSON.parse(errorText);
+              console.log('   Parsed error JSON:', JSON.stringify(errorJson, null, 2));
+            } catch {
+              console.log('   Error response is not JSON');
+            }
+          } else {
+            const userData = await fetchResponse.json();
+            console.log('✅ Token verified via raw HTTP - user:', userData.display_name || userData.id);
+            // If raw HTTP works, try the library call too
+            const testMe = await testApi.getMe();
+            console.log('✅ Token verified via library - user:', testMe.body.display_name || testMe.body.id);
+          }
+        } catch (fetchError: any) {
+          console.error('   Raw HTTP request failed:', fetchError.message);
+          // Fall back to library call
+          const testMe = await testApi.getMe();
+          console.log('✅ Token verified - user:', testMe.body.display_name || testMe.body.id);
+        }
       } catch (testError: any) {
         console.error('❌ CRITICAL: Token verification failed immediately after receiving it!');
         console.error('This means the token is invalid from the start.');
         
         // Extract actual error message from Spotify
         let spotifyError = 'Unknown error';
+        let errorMessage = '';
         if (testError.body) {
           if (typeof testError.body === 'object') {
-            spotifyError = JSON.stringify(testError.body);
+            spotifyError = JSON.stringify(testError.body, null, 2);
+            // Try to extract error.message from the body
+            if (testError.body.error) {
+              errorMessage = testError.body.error.message || testError.body.error;
+            }
           } else {
             spotifyError = String(testError.body);
+            errorMessage = spotifyError;
           }
         } else if (testError.message) {
           spotifyError = String(testError.message);
+          errorMessage = spotifyError;
         }
         
-        console.error('Error details:', {
-          statusCode: testError.statusCode,
-          body: testError.body,
-          spotifyError: spotifyError,
-          clientIdUsed: SPOTIFY_CLIENT_ID?.substring(0, 15) + '...',
-        });
+        console.error('═══════════════════════════════════════════════════════');
+        console.error('FULL ERROR DETAILS:');
+        console.error('Status Code:', testError.statusCode);
+        console.error('Error Body:', spotifyError);
+        console.error('Error Message:', errorMessage);
+        console.error('Full Error Object:', JSON.stringify(testError, null, 2));
+        console.error('Client ID Used:', SPOTIFY_CLIENT_ID?.substring(0, 15) + '...');
+        console.error('Redirect URI Used:', SPOTIFY_REDIRECT_URI);
+        console.error('Access Token Length:', access_token?.length || 0);
+        console.error('Access Token First 20 chars:', access_token?.substring(0, 20) || 'none');
+        console.error('═══════════════════════════════════════════════════════');
         console.error('Possible causes:');
-        console.error('1. Client ID/Secret in .env.local don\'t match your Spotify app');
-        console.error('2. The Spotify app Client ID in dashboard:', 'Check https://developer.spotify.com/dashboard');
-        console.error('3. Token was created but is invalid (very rare)');
+        console.error('1. Redirect URI mismatch: Make sure this EXACT URI is in Spotify:');
+        console.error(`   ${SPOTIFY_REDIRECT_URI}`);
+        console.error('2. Client ID/Secret mismatch: Check .env.local matches Spotify dashboard');
+        console.error('3. Token was created with wrong app credentials');
+        console.error('4. Spotify API returned an error (check error message above)');
         
         // Actually fail the callback if token is invalid
-        return res.redirect(`/?error=${encodeURIComponent('Token verification failed. Please check your Spotify app Client ID/Secret match your .env.local file.')}`);
+        // This is a critical error - the token is invalid from the start
+        console.error('Failing authentication due to invalid token');
+        const redirectErrorMessage = `Authentication failed: Token is invalid immediately after creation. This usually means:
+1. Redirect URI mismatch: The redirect URI used (${SPOTIFY_REDIRECT_URI}) doesn't match what's configured in your Spotify app
+2. Client ID/Secret mismatch: Your .env.local credentials don't match your Spotify app
+3. Visit /api/verify-credentials to check your setup
+4. Check your Spotify app settings: https://developer.spotify.com/dashboard`;
+        res.redirect(`/?error=${encodeURIComponent(redirectErrorMessage)}`);
+        return;
       }
     }
 

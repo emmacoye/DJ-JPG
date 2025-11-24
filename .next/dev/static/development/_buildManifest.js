@@ -1,12 +1,9 @@
 self.__BUILD_MANIFEST = {
-  "/": [
-    "static/chunks/pages/index.js"
-  ],
   "/analyze": [
     "static/chunks/pages/analyze.js"
   ],
-  "/upload": [
-    "static/chunks/pages/upload.js"
+  "/playlist": [
+    "static/chunks/pages/playlist.js"
   ],
   "__rewrites": {
     "afterFiles": [],
@@ -24,7 +21,11 @@ self.__BUILD_MANIFEST = {
     "/api/auth/refresh",
     "/api/me",
     "/api/playlist",
+    "/api/playlist-preview",
+    "/api/test-credentials",
     "/api/test-permissions",
+    "/api/verify-credentials",
+    "/playlist",
     "/upload"
   ]
 };self.__BUILD_MANIFEST_CB && self.__BUILD_MANIFEST_CB()

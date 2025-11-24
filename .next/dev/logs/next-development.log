@@ -1,41 +1,128 @@
-[00:00:00.715] Server  LOG      ✓ Ready in 511ms
-[00:00:00.716] Server  WARN     ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:00.696] Server  LOG      ✓ Ready in 489ms
+[00:00:00.697] Server  WARN     ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:07.689] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:00:07.689] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:00:07.689] Server  LOG       http://127.0.0.1:3000/api/auth/callback
-[00:00:07.689] Server  LOG     Request host: "127.0.0.1:3000"
-[00:00:07.689] Server  LOG     Redirect host: "127.0.0.1:3000"
-[00:00:07.689] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify"
-[00:00:07.689] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=0sf4d7w3y2ja48obxkqqjnr&show_dialog=true"
-[00:00:07.689] Server  LOG     Setting state cookie: "0sf4d7w3y2ja48obxkqqjnr"
-[00:00:07.689] Server  LOG     Cookie string: "spotify_auth_state=0sf4d7w3y2ja48obxkqqjnr; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
-[00:00:09.488] Server  LOG     Callback received - Query params: {}
-[00:00:09.488] Server  LOG     All cookies: {}
-[00:00:09.489] Server  LOG     Cookie header: "spotify_auth_state=0sf4d7w3y2ja48obxkqqjnr"
-[00:00:09.669] Server  LOG     Token received: {}
-[00:00:09.834] Server  ERROR   WARNING: Token verification failed: {}
-[00:00:14.851] Browser LOG     Compressed image size: 99KB
-[00:00:14.866] Server  LOG     Analyzing image (size: 0.10MB)
-[00:00:25.674] Server  LOG     Using access token from cookies (length: 339 ")"
-[00:00:25.904] Server  ERROR   Error testing permissions: WebapiError: [object Object]
-[00:00:25.929] Server  LOG     Cookies received: {}
-[00:00:25.929] Server  LOG     Spotify Client ID configured: true
-[00:00:25.929] Server  LOG     Spotify Client Secret configured: true
-[00:00:25.929] Server  LOG     Using access token from cookies (length: 339 ")"
-[00:00:26.086] Server  ERROR   Error getting user info: WebapiError: [object Object]
-[00:00:26.086] Server  ERROR   getMe() error details: {}
-[00:00:26.086] Server  ERROR   CRITICAL: getMe() returned 403 - token is invalid or from wrong app
-[00:00:26.086] Server  ERROR   This usually means:
-[00:00:26.086] Server  ERROR   1. Token was obtained with a different Client ID
-[00:00:26.086] Server  ERROR   2. Token is corrupted or invalid
-[00:00:26.086] Server  ERROR   3. Client ID/Secret mismatch
-[00:00:29.114] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:00:29.114] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:00:29.114] Server  LOG       http://127.0.0.1:3000/api/auth/callback
-[00:00:29.114] Server  LOG     Request host: "127.0.0.1:3000"
-[00:00:29.114] Server  LOG     Redirect host: "127.0.0.1:3000"
-[00:00:29.114] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify"
-[00:00:29.114] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=gawec1mc624yupeyciwcif&show_dialog=true"
-[00:00:29.114] Server  LOG     Setting state cookie: "gawec1mc624yupeyciwcif"
-[00:00:29.114] Server  LOG     Cookie string: "spotify_auth_state=gawec1mc624yupeyciwcif; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:00:04.603] Server  LOG     Analyzing image (size: 0.10MB)
+[00:00:17.017] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:00:17.220] Server  LOG     User authenticated: "emmacoye"
+[00:02:21.809] Server  LOG      ✓ Compiled in 37ms
+[00:02:46.459] Server  LOG      ✓ Compiled in 22ms
+[00:05:52.851] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:05:52.877] Server  LOG      ✓ Compiled in 33ms
+[00:05:53.050] Server  LOG     User authenticated: "emmacoye"
+[00:06:10.289] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:06:10.315] Server  LOG      ✓ Compiled in 88ms
+[00:06:10.437] Server  LOG     User authenticated: "emmacoye"
+[00:08:06.882] Server  LOG      ✓ Compiled in 39ms
+[00:08:12.157] Server  LOG      ✓ Compiled in 19ms
+[00:08:16.268] Server  LOG      ✓ Compiled in 24ms
+[00:08:19.427] Server  LOG      ✓ Compiled in 27ms
+[00:08:23.987] Server  LOG      ✓ Compiled in 20ms
+[00:08:29.136] Server  LOG      ✓ Compiled in 25ms
+[00:08:33.801] Server  LOG      ✓ Compiled in 20ms
+[00:08:37.706] Server  LOG      ✓ Compiled in 17ms
+[00:08:44.238] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:08:44.268] Server  LOG      ✓ Compiled in 14ms
+[00:08:44.411] Server  LOG     User authenticated: "emmacoye"
+[00:09:03.104] Server  LOG      ✓ Compiled in 210ms
+[00:09:03.130] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:09:03.271] Server  LOG     User authenticated: "emmacoye"
+[00:09:05.080] Server  LOG      ✓ Compiled in 22ms
+[00:09:05.086] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:09:05.224] Browser LOG     Refreshing page data due to server-side change
+[00:09:05.224] Browser ERROR   ./pages/playlist.tsx:461:15
+Parsing ecmascript source code failed
+  459 |             </div>
+  460 |           )}
+> 461 |         </div>
+      |               ^
+> 462 |
+      | ^
+> 463 |         {/* Step Indicator */}
+      | ^^^^^^^^^
+  464 |         <div className="flex gap-3 justify-center mt-12">
+  465 |           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+  466 |           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+
+Expected '</', got 'jsx text (
+
+        )'
+[00:09:05.224] Browser ERROR   ./pages/playlist.tsx
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/pages/playlist.tsx [ssr] (ecmascript)
+
+Caused by:
+- CJS module can't be async.
+
+Debug info:
+- An error occurred while generating the chunk item [project]/pages/playlist.tsx [ssr] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of EcmascriptChunkItemContent::new failed
+- CJS module can't be async.
+[00:09:05.224] Browser ERROR   ./pages/playlist.tsx:461:15
+Parsing ecmascript source code failed
+  459 |             </div>
+  460 |           )}
+> 461 |         </div>
+      |               ^
+> 462 |
+      | ^
+> 463 |         {/* Step Indicator */}
+      | ^^^^^^^^^
+  464 |         <div className="flex gap-3 justify-center mt-12">
+  465 |           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+  466 |           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+
+Expected '</', got 'jsx text (
+
+        )'
+[00:09:05.224] Browser ERROR   ./pages/playlist.tsx
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/pages/playlist.tsx [ssr] (ecmascript)
+
+Caused by:
+- CJS module can't be async.
+
+Debug info:
+- An error occurred while generating the chunk item [project]/pages/playlist.tsx [ssr] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of EcmascriptChunkItemContent::new failed
+- CJS module can't be async.
+[00:09:05.276] Server  LOG     User authenticated: "emmacoye"
+[00:09:09.684] Server  LOG      ✓ Compiled in 29ms
+[00:09:09.787] Browser ERROR   ./pages/playlist.tsx:470:15
+Parsing ecmascript source code failed
+  468 |             </div>
+  469 |           )}
+> 470 |         </div>
+      |               ^
+> 471 |
+      | ^
+> 472 |         {/* Step Indicator */}
+      | ^^^^^^^^^
+  473 |         <div className="flex gap-3 justify-center mt-12">
+  474 |           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+  475 |           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+
+Expected '</', got 'jsx text (
+
+        )'
+[00:09:09.787] Browser ERROR   ./pages/playlist.tsx
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/pages/playlist.tsx [ssr] (ecmascript)
+
+Caused by:
+- CJS module can't be async.
+
+Debug info:
+- An error occurred while generating the chunk item [project]/pages/playlist.tsx [ssr] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of EcmascriptChunkItemContent::new failed
+- CJS module can't be async.
+[00:09:10.385] Server  LOG      ✓ Compiled in 17ms
+[00:09:10.390] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:09:10.393] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:09:10.444] Browser LOG     Refreshing page data due to server-side change
+[00:09:10.511] Server  LOG     User authenticated: "emmacoye"
+[00:09:10.516] Server  LOG     User authenticated: "emmacoye"
+[00:09:51.023] Server  LOG      ✓ Compiled in 76ms
+[00:10:06.522] Server  LOG      ✓ Compiled in 23ms
