@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const { analysis } = req.body;
+    const { analysis, image, trackUris } = req.body;
 
     if (!analysis) {
       return res.status(400).json({ error: 'Analysis data is required' });
@@ -90,64 +90,96 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const userId = me.body.id;
     console.log('Creating playlist for user:', userId);
 
-    // Build search queries based on analysis
+    // Extract analysis data
     const genres = analysis.genres || ['pop'];
     const mood = analysis.mood || '';
     const energy = analysis.energy || 'medium';
     const tempo = analysis.tempo || 'moderate';
     const playlistTheme = analysis.playlistTheme || 'Photo Playlist';
 
-    // Search for tracks based on genres and mood
-    const searchQueries: string[] = [];
+    // Use track URIs from preview if provided, otherwise search for tracks
+    let finalTrackUris: string[] = [];
     
-    // Add genre-based searches
-    for (const genre of genres.slice(0, 3)) {
-      searchQueries.push(`genre:"${genre}"`);
-    }
-    
-    // Add mood/energy keywords
-    if (mood) {
-      searchQueries.push(mood);
-    }
-    if (energy === 'high') {
-      searchQueries.push('energetic');
-    } else if (energy === 'low') {
-      searchQueries.push('chill');
-    }
-
-    // Combine queries
-    const searchQuery = searchQueries.slice(0, 2).join(' ');
-    
-    // Search for tracks
-    const searchResults = await spotifyApi.searchTracks(searchQuery, {
-      limit: 20,
-    });
-
-    if (!searchResults.body.tracks || searchResults.body.tracks.items.length === 0) {
-      // Fallback: search by genre only
-      const fallbackQuery = genres[0] || 'pop';
-      const fallbackResults = await spotifyApi.searchTracks(`genre:"${fallbackQuery}"`, {
-        limit: 20,
-      });
+    if (trackUris && Array.isArray(trackUris) && trackUris.length > 0) {
+      // Use the exact tracks from the preview (what the user saw)
+      console.log(`Using ${trackUris.length} track URIs from preview`);
+      // Filter out duplicates by converting to Set and back to array
+      const uniqueUris = Array.from(new Set(trackUris.filter(uri => uri && typeof uri === 'string')));
+      finalTrackUris = uniqueUris;
+      console.log(`After removing duplicates: ${finalTrackUris.length} unique tracks`);
+    } else {
+      // Fallback: search for tracks (shouldn't happen if preview was shown)
+      console.log('No track URIs provided, searching for tracks...');
       
-      if (!fallbackResults.body.tracks || fallbackResults.body.tracks.items.length === 0) {
-        return res.status(404).json({ error: 'No tracks found matching the analysis' });
+      // Search for tracks based on genres and mood
+      const searchQueries: string[] = [];
+      
+      // Add genre-based searches
+      for (const genre of genres.slice(0, 3)) {
+        searchQueries.push(`genre:"${genre}"`);
       }
       
-      searchResults.body.tracks = fallbackResults.body.tracks;
+      // Add mood/energy keywords
+      if (mood) {
+        searchQueries.push(mood);
+      }
+      if (energy === 'high') {
+        searchQueries.push('energetic');
+      } else if (energy === 'low') {
+        searchQueries.push('chill');
+      }
+
+      // Combine queries
+      const searchQuery = searchQueries.slice(0, 2).join(' ');
+      
+      // Search for tracks
+      const searchResults = await spotifyApi.searchTracks(searchQuery, {
+        limit: 20,
+      });
+
+      if (!searchResults.body.tracks || searchResults.body.tracks.items.length === 0) {
+        // Fallback: search by genre only
+        const fallbackQuery = genres[0] || 'pop';
+        const fallbackResults = await spotifyApi.searchTracks(`genre:"${fallbackQuery}"`, {
+          limit: 20,
+        });
+        
+        if (!fallbackResults.body.tracks || fallbackResults.body.tracks.items.length === 0) {
+          return res.status(404).json({ error: 'No tracks found matching the analysis' });
+        }
+        
+        searchResults.body.tracks = fallbackResults.body.tracks;
+      }
+
+      // Get track URIs and remove duplicates
+      const allUris = searchResults.body.tracks.items
+        .map(track => track.uri)
+        .filter(uri => uri) as string[];
+      // Remove duplicates by converting to Set and back to array
+      finalTrackUris = Array.from(new Set(allUris));
+      console.log(`After removing duplicates: ${finalTrackUris.length} unique tracks`);
     }
 
-    // Get track URIs
-    const trackUris = searchResults.body.tracks.items
-      .map(track => track.uri)
-      .filter(uri => uri) as string[];
-
-    if (trackUris.length === 0) {
+    if (finalTrackUris.length === 0) {
       return res.status(404).json({ error: 'No valid tracks found' });
     }
 
     // Create playlist description
-    const description = `Created from photo analysis: ${analysis.description || 'A curated playlist based on your photo'}. Mood: ${mood}, Energy: ${energy}, Tempo: ${tempo}`;
+    const fullDescription = `Created from photo analysis: ${analysis.description || 'A curated playlist based on your photo'}. Mood: ${mood}, Energy: ${energy}, Tempo: ${tempo}`;
+    
+    // Truncate to 300 characters at the last complete word (don't cut off mid-word)
+    const truncateDescription = (text: string, maxLength: number): string => {
+      if (text.length <= maxLength) {
+        return text;
+      }
+      // Find the last space before the max length
+      const truncated = text.substring(0, maxLength);
+      const lastSpace = truncated.lastIndexOf(' ');
+      // If we found a space, cut there; otherwise just cut at maxLength
+      return lastSpace > 0 ? truncated.substring(0, lastSpace) : truncated;
+    };
+    
+    const description = truncateDescription(fullDescription, 300);
 
     // Create the playlist
     // Note: createPlaylist signature is: createPlaylist(userId, name, options)
@@ -156,8 +188,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       console.log('Attempting to create playlist:', {
         userId,
         name: playlistTheme,
-        description: description.substring(0, 300),
-        public: true,
+        description: description,
+        descriptionLength: description.length,
+        public: false,
       });
       
       // Use raw HTTP API call instead of library method (library has callback issues)
@@ -169,17 +202,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
       
       // Create playlist using Spotify Web API directly
+      // Note: public: false means the playlist won't appear on your profile,
+      // but it's not fully private - anyone with the link can still access it
+      const playlistPayload = {
+        name: playlistTheme,
+        description: description, // Already truncated to 300 chars at word boundary
+        public: false, // Set to false to hide from profile (not fully private via API)
+        collaborative: false,
+      };
+      
+      console.log('Playlist creation payload:', JSON.stringify(playlistPayload, null, 2));
+      console.log('Public setting being sent:', playlistPayload.public);
+      
       const createPlaylistResponse = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: playlistTheme,
-          description: description.substring(0, 300), // Spotify has a 300 char limit
-          public: true,
-        }),
+        body: JSON.stringify(playlistPayload),
       });
       
       if (!createPlaylistResponse.ok) {
@@ -206,6 +247,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       
       const playlistData = await createPlaylistResponse.json();
       console.log('Playlist created successfully via HTTP API:', playlistData.id, playlistData.name);
+      console.log('Playlist visibility from Spotify response:', {
+        public: playlistData.public,
+        collaborative: playlistData.collaborative,
+        snapshot_id: playlistData.snapshot_id,
+      });
       
       // Format response to match library's expected format
       playlistResponse = { body: playlistData };
@@ -273,10 +319,158 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       throw new Error('Unexpected response format from createPlaylist');
     }
     console.log('Playlist created successfully:', playlist.id, playlist.name);
+    console.log('Initial playlist visibility:', playlist.public);
+
+    // Ensure playlist is private by updating it if needed
+    if (playlist.public !== false) {
+      console.log('Playlist was created as public, updating to private...');
+      try {
+        const updateResponse = await fetch(`https://api.spotify.com/v1/playlists/${playlist.id}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${spotifyApi.getAccessToken()}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            public: false,
+          }),
+        });
+        
+        if (updateResponse.ok) {
+          console.log('Playlist updated to private successfully');
+        } else {
+          const updateError = await updateResponse.text();
+          console.warn('Failed to update playlist visibility:', updateResponse.status, updateError);
+        }
+      } catch (updateError) {
+        console.warn('Error updating playlist visibility:', updateError);
+      }
+    }
 
     // Add tracks to playlist (Spotify allows up to 100 tracks per request)
-    const tracksToAdd = trackUris.slice(0, 20); // Limit to 20 tracks
+    // Use the exact tracks from the preview
+    const tracksToAdd = finalTrackUris.slice(0, 100); // Spotify allows up to 100 tracks per request
     await spotifyApi.addTracksToPlaylist(playlist.id, tracksToAdd);
+
+    // Upload cover image if provided
+    if (image) {
+      try {
+        // Get a fresh access token for image upload (refresh if needed)
+        // Re-initialize the API to ensure we have a valid token
+        const imageSpotifyApi = await getSpotifyApi(req, res);
+        let imageAccessToken = imageSpotifyApi.getAccessToken();
+        
+        // If token is missing or expired, try to refresh it
+        if (!imageAccessToken) {
+          const refreshToken = req.cookies.spotify_refresh_token;
+          if (refreshToken && res) {
+            imageSpotifyApi.setRefreshToken(refreshToken);
+            const refreshData = await imageSpotifyApi.refreshAccessToken();
+            imageAccessToken = refreshData.body.access_token;
+            
+            // Update the cookie with new token
+            const cookieOptions = {
+              httpOnly: true,
+              secure: process.env.NODE_ENV === 'production',
+              sameSite: 'lax' as const,
+              maxAge: refreshData.body.expires_in * 1000,
+              path: '/',
+            };
+            
+            res.setHeader(
+              'Set-Cookie',
+              `spotify_access_token=${imageAccessToken}; ${Object.entries(cookieOptions)
+                .map(([k, v]) => `${k}=${v}`)
+                .join('; ')}`
+            );
+          } else {
+            throw new Error('No access token available for image upload');
+          }
+        }
+        
+        // Spotify requires base64 JPEG data (without data URL prefix)
+        // The image should already be in base64 format from the client
+        let base64Image = image;
+        
+        // Remove data URL prefix if present (data:image/jpeg;base64,)
+        if (base64Image.includes(',')) {
+          base64Image = base64Image.split(',')[1];
+        }
+        
+        // Spotify has a 256KB limit for cover images (after base64 encoding)
+        // Check size (base64 is ~33% larger than binary)
+        let imageSizeKB = (base64Image.length * 3) / 4 / 1024;
+        
+        // If image is too large, we'll need to compress it further
+        // For now, we'll try to upload it and let Spotify handle it
+        // If it fails, we'll log a warning but not fail the request
+        if (imageSizeKB > 256) {
+          console.warn(`Image size (${imageSizeKB.toFixed(0)}KB) exceeds Spotify's 256KB limit. Attempting upload anyway...`);
+        }
+        
+        // Upload cover image using Spotify API
+        // IMPORTANT: Spotify expects the base64 string directly in the body, NOT binary data
+        // The Content-Type should be "image/jpeg" but the body is the base64 string
+        const uploadImageResponse = await fetch(`https://api.spotify.com/v1/playlists/${playlist.id}/images`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${imageAccessToken}`,
+            'Content-Type': 'image/jpeg',
+          },
+          body: base64Image, // Send base64 string directly, not binary
+        });
+        
+        if (uploadImageResponse.ok) {
+          console.log('Cover image uploaded successfully');
+        } else {
+          const errorText = await uploadImageResponse.text();
+          console.warn('Failed to upload cover image:', uploadImageResponse.status, errorText);
+          
+          // If it's a 401, check if it's a scope issue
+          if (uploadImageResponse.status === 401) {
+            try {
+              const errorJson = JSON.parse(errorText);
+              if (errorJson.error?.message?.includes('scope') || errorJson.error?.message?.includes('permission')) {
+                console.error('Missing required scope for image upload. User needs to re-authenticate with ugc-image-upload scope.');
+                // Don't retry - user needs to re-authenticate
+              } else {
+                // Token might be expired - try refreshing once more
+                console.log('Token expired during image upload, attempting refresh...');
+                const refreshToken = req.cookies.spotify_refresh_token;
+                if (refreshToken && res) {
+                  imageSpotifyApi.setRefreshToken(refreshToken);
+                  const refreshData = await imageSpotifyApi.refreshAccessToken();
+                  const newToken = refreshData.body.access_token;
+                  
+                  // Retry with new token
+                  const retryResponse = await fetch(`https://api.spotify.com/v1/playlists/${playlist.id}/images`, {
+                    method: 'PUT',
+                    headers: {
+                      'Authorization': `Bearer ${newToken}`,
+                      'Content-Type': 'image/jpeg',
+                    },
+                    body: base64Image, // Send base64 string directly
+                  });
+                  
+                  if (retryResponse.ok) {
+                    console.log('Cover image uploaded successfully after token refresh');
+                  } else {
+                    const retryErrorText = await retryResponse.text();
+                    console.warn('Failed to upload cover image after refresh:', retryResponse.status, retryErrorText);
+                  }
+                }
+              }
+            } catch (parseError) {
+              console.warn('Could not parse error response, token may be invalid');
+            }
+          }
+          // Don't fail the whole request if image upload fails
+        }
+      } catch (imageError: any) {
+        console.warn('Error uploading cover image:', imageError);
+        // Don't fail the whole request if image upload fails
+      }
+    }
 
     return res.json({
       success: true,

@@ -65,48 +65,119 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const tempo = analysis.tempo || 'moderate';
     const playlistTheme = analysis.playlistTheme || 'Photo Playlist';
 
-    // Search for tracks based on genres and mood
+    // Create multiple diverse search queries to ensure artist variety
     const searchQueries: string[] = [];
     
-    // Add genre-based searches
-    for (const genre of genres.slice(0, 3)) {
+    // Add genre-based searches (one per genre)
+    for (const genre of genres.slice(0, 5)) {
       searchQueries.push(`genre:"${genre}"`);
     }
     
-    // Add mood/energy keywords
+    // Add mood-based searches
     if (mood) {
       searchQueries.push(mood);
     }
+    
+    // Add energy/tempo-based searches
     if (energy === 'high') {
       searchQueries.push('energetic');
+      searchQueries.push('upbeat');
     } else if (energy === 'low') {
       searchQueries.push('chill');
+      searchQueries.push('relaxing');
+    } else {
+      searchQueries.push('moderate');
     }
 
-    // Combine queries
-    const searchQuery = searchQueries.slice(0, 2).join(' ');
+    // Perform multiple searches to get diverse results
+    const allTracks: any[] = [];
+    const artistCounts: { [key: string]: number } = {};
+    const maxTracksPerArtist = 2; // Maximum tracks per artist
+    const targetTrackCount = 20;
+
+    // Shuffle search queries to get variety
+    const shuffledQueries = searchQueries.sort(() => Math.random() - 0.5);
     
-    // Search for tracks
-    const searchResults = await spotifyApi.searchTracks(searchQuery, {
-      limit: 20,
-    });
+    // Search with different queries
+    for (const query of shuffledQueries.slice(0, 8)) {
+      if (allTracks.length >= targetTrackCount * 1.5) break; // Get more than needed for filtering
+      
+      try {
+        const searchResults = await spotifyApi.searchTracks(query, {
+          limit: 10, // Get fewer per query but more queries
+        });
 
-    if (!searchResults.body.tracks || searchResults.body.tracks.items.length === 0) {
-      // Fallback: search by genre only
-      const fallbackQuery = genres[0] || 'pop';
-      const fallbackResults = await spotifyApi.searchTracks(`genre:"${fallbackQuery}"`, {
-        limit: 20,
-      });
-      
-      if (!fallbackResults.body.tracks || fallbackResults.body.tracks.items.length === 0) {
-        return res.status(404).json({ error: 'No tracks found matching the analysis' });
+        if (searchResults.body.tracks?.items) {
+          for (const track of searchResults.body.tracks.items) {
+            if (!track || !track.id) continue;
+            
+            // Get primary artist (first artist)
+            const primaryArtist = track.artists?.[0]?.name || '';
+            
+            // Check if we already have enough tracks from this artist
+            if (primaryArtist && artistCounts[primaryArtist] >= maxTracksPerArtist) {
+              continue; // Skip this track
+            }
+            
+            // Add track
+            allTracks.push(track);
+            
+            // Update artist count
+            if (primaryArtist) {
+              artistCounts[primaryArtist] = (artistCounts[primaryArtist] || 0) + 1;
+            }
+          }
+        }
+      } catch (error) {
+        console.error(`Error searching with query "${query}":`, error);
+        // Continue with next query
       }
-      
-      searchResults.body.tracks = fallbackResults.body.tracks;
     }
 
-    // Get tracks with preview URLs
-    const tracks = searchResults.body.tracks.items
+    // If we don't have enough tracks, do a fallback search
+    if (allTracks.length < targetTrackCount) {
+      const fallbackQuery = genres[0] || 'pop';
+      try {
+        const fallbackResults = await spotifyApi.searchTracks(`genre:"${fallbackQuery}"`, {
+          limit: 30,
+        });
+        
+        if (fallbackResults.body.tracks?.items) {
+          for (const track of fallbackResults.body.tracks.items) {
+            if (allTracks.length >= targetTrackCount * 1.5) break;
+            if (!track || !track.id) continue;
+            
+            const primaryArtist = track.artists?.[0]?.name || '';
+            if (primaryArtist && artistCounts[primaryArtist] >= maxTracksPerArtist) {
+              continue;
+            }
+            
+            // Check if track is already in our list
+            if (allTracks.some(t => t.id === track.id)) {
+              continue;
+            }
+            
+            allTracks.push(track);
+            if (primaryArtist) {
+              artistCounts[primaryArtist] = (artistCounts[primaryArtist] || 0) + 1;
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error in fallback search:', error);
+      }
+    }
+
+    if (allTracks.length === 0) {
+      return res.status(404).json({ error: 'No tracks found matching the analysis' });
+    }
+
+    // Shuffle tracks to mix up the order
+    const shuffledTracks = allTracks.sort(() => Math.random() - 0.5);
+
+    // Get tracks with preview URLs, ensuring artist diversity
+    const tracks = shuffledTracks
+      .slice(0, targetTrackCount) // Take up to target count
       .filter(track => track) // Filter out any null/undefined tracks
       .map(track => ({
         id: track.id,

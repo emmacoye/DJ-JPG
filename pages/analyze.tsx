@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { Home } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Analyze() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -216,23 +218,11 @@ export default function Analyze() {
     <div className="min-h-screen bg-[#F5F1E8]">
       {/* Header */}
       <div className="flex items-center justify-between p-6">
-        <a href="/" className="text-gray-700 hover:text-gray-900">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3 12L5 10M5 10L12 3L19 10M5 10V20C5 20.5523 5.44772 21 6 21H9M19 10L21 12M19 10V20C19 20.5523 18.5523 21 18 21H15M9 21C9.55228 21 10 20.5523 10 20V16C10 15.4477 10.4477 15 11 15H13C13.5523 15 14 15.4477 14 16V20C14 20.5523 14.4477 21 15 21M9 21H15"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </a>
+        <Button variant="ghost" size="icon" asChild>
+          <a href="/">
+            <Home size={24} />
+          </a>
+        </Button>
       </div>
 
       {/* Main Content */}

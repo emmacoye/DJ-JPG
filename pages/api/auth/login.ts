@@ -32,6 +32,7 @@ const SPOTIFY_SCOPES = [
   'playlist-modify-private',
   'user-library-read',
   'user-library-modify',
+  'ugc-image-upload', // Required for uploading playlist cover images
 ].join(' ');
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {

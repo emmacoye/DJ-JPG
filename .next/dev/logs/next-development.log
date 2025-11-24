@@ -1,52 +1,55 @@
-[00:00:00.696] Server  LOG      ✓ Ready in 489ms
-[00:00:00.697] Server  WARN     ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:00.912] Server  LOG      ✓ Ready in 683ms
+[00:00:09.580] Server  WARN     ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:04.603] Server  LOG     Analyzing image (size: 0.10MB)
-[00:00:17.017] Server  LOG     Using access token from cookies (length: 339 ")"
-[00:00:17.220] Server  LOG     User authenticated: "emmacoye"
-[00:02:21.809] Server  LOG      ✓ Compiled in 37ms
-[00:02:46.459] Server  LOG      ✓ Compiled in 22ms
-[00:05:52.851] Server  LOG     Using access token from cookies (length: 339 ")"
-[00:05:52.877] Server  LOG      ✓ Compiled in 33ms
-[00:05:53.050] Server  LOG     User authenticated: "emmacoye"
-[00:06:10.289] Server  LOG     Using access token from cookies (length: 339 ")"
-[00:06:10.315] Server  LOG      ✓ Compiled in 88ms
-[00:06:10.437] Server  LOG     User authenticated: "emmacoye"
-[00:08:06.882] Server  LOG      ✓ Compiled in 39ms
-[00:08:12.157] Server  LOG      ✓ Compiled in 19ms
-[00:08:16.268] Server  LOG      ✓ Compiled in 24ms
-[00:08:19.427] Server  LOG      ✓ Compiled in 27ms
-[00:08:23.987] Server  LOG      ✓ Compiled in 20ms
-[00:08:29.136] Server  LOG      ✓ Compiled in 25ms
-[00:08:33.801] Server  LOG      ✓ Compiled in 20ms
-[00:08:37.706] Server  LOG      ✓ Compiled in 17ms
-[00:08:44.238] Server  LOG     Using access token from cookies (length: 339 ")"
-[00:08:44.268] Server  LOG      ✓ Compiled in 14ms
-[00:08:44.411] Server  LOG     User authenticated: "emmacoye"
-[00:09:03.104] Server  LOG      ✓ Compiled in 210ms
-[00:09:03.130] Server  LOG     Using access token from cookies (length: 339 ")"
-[00:09:03.271] Server  LOG     User authenticated: "emmacoye"
-[00:09:05.080] Server  LOG      ✓ Compiled in 22ms
-[00:09:05.086] Server  LOG     Using access token from cookies (length: 339 ")"
-[00:09:05.224] Browser LOG     Refreshing page data due to server-side change
-[00:09:05.224] Browser ERROR   ./pages/playlist.tsx:461:15
+[00:00:11.578] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:00:11.578] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:00:11.578] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:00:11.578] Server  LOG     Request host: "127.0.0.1:3000"
+[00:00:11.578] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:00:11.579] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify"
+[00:00:11.579] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=gye9gzdx9bjitye3yu7eb&show_dialog=true"
+[00:00:11.579] Server  LOG     Setting state cookie: "gye9gzdx9bjitye3yu7eb"
+[00:00:11.579] Server  LOG     Cookie string: "spotify_auth_state=gye9gzdx9bjitye3yu7eb; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:00:13.350] Server  LOG     Callback received - Query params: {}
+[00:00:13.350] Server  LOG     All cookies: {}
+[00:00:13.350] Server  LOG     Cookie header: "spotify_access_token=BQCftx6XOE0t5bBzjdXNpxAAy75O61d_PKjnPGevt8ZRcoeXeDTRDhNfym9QaSvsY4oYtMcrv6uykkns3uS6qaPdsNHSXY-Le2z6np9DzzlR0HeX2SrQqxtAbtJ2dH0tGDtwczZflvbpSN4CS1SKqqh662sQdO24kxW5PwVt_1ePtg7jKmzXcQz8XeCHbtQnTeU9Fpew3D5DOLc81WjuEY0iVTvAGcDSS75HrnUII3k5D-Knt1RyIKz5gchC89W8W34eDFD-lJLaxUEywDYMCH90AnCe4Msw5L1O9HCnn1lYbJxSx18OdyH8zh9qr1M6VtGNGLZXBzgvu0s88Og; spotify_refresh_token=AQCbJw6yZFN7mocTPVmPFI4mMlILjdo8z8zi8hQ3bqvtKV5epxwlgARpO8kJldOBg2AMjdbhT6lfzcViK2vohhx3z8d_I5120YnRVzQR7LZMDsRmHmqmWl41r-bP4hs6i1Y; spotify_auth_state=gye9gzdx9bjitye3yu7eb"
+[00:00:13.350] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:00:13.350] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:00:13.350] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:00:13.350] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:00:13.350] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:00:13.350] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:00:13.350] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:00:13.456] Server  LOG     ✅ Token exchange successful
+[00:00:13.456] Server  LOG     Token received: {}
+[00:00:13.456] Server  LOG     🔍 Verifying token...
+[00:00:13.456] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:00:13.456] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:00:13.456] Server  LOG        Client Secret length: 32
+[00:00:13.456] Server  LOG        Token length: 339
+[00:00:13.456] Server  LOG        Token starts with: "BQB9lCxbYUDyEgRVgTln"
+[00:00:13.456] Server  LOG        Making getMe() call to verify token...
+[00:00:13.667] Server  LOG        Raw HTTP request status: 200
+[00:00:13.668] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:00:13.883] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:00:18.349] Browser LOG     Compressed image size: 38KB
+[00:00:18.362] Server  LOG     Analyzing image (size: 0.04MB)
+[00:00:35.664] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:00:35.792] Server  LOG     User authenticated: "emmacoye"
+[00:02:55.860] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:02:55.904] Server  LOG      ✓ Compiled in 41ms
+[00:02:56.012] Browser LOG     Refreshing page data due to server-side change
+[00:02:56.012] Browser ERROR   ./pages/playlist.tsx:484:1
 Parsing ecmascript source code failed
-  459 |             </div>
-  460 |           )}
-> 461 |         </div>
-      |               ^
-> 462 |
+  482 |     </div>
+  483 |   );
+> 484 | }
       | ^
-> 463 |         {/* Step Indicator */}
-      | ^^^^^^^^^
-  464 |         <div className="flex gap-3 justify-center mt-12">
-  465 |           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-  466 |           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+  485 |
+  486 |
 
-Expected '</', got 'jsx text (
-
-        )'
-[00:09:05.224] Browser ERROR   ./pages/playlist.tsx
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+[00:02:56.012] Browser ERROR   ./pages/playlist.tsx
 Code generation for chunk item errored
 An error occurred while generating the chunk item [project]/pages/playlist.tsx [ssr] (ecmascript)
 
@@ -58,24 +61,18 @@ Debug info:
 - Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
 - Execution of EcmascriptChunkItemContent::new failed
 - CJS module can't be async.
-[00:09:05.224] Browser ERROR   ./pages/playlist.tsx:461:15
+[00:02:56.030] Server  LOG     User authenticated: "emmacoye"
+[00:03:02.133] Browser ERROR   ./pages/playlist.tsx:484:1
 Parsing ecmascript source code failed
-  459 |             </div>
-  460 |           )}
-> 461 |         </div>
-      |               ^
-> 462 |
+  482 |     </div>
+  483 |   );
+> 484 | }
       | ^
-> 463 |         {/* Step Indicator */}
-      | ^^^^^^^^^
-  464 |         <div className="flex gap-3 justify-center mt-12">
-  465 |           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-  466 |           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+  485 |
+  486 |
 
-Expected '</', got 'jsx text (
-
-        )'
-[00:09:05.224] Browser ERROR   ./pages/playlist.tsx
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+[00:03:02.133] Browser ERROR   ./pages/playlist.tsx
 Code generation for chunk item errored
 An error occurred while generating the chunk item [project]/pages/playlist.tsx [ssr] (ecmascript)
 
@@ -87,42 +84,538 @@ Debug info:
 - Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
 - Execution of EcmascriptChunkItemContent::new failed
 - CJS module can't be async.
-[00:09:05.276] Server  LOG     User authenticated: "emmacoye"
-[00:09:09.684] Server  LOG      ✓ Compiled in 29ms
-[00:09:09.787] Browser ERROR   ./pages/playlist.tsx:470:15
-Parsing ecmascript source code failed
-  468 |             </div>
-  469 |           )}
-> 470 |         </div>
-      |               ^
-> 471 |
-      | ^
-> 472 |         {/* Step Indicator */}
-      | ^^^^^^^^^
-  473 |         <div className="flex gap-3 justify-center mt-12">
-  474 |           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-  475 |           <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-
-Expected '</', got 'jsx text (
-
-        )'
-[00:09:09.787] Browser ERROR   ./pages/playlist.tsx
-Code generation for chunk item errored
-An error occurred while generating the chunk item [project]/pages/playlist.tsx [ssr] (ecmascript)
-
-Caused by:
-- CJS module can't be async.
-
-Debug info:
-- An error occurred while generating the chunk item [project]/pages/playlist.tsx [ssr] (ecmascript)
-- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
-- Execution of EcmascriptChunkItemContent::new failed
-- CJS module can't be async.
-[00:09:10.385] Server  LOG      ✓ Compiled in 17ms
-[00:09:10.390] Server  LOG     Using access token from cookies (length: 339 ")"
-[00:09:10.393] Server  LOG     Using access token from cookies (length: 339 ")"
-[00:09:10.444] Browser LOG     Refreshing page data due to server-side change
-[00:09:10.511] Server  LOG     User authenticated: "emmacoye"
-[00:09:10.516] Server  LOG     User authenticated: "emmacoye"
-[00:09:51.023] Server  LOG      ✓ Compiled in 76ms
-[00:10:06.522] Server  LOG      ✓ Compiled in 23ms
+[00:03:11.207] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:03:11.217] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:03:11.238] Server  LOG      ✓ Compiled in 17ms
+[00:03:11.298] Browser LOG     Refreshing page data due to server-side change
+[00:03:11.325] Server  LOG     User authenticated: "emmacoye"
+[00:03:11.337] Server  LOG     User authenticated: "emmacoye"
+[00:04:44.832] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:04:44.864] Server  LOG      ✓ Compiled in 53ms
+[00:04:44.979] Server  LOG     User authenticated: "emmacoye"
+[00:07:06.173] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:07:06.173] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:07:06.173] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:07:06.173] Server  LOG     Request host: "127.0.0.1:3000"
+[00:07:06.173] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:07:06.173] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify"
+[00:07:06.173] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=v7oh2zqcg0pmvfpebst3c&show_dialog=true"
+[00:07:06.173] Server  LOG     Setting state cookie: "v7oh2zqcg0pmvfpebst3c"
+[00:07:06.173] Server  LOG     Cookie string: "spotify_auth_state=v7oh2zqcg0pmvfpebst3c; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:07:08.092] Server  LOG     Callback received - Query params: {}
+[00:07:08.092] Server  LOG     All cookies: {}
+[00:07:08.092] Server  LOG     Cookie header: "spotify_access_token=BQB9lCxbYUDyEgRVgTlni-ekFQ8Y6y7SjCVYa8k1i5CKP8vwmCXNTULxOEdI93DLY5-S5cyWoD3_YZRP_ykuNhbXWaeGzaibDRPNero8QpiuaT210IDy1BBnO05g985U4-niIFhk2cFA47xAUHy_89pvNWUfhq2WdRXr0vn3y4M3DnjeImT7nbvBQxOaz3P1xZ1RQbKsop1ytUaCt04ptWjUJRc8BuaGsI7eh1m0dfK7orvJGHnv9b3gMUa8V-UQ4CuMx7CqtozYuho7FwniHlvX19Nllmy_5sPdNx4zKP0XVGvPgjLS1lEQYPkLpU6Cd0Z0edimOoIZ4LhinbE; spotify_refresh_token=AQCamOjNgZz8LG1hi2VjYdUVm3gpNWIDewQLURyAphq0lNOGabT7CSh2Qu2te2z2Br0Iza5wwGlh9rOumnXiyor5Ob2cwJnYYjK-Jyg5ZQH1UvemTFAeSH9dIm6HDCWnN74; spotify_auth_state=v7oh2zqcg0pmvfpebst3c"
+[00:07:08.092] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:07:08.092] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:07:08.092] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:07:08.093] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:07:08.093] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:07:08.093] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:07:08.093] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:07:08.231] Server  LOG     ✅ Token exchange successful
+[00:07:08.231] Server  LOG     Token received: {}
+[00:07:08.231] Server  LOG     🔍 Verifying token...
+[00:07:08.231] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:07:08.231] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:07:08.231] Server  LOG        Client Secret length: 32
+[00:07:08.231] Server  LOG        Token length: 339
+[00:07:08.231] Server  LOG        Token starts with: "BQA3TxiRPXa5bJlT3n0A"
+[00:07:08.231] Server  LOG        Making getMe() call to verify token...
+[00:07:08.397] Server  LOG        Raw HTTP request status: 200
+[00:07:08.399] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:07:08.602] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:07:11.938] Server  LOG     Analyzing image (size: 0.04MB)
+[00:07:12.008] Browser LOG     Compressed image size: 38KB
+[00:07:28.259] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:07:28.412] Server  LOG     User authenticated: "emmacoye"
+[00:08:34.582] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:08:34.613] Server  LOG      ✓ Compiled in 14ms
+[00:08:34.687] Server  LOG     User authenticated: "emmacoye"
+[00:08:37.905] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:08:37.937] Server  LOG      ✓ Compiled in 16ms
+[00:08:38.157] Server  LOG     User authenticated: "emmacoye"
+[00:08:40.171] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:08:40.202] Server  LOG      ✓ Compiled in 44ms
+[00:08:40.288] Server  LOG     User authenticated: "emmacoye"
+[00:08:43.028] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:08:43.059] Server  LOG      ✓ Compiled in 16ms
+[00:08:43.243] Server  LOG     User authenticated: "emmacoye"
+[00:08:45.535] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:08:45.566] Server  LOG      ✓ Compiled in 14ms
+[00:08:45.647] Server  LOG     User authenticated: "emmacoye"
+[00:08:52.414] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:08:52.446] Server  LOG      ✓ Compiled in 24ms
+[00:08:52.520] Server  LOG     User authenticated: "emmacoye"
+[00:09:15.837] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:09:15.869] Server  LOG      ✓ Compiled in 99ms
+[00:09:15.989] Server  LOG     User authenticated: "emmacoye"
+[00:09:49.655] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:09:49.686] Server  LOG      ✓ Compiled in 35ms
+[00:09:49.823] Server  LOG     User authenticated: "emmacoye"
+[00:09:58.545] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:09:58.575] Server  LOG      ✓ Compiled in 13ms
+[00:09:58.736] Server  LOG     User authenticated: "emmacoye"
+[00:10:00.275] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:10:00.306] Server  LOG      ✓ Compiled in 40ms
+[00:10:00.405] Server  LOG     User authenticated: "emmacoye"
+[00:10:02.209] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:10:02.239] Server  LOG      ✓ Compiled in 12ms
+[00:10:02.414] Server  LOG     User authenticated: "emmacoye"
+[00:10:03.897] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:10:03.928] Server  LOG      ✓ Compiled in 12ms
+[00:10:04.080] Server  LOG     User authenticated: "emmacoye"
+[00:10:25.303] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:10:25.335] Server  LOG      ✓ Compiled in 39ms
+[00:10:25.474] Server  LOG     User authenticated: "emmacoye"
+[00:10:47.539] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:10:47.570] Server  LOG      ✓ Compiled in 14ms
+[00:10:47.663] Server  LOG     User authenticated: "emmacoye"
+[00:13:09.125] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:13:09.156] Server  LOG      ✓ Compiled in 45ms
+[00:13:09.268] Server  LOG     User authenticated: "emmacoye"
+[00:13:57.333] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:13:57.333] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:13:57.333] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:13:57.333] Server  LOG     Request host: "127.0.0.1:3000"
+[00:13:57.333] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:13:57.333] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify"
+[00:13:57.334] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=1afqwkrn20ifge6ausr3i6&show_dialog=true"
+[00:13:57.334] Server  LOG     Setting state cookie: "1afqwkrn20ifge6ausr3i6"
+[00:13:57.334] Server  LOG     Cookie string: "spotify_auth_state=1afqwkrn20ifge6ausr3i6; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:13:58.969] Server  LOG     Callback received - Query params: {}
+[00:13:58.969] Server  LOG     All cookies: {}
+[00:13:58.969] Server  LOG     Cookie header: "spotify_access_token=BQA3TxiRPXa5bJlT3n0AxTtMFlT9z7r5LC8-72OD9ycLvahIQJrkZ5epRgDHm04b71t_HLY21cD6QICcmf78WI-LaV8RxvWJXqyI5zawq7-hf3M5SUyATBOTbYEtjY1oqXqd_VJI0Rctyz6skh02UU46799N1Yi0tnNSN9VIhv64VmY9K6_Yub0SkI-Iplg_C-IRLhb7lZsfbOJs7Nee65EsqCvnERAkTP0isg8tqxaIJU1fOGZRdU_u_0WsT2pv0PUt8PHPcWCAYKdKpZaFCzrpPfvgRaABydQJ4MTGo9Z5ft31qC_XfltDEcuBLf7SjEnC6C5HDu4T8UqjRkc; spotify_refresh_token=AQCzpPHst40vYUJcy_yhYJBzta2NW3x6Z8jTeYkE-QSsWyLtBAG0YVvSaNMCPz0RmcKXIXqqj-4WM__s1J6abme-Lb8tQxd-m5CdFb7EmLYwvPaWm402aAzngw-3_Jw1w1Q; spotify_auth_state=1afqwkrn20ifge6ausr3i6"
+[00:13:58.969] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:13:58.969] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:13:58.969] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:13:58.969] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:13:58.970] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:13:58.970] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:13:58.970] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:13:59.077] Server  LOG     ✅ Token exchange successful
+[00:13:59.078] Server  LOG     Token received: {}
+[00:13:59.078] Server  LOG     🔍 Verifying token...
+[00:13:59.078] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:13:59.078] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:13:59.078] Server  LOG        Client Secret length: 32
+[00:13:59.078] Server  LOG        Token length: 339
+[00:13:59.078] Server  LOG        Token starts with: "BQCBz5yxzRXJl2Z2H3KM"
+[00:13:59.078] Server  LOG        Making getMe() call to verify token...
+[00:13:59.234] Server  LOG        Raw HTTP request status: 200
+[00:13:59.237] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:13:59.479] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:14:31.483] Server  LOG      ✓ Compiled in 13ms
+[00:14:36.093] Server  LOG      ✓ Compiled in 29ms
+[00:14:43.162] Server  LOG      ✓ Compiled in 12ms
+[00:14:45.936] Server  LOG      ✓ Compiled in 16ms
+[00:14:47.956] Server  LOG      ✓ Compiled in 11ms
+[00:14:50.118] Server  LOG      ✓ Compiled in 48ms
+[00:15:31.943] Server  LOG      ✓ Compiled in 25ms
+[00:15:36.207] Server  LOG      ✓ Compiled in 61ms
+[00:16:38.109] Server  LOG      ✓ Compiled in 11ms
+[00:16:39.844] Server  LOG      ✓ Compiled in 14ms
+[00:16:41.628] Server  LOG      ✓ Compiled in 24ms
+[00:16:45.059] Server  LOG      ✓ Compiled in 10ms
+[00:17:18.216] Server  LOG      ✓ Compiled in 9ms
+[00:17:30.303] Server  LOG      ✓ Compiled in 20ms
+[00:17:34.265] Server  LOG      ✓ Compiled in 11ms
+[00:17:37.498] Server  LOG      ✓ Compiled in 14ms
+[00:20:22.397] Server  LOG     Analyzing image (size: 0.04MB)
+[00:20:22.402] Browser LOG     Compressed image size: 38KB
+[00:21:32.938] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:21:33.053] Server  LOG     User authenticated: "emmacoye"
+[00:22:30.317] Server  LOG      ✓ Compiled in 62ms
+[00:22:32.672] Server  LOG      ✓ Compiled in 33ms
+[00:22:37.586] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:22:37.620] Server  LOG      ✓ Compiled in 15ms
+[00:22:37.757] Server  LOG     User authenticated: "emmacoye"
+[00:24:01.508] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:24:01.536] Server  LOG      ✓ Compiled in 15ms
+[00:24:01.847] Server  LOG     User authenticated: "emmacoye"
+[00:24:07.944] Server  LOG      ✓ Compiled in 11ms
+[00:24:07.954] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:24:08.025] Browser LOG     Analysis data: {"characteristics":["acoustic","vocal","instrumental"],"colors":"Neutral tones dominate, with whites and beiges from the walls, and muted colors from clothing.","description":"The image depicts a classroom setting with students attentively watching a presentation, suggesting a focused and educational mood. The bright, neutral lighting provides a sense of clarity and engagement. The atmosphere is interactive and engaging, with an undercurrent of calm and attention.","emotion":"engaging and attentive","energy":"medium","genres":["indie pop","acoustic","chill electronic"],"lighting":"The lighting is bright and neutral, reflecting a typical classroom environment with overhead lighting.","mood":"focused and educational","moodScores":{"calm":60,"chill":30,"dreamy":20,"happy":40,"melancholy":10},"playlistTheme":"Study Session Focus","tempo":"moderate"}
+[00:24:08.025] Browser LOG     Mood scores: {"calm":60,"chill":30,"dreamy":20,"happy":40,"melancholy":10}
+[00:24:08.137] Server  LOG     User authenticated: "emmacoye"
+[00:24:10.097] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:24:10.125] Server  LOG      ✓ Compiled in 32ms
+[00:24:10.182] Browser LOG     Analysis data: {"characteristics":["acoustic","vocal","instrumental"],"colors":"Neutral tones dominate, with whites and beiges from the walls, and muted colors from clothing.","description":"The image depicts a classroom setting with students attentively watching a presentation, suggesting a focused and educational mood. The bright, neutral lighting provides a sense of clarity and engagement. The atmosphere is interactive and engaging, with an undercurrent of calm and attention.","emotion":"engaging and attentive","energy":"medium","genres":["indie pop","acoustic","chill electronic"],"lighting":"The lighting is bright and neutral, reflecting a typical classroom environment with overhead lighting.","mood":"focused and educational","moodScores":{"calm":60,"chill":30,"dreamy":20,"happy":40,"melancholy":10},"playlistTheme":"Study Session Focus","tempo":"moderate"}
+[00:24:10.182] Browser LOG     Mood scores: {"calm":60,"chill":30,"dreamy":20,"happy":40,"melancholy":10}
+[00:24:10.290] Server  LOG     User authenticated: "emmacoye"
+[00:24:21.221] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:24:21.252] Server  LOG      ✓ Compiled in 23ms
+[00:24:21.319] Browser LOG     Analysis data: {"characteristics":["acoustic","vocal","instrumental"],"colors":"Neutral tones dominate, with whites and beiges from the walls, and muted colors from clothing.","description":"The image depicts a classroom setting with students attentively watching a presentation, suggesting a focused and educational mood. The bright, neutral lighting provides a sense of clarity and engagement. The atmosphere is interactive and engaging, with an undercurrent of calm and attention.","emotion":"engaging and attentive","energy":"medium","genres":["indie pop","acoustic","chill electronic"],"lighting":"The lighting is bright and neutral, reflecting a typical classroom environment with overhead lighting.","mood":"focused and educational","moodScores":{"calm":60,"chill":30,"dreamy":20,"happy":40,"melancholy":10},"playlistTheme":"Study Session Focus","tempo":"moderate"}
+[00:24:21.319] Browser LOG     Mood scores: {"calm":60,"chill":30,"dreamy":20,"happy":40,"melancholy":10}
+[00:24:21.343] Server  LOG     User authenticated: "emmacoye"
+[00:25:35.532] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:25:35.563] Server  LOG      ✓ Compiled in 16ms
+[00:25:35.631] Browser LOG     Analysis data: {"characteristics":["acoustic","vocal","instrumental"],"colors":"Neutral tones dominate, with whites and beiges from the walls, and muted colors from clothing.","description":"The image depicts a classroom setting with students attentively watching a presentation, suggesting a focused and educational mood. The bright, neutral lighting provides a sense of clarity and engagement. The atmosphere is interactive and engaging, with an undercurrent of calm and attention.","emotion":"engaging and attentive","energy":"medium","genres":["indie pop","acoustic","chill electronic"],"lighting":"The lighting is bright and neutral, reflecting a typical classroom environment with overhead lighting.","mood":"focused and educational","moodScores":{"calm":60,"chill":30,"dreamy":20,"happy":40,"melancholy":10},"playlistTheme":"Study Session Focus","tempo":"moderate"}
+[00:25:35.631] Browser LOG     Mood scores: {"calm":60,"chill":30,"dreamy":20,"happy":40,"melancholy":10}
+[00:25:35.735] Server  LOG     User authenticated: "emmacoye"
+[00:26:57.973] Server  LOG     Cookies received: {}
+[00:26:57.973] Server  LOG     Spotify Client ID configured: true
+[00:26:57.973] Server  LOG     Spotify Client Secret configured: true
+[00:26:57.973] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:26:58.144] Server  LOG     User authenticated: "emmacoye"
+[00:26:58.144] Server  LOG     Creating playlist for user: "emmacoye"
+[00:26:58.594] Server  LOG     Attempting to create playlist: {}
+[00:26:58.594] Server  LOG     Creating playlist via raw HTTP API...
+[00:26:58.905] Server  LOG     Playlist created successfully via HTTP API: "6C8UQaj7J7uFHw3p69IEIO" "Study Session Focus"
+[00:26:58.905] Server  LOG     Playlist response received
+[00:26:58.905] Server  LOG     Type: "object"
+[00:26:58.906] Server  LOG     Response: {}
+[00:26:58.906] Server  LOG     Playlist created successfully: "6C8UQaj7J7uFHw3p69IEIO" "Study Session Focus"
+[00:26:59.186] Server  WARN    Failed to upload cover image: 401 "{\n  \"error\" : {\n    \"status\" : 401,\n    \"message\" : \"Unauthorized.\"\n  }\n}"
+[00:27:36.712] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:27:36.712] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:27:36.712] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:27:36.712] Server  LOG     Request host: "127.0.0.1:3000"
+[00:27:36.712] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:27:36.712] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify"
+[00:27:36.712] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=pisx04jqdwkhc8324fpew&show_dialog=true"
+[00:27:36.712] Server  LOG     Setting state cookie: "pisx04jqdwkhc8324fpew"
+[00:27:36.712] Server  LOG     Cookie string: "spotify_auth_state=pisx04jqdwkhc8324fpew; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:27:39.326] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:27:39.326] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:27:39.326] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:27:39.326] Server  LOG     Request host: "127.0.0.1:3000"
+[00:27:39.326] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:27:39.326] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify"
+[00:27:39.326] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=8gcl9kk6clchwwd3zywovl&show_dialog=true"
+[00:27:39.326] Server  LOG     Setting state cookie: "8gcl9kk6clchwwd3zywovl"
+[00:27:39.327] Server  LOG     Cookie string: "spotify_auth_state=8gcl9kk6clchwwd3zywovl; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:27:41.420] Server  LOG     Callback received - Query params: {}
+[00:27:41.420] Server  LOG     All cookies: {}
+[00:27:41.420] Server  LOG     Cookie header: "spotify_access_token=BQCBz5yxzRXJl2Z2H3KMFhaO9JL1Vq4du-ls_PduXVTaW0yVfRc8OEkyGKQiMHeAdfd2ZlEoIpUb_2IDDP-S2HwxxQ-ra6SnUs5SGBz5fO30FxAEFbWskHcZkEuLI_Yb6_8VEI-6ynTMCLLO1SiXN41O8cmTL1SsCSuCF88lbynpshVD5i-h-7Llg3uXJlrTuWZz8BfKqFEt4dL0M3nISPyJOGHJvUe4q8wBiCMip27CYHbWI7bYMZSWcAp6KU1GhwFDJggBTGiKOk4em_cEu78uPm1vCmHSRyVBi2WPsKXMazOpfUl5elUeerjYC8W6QxFS2XqJ6oJSo2FUbm8; spotify_refresh_token=AQDm_lQPX_hYGQErKJCl6hC4uaqvHOnuRJ0I_xpdRjlaRcMuy3Xvt_TkmvRcnr0CMFAS5UWp7tpPCbbBt9XYm2Q6K3XL2aY89qaFBY0kPbYsOqAM3SYEx2CQlrZkfm5fVOw; spotify_auth_state=8gcl9kk6clchwwd3zywovl"
+[00:27:41.420] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:27:41.420] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:27:41.420] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:27:41.420] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:27:41.420] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:27:41.420] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:27:41.420] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:27:41.609] Server  LOG     ✅ Token exchange successful
+[00:27:41.609] Server  LOG     Token received: {}
+[00:27:41.609] Server  LOG     🔍 Verifying token...
+[00:27:41.609] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:27:41.609] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:27:41.609] Server  LOG        Client Secret length: 32
+[00:27:41.609] Server  LOG        Token length: 339
+[00:27:41.609] Server  LOG        Token starts with: "BQB3oLU-7hzssqU88vf7"
+[00:27:41.609] Server  LOG        Making getMe() call to verify token...
+[00:27:41.713] Server  LOG        Raw HTTP request status: 200
+[00:27:41.714] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:27:41.813] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:27:54.544] Server  LOG     Analyzing image (size: 0.10MB)
+[00:27:54.615] Browser LOG     Compressed image size: 99KB
+[00:29:27.790] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:29:27.882] Browser LOG     Analysis data: {"characteristics":["acoustic","instrumental"],"colors":"The image features earthy tones, with dominant colors like browns, greens, and soft blues. There's a subtle presence of light and shadow playing through the trees, creating a natural, serene palette.","description":"The image depicts a tranquil forest scene with a gentle stream flowing through. The soft lighting and natural colors create a serene and calming atmosphere. This visual evokes a sense of peace and introspection, making it ideal for a playlist that features ambient, acoustic, and folk music. The setting suggests a low-energy and slow-tempo musical selection to match the relaxed vibe.","emotion":"serene and tranquil","energy":"low","genres":["ambient","folk","acoustic"],"lighting":"The lighting is warm and soft, suggesting a peaceful atmosphere, possibly during the early morning or late afternoon.","mood":"calm","moodScores":{"calm":90,"chill":80,"dreamy":75,"happy":40,"melancholy":30},"playlistTheme":"Nature Serenity","tempo":"slow"}
+[00:29:27.882] Browser LOG     Mood scores: {"calm":90,"chill":80,"dreamy":75,"happy":40,"melancholy":30}
+[00:29:27.968] Server  LOG     User authenticated: "emmacoye"
+[00:29:39.533] Server  LOG     Cookies received: {}
+[00:29:39.533] Server  LOG     Spotify Client ID configured: true
+[00:29:39.533] Server  LOG     Spotify Client Secret configured: true
+[00:29:39.533] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:29:39.657] Server  LOG     User authenticated: "emmacoye"
+[00:29:39.657] Server  LOG     Creating playlist for user: "emmacoye"
+[00:29:40.110] Server  LOG     Attempting to create playlist: {}
+[00:29:40.110] Server  LOG     Creating playlist via raw HTTP API...
+[00:29:40.301] Server  LOG     Playlist created successfully via HTTP API: "4X5fGl7HswZpJl2nM7usnQ" "Nature Serenity"
+[00:29:40.301] Server  LOG     Playlist response received
+[00:29:40.301] Server  LOG     Type: "object"
+[00:29:40.301] Server  LOG     Response: {}
+[00:29:40.301] Server  LOG     Playlist created successfully: "4X5fGl7HswZpJl2nM7usnQ" "Nature Serenity"
+[00:29:40.643] Server  WARN    Failed to upload cover image: 401 "{\n  \"error\" : {\n    \"status\" : 401,\n    \"message\" : \"Unauthorized.\"\n  }\n}"
+[00:31:08.656] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:31:08.752] Browser LOG     Analysis data: {"characteristics":["acoustic","instrumental"],"colors":"The image features earthy tones, with dominant colors like browns, greens, and soft blues. There's a subtle presence of light and shadow playing through the trees, creating a natural, serene palette.","description":"The image depicts a tranquil forest scene with a gentle stream flowing through. The soft lighting and natural colors create a serene and calming atmosphere. This visual evokes a sense of peace and introspection, making it ideal for a playlist that features ambient, acoustic, and folk music. The setting suggests a low-energy and slow-tempo musical selection to match the relaxed vibe.","emotion":"serene and tranquil","energy":"low","genres":["ambient","folk","acoustic"],"lighting":"The lighting is warm and soft, suggesting a peaceful atmosphere, possibly during the early morning or late afternoon.","mood":"calm","moodScores":{"calm":90,"chill":80,"dreamy":75,"happy":40,"melancholy":30},"playlistTheme":"Nature Serenity","tempo":"slow"}
+[00:31:08.752] Browser LOG     Mood scores: {"calm":90,"chill":80,"dreamy":75,"happy":40,"melancholy":30}
+[00:31:08.779] Server  LOG     User authenticated: "emmacoye"
+[00:31:15.790] Server  LOG     Cookies received: {}
+[00:31:15.790] Server  LOG     Spotify Client ID configured: true
+[00:31:15.790] Server  LOG     Spotify Client Secret configured: true
+[00:31:15.791] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:31:15.973] Server  LOG     User authenticated: "emmacoye"
+[00:31:15.973] Server  LOG     Creating playlist for user: "emmacoye"
+[00:31:16.374] Server  LOG     Attempting to create playlist: {}
+[00:31:16.374] Server  LOG     Creating playlist via raw HTTP API...
+[00:31:16.675] Server  LOG     Playlist created successfully via HTTP API: "5oCvaVrSVObdoMGtx9Mhue" "Nature Serenity"
+[00:31:16.675] Server  LOG     Playlist response received
+[00:31:16.675] Server  LOG     Type: "object"
+[00:31:16.675] Server  LOG     Response: {}
+[00:31:16.675] Server  LOG     Playlist created successfully: "5oCvaVrSVObdoMGtx9Mhue" "Nature Serenity"
+[00:31:16.893] Server  LOG     Using access token from cookies (length: 339 ")"
+[00:31:17.068] Server  WARN    Failed to upload cover image: 401 "{\n  \"error\" : {\n    \"status\" : 401,\n    \"message\" : \"Unauthorized.\"\n  }\n}"
+[00:31:17.068] Server  LOG     Token expired during image upload, attempting refresh...
+[00:31:17.252] Server  WARN    Failed to upload cover image after refresh: 401 "{\n  \"error\" : {\n    \"status\" : 401,\n    \"message\" : \"Unauthorized.\"\n  }\n}"
+[00:33:11.157] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:33:11.157] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:33:11.157] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:33:11.157] Server  LOG     Request host: "127.0.0.1:3000"
+[00:33:11.157] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:33:11.157] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
+[00:33:11.157] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=t912rag2dr1s7uidkpnd7&show_dialog=true"
+[00:33:11.157] Server  LOG     Setting state cookie: "t912rag2dr1s7uidkpnd7"
+[00:33:11.157] Server  LOG     Cookie string: "spotify_auth_state=t912rag2dr1s7uidkpnd7; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:33:12.802] Server  LOG     Callback received - Query params: {}
+[00:33:12.802] Server  LOG     All cookies: {}
+[00:33:12.802] Server  LOG     Cookie header: "spotify_auth_state=t912rag2dr1s7uidkpnd7"
+[00:33:12.802] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:33:12.802] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:33:12.802] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:33:12.802] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:33:12.802] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:33:12.802] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:33:12.802] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:33:12.906] Server  LOG     ✅ Token exchange successful
+[00:33:12.906] Server  LOG     Token received: {}
+[00:33:12.907] Server  LOG     🔍 Verifying token...
+[00:33:12.907] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:33:12.907] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:33:12.907] Server  LOG        Client Secret length: 32
+[00:33:12.907] Server  LOG        Token length: 342
+[00:33:12.907] Server  LOG        Token starts with: "BQDHKFWfnBztPqbG8Vec"
+[00:33:12.907] Server  LOG        Making getMe() call to verify token...
+[00:33:13.139] Server  LOG        Raw HTTP request status: 200
+[00:33:13.141] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:33:13.243] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:33:19.457] Server  LOG     Analyzing image (size: 0.10MB)
+[00:33:19.526] Browser LOG     Compressed image size: 99KB
+[00:33:35.845] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:33:35.939] Browser LOG     Analysis data: {"characteristics":["acoustic","instrumental"],"colors":"Earthy tones with dominant browns and greens, subtle hints of blue in the water","description":"The image features a tranquil forest scene with a gentle stream running through it. The light filters softly through the bare trees, creating a warm and inviting atmosphere. This serene setting evokes a sense of calm and relaxation, suggesting music that is soothing and gentle, enhancing the peaceful ambiance.","emotion":"serene and peaceful","energy":"low","genres":["ambient","acoustic","folk"],"lighting":"Warm, natural light with some soft shadows","mood":"calm","moodScores":{"calm":90,"chill":80,"dreamy":75,"happy":60,"melancholy":40},"playlistTheme":"Forest Tranquility","tempo":"slow"}
+[00:33:35.939] Browser LOG     Mood scores: {"calm":90,"chill":80,"dreamy":75,"happy":60,"melancholy":40}
+[00:33:35.967] Server  LOG     User authenticated: "emmacoye"
+[00:33:48.181] Server  LOG     Cookies received: {}
+[00:33:48.181] Server  LOG     Spotify Client ID configured: true
+[00:33:48.181] Server  LOG     Spotify Client Secret configured: true
+[00:33:48.181] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:33:48.339] Server  LOG     User authenticated: "emmacoye"
+[00:33:48.339] Server  LOG     Creating playlist for user: "emmacoye"
+[00:33:49.250] Server  LOG     Attempting to create playlist: {}
+[00:33:49.250] Server  LOG     Creating playlist via raw HTTP API...
+[00:33:49.465] Server  LOG     Playlist created successfully via HTTP API: "6hc3VODRnvQshykJjtOFwM" "Forest Tranquility"
+[00:33:49.465] Server  LOG     Playlist response received
+[00:33:49.465] Server  LOG     Type: "object"
+[00:33:49.466] Server  LOG     Response: {}
+[00:33:49.466] Server  LOG     Playlist created successfully: "6hc3VODRnvQshykJjtOFwM" "Forest Tranquility"
+[00:33:49.739] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:33:49.875] Server  WARN    Failed to upload cover image: 400 "{\n  \"error\" : {\n    \"status\" : 400,\n    \"message\" : \"Bad request.\"\n  }\n}"
+[00:35:31.433] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:35:31.433] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:35:31.433] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:35:31.433] Server  LOG     Request host: "127.0.0.1:3000"
+[00:35:31.433] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:35:31.433] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
+[00:35:31.433] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=8q6d25bsjexv85zg6j9z9l&show_dialog=true"
+[00:35:31.433] Server  LOG     Setting state cookie: "8q6d25bsjexv85zg6j9z9l"
+[00:35:31.433] Server  LOG     Cookie string: "spotify_auth_state=8q6d25bsjexv85zg6j9z9l; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:35:33.224] Server  LOG     Callback received - Query params: {}
+[00:35:33.224] Server  LOG     All cookies: {}
+[00:35:33.224] Server  LOG     Cookie header: "spotify_access_token=BQDHKFWfnBztPqbG8VecQu6v0oXZF1KfdaihJqWEZnpsCkIghtjcHPVrtsokNRnUo6dynD6XqmGQ5rRPFPY398ZquprorBQut1dCVwY2YYZRc6fnWg41G-THM8oDF9JObqo-67H2pAI2tA0nzpHMXJpfiWIbwHsZh1LnEqpAiSM9J_4k7vXHBMuoc4AAgRLj0I500mOpjvIBeFb1899r_p1nUp_UeIGYN7cqPNHc7_frF7lHqCSipRthPyvr_tvnUcwNPQBinuh1JpX5-o6ZmaFDb-OwOMKepyVQFG2fHDXC28zRflvL4KXt9yQ4qyAN2j4VC9UWUr5Z-Wv4xzW68w; spotify_refresh_token=AQC_xqy3zwtWMiyBeORcLaI1Bb5NZCXhSzi7qzYSJORQFNgD3SHjjMELrMWl1vi7apYm_siqteziXG-WCkfkm8leVoqYTozi-LschoxnPi0d1YKPjXRh3rAn-J7o1gMJthg; spotify_auth_state=8q6d25bsjexv85zg6j9z9l"
+[00:35:33.224] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:35:33.224] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:35:33.224] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:35:33.224] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:35:33.224] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:35:33.224] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:35:33.224] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:35:33.332] Server  LOG     ✅ Token exchange successful
+[00:35:33.332] Server  LOG     Token received: {}
+[00:35:33.332] Server  LOG     🔍 Verifying token...
+[00:35:33.332] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:35:33.332] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:35:33.332] Server  LOG        Client Secret length: 32
+[00:35:33.332] Server  LOG        Token length: 342
+[00:35:33.332] Server  LOG        Token starts with: "BQDln9m6lEkPzohZl3vD"
+[00:35:33.332] Server  LOG        Making getMe() call to verify token...
+[00:35:33.574] Server  LOG        Raw HTTP request status: 200
+[00:35:33.577] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:35:33.728] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:35:40.086] Server  LOG     Analyzing image (size: 0.10MB)
+[00:35:40.155] Browser LOG     Compressed image size: 99KB
+[00:35:54.023] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:35:54.115] Browser LOG     Analysis data: {"characteristics":["acoustic","instrumental"],"colors":"Earthy tones with browns, greens, and hints of sunlight creating a warm palette.","description":"The image depicts a tranquil woodland stream with a warm glow from the sunlight filtering through the trees. This peaceful environment suggests a soundtrack that is calming and reflective, suitable for contemplation or relaxation. The gentle flow of the water and the earthy tones of the forest evoke a serene and natural atmosphere.","emotion":"peaceful and reflective","energy":"low","genres":["ambient","acoustic","folk"],"lighting":"Warm and natural lighting with soft sunlight filtering through the trees.","mood":"calm","moodScores":{"calm":85,"chill":75,"dreamy":60,"happy":40,"melancholy":30},"playlistTheme":"Woodland Serenity","tempo":"slow"}
+[00:35:54.115] Browser LOG     Mood scores: {"calm":85,"chill":75,"dreamy":60,"happy":40,"melancholy":30}
+[00:35:54.138] Server  LOG     User authenticated: "emmacoye"
+[00:36:01.288] Server  LOG     Cookies received: {}
+[00:36:01.288] Server  LOG     Spotify Client ID configured: true
+[00:36:01.288] Server  LOG     Spotify Client Secret configured: true
+[00:36:01.288] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:36:01.458] Server  LOG     User authenticated: "emmacoye"
+[00:36:01.458] Server  LOG     Creating playlist for user: "emmacoye"
+[00:36:02.391] Server  LOG     Attempting to create playlist: {}
+[00:36:02.391] Server  LOG     Creating playlist via raw HTTP API...
+[00:36:02.594] Server  LOG     Playlist created successfully via HTTP API: "6FnINduCiphneCA44v8XzW" "Woodland Serenity"
+[00:36:02.594] Server  LOG     Playlist response received
+[00:36:02.594] Server  LOG     Type: "object"
+[00:36:02.594] Server  LOG     Response: {}
+[00:36:02.594] Server  LOG     Playlist created successfully: "6FnINduCiphneCA44v8XzW" "Woodland Serenity"
+[00:36:02.915] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:36:05.534] Server  LOG     Cover image uploaded successfully
+[00:38:05.328] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:38:05.358] Server  LOG      ✓ Compiled in 29ms
+[00:38:05.439] Server  LOG     User authenticated: "emmacoye"
+[00:38:06.407] Browser LOG     Analysis data: {"characteristics":["acoustic","instrumental"],"colors":"Earthy tones with browns, greens, and hints of sunlight creating a warm palette.","description":"The image depicts a tranquil woodland stream with a warm glow from the sunlight filtering through the trees. This peaceful environment suggests a soundtrack that is calming and reflective, suitable for contemplation or relaxation. The gentle flow of the water and the earthy tones of the forest evoke a serene and natural atmosphere.","emotion":"peaceful and reflective","energy":"low","genres":["ambient","acoustic","folk"],"lighting":"Warm and natural lighting with soft sunlight filtering through the trees.","mood":"calm","moodScores":{"calm":85,"chill":75,"dreamy":60,"happy":40,"melancholy":30},"playlistTheme":"Woodland Serenity","tempo":"slow"}
+[00:38:06.407] Browser LOG     Mood scores: {"calm":85,"chill":75,"dreamy":60,"happy":40,"melancholy":30}
+[00:39:32.527] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:39:32.527] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:39:32.527] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:39:32.527] Server  LOG     Request host: "127.0.0.1:3000"
+[00:39:32.527] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:39:32.527] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
+[00:39:32.527] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=grz3tr1snle4r771umxops&show_dialog=true"
+[00:39:32.527] Server  LOG     Setting state cookie: "grz3tr1snle4r771umxops"
+[00:39:32.527] Server  LOG     Cookie string: "spotify_auth_state=grz3tr1snle4r771umxops; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:39:34.046] Server  LOG     Callback received - Query params: {}
+[00:39:34.046] Server  LOG     All cookies: {}
+[00:39:34.046] Server  LOG     Cookie header: "spotify_access_token=BQDln9m6lEkPzohZl3vD51A9p5lewKComqCw4PaMY6t5d7uU5_DCv8YdnsP4L51Jx6HH4umg74tqGkjrmB56CNmnAlvuJjB6L2-X6rYDuyAmtd5peYn2IMQX9U068uElkxDL0xvl5c_RKIC1c1HZcXv9KpCqzLkaGYZWHljpD8yFtASrnoyCuh7K_N_N1wHFIz5mSbn2mTDDwede4nQ9hQz6qNY8SwY9uPwuUd0pOS80_tEpYNAMtZDvEgKcpjUFDmQZuAvzwF0JtbOOHgTBu8GZUAXbsz-cDm19PQHrelIdpf2vj6K0g9ZT8ywT6--hmkp8YLZS1SAnlogoG41KBA; spotify_refresh_token=AQBrHbLZOPSm9MleH0cdfhkCSLu5MfkWnWUdeVJ1cyxoRWuJMKSrQhKBUa2pDCz3JBq6DZzVioipBSUzSClJGuvJ1mIfaaU2MRJGdeAmFeDn5iiPvpppb2IusT6MhJi_MGI; spotify_auth_state=grz3tr1snle4r771umxops"
+[00:39:34.046] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:39:34.046] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:39:34.046] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:39:34.046] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:39:34.046] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:39:34.046] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:39:34.046] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:39:34.214] Server  LOG     ✅ Token exchange successful
+[00:39:34.215] Server  LOG     Token received: {}
+[00:39:34.215] Server  LOG     🔍 Verifying token...
+[00:39:34.215] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:39:34.215] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:39:34.215] Server  LOG        Client Secret length: 32
+[00:39:34.215] Server  LOG        Token length: 342
+[00:39:34.215] Server  LOG        Token starts with: "BQB853XHbKvYyBtgDI0Y"
+[00:39:34.216] Server  LOG        Making getMe() call to verify token...
+[00:39:34.360] Server  LOG        Raw HTTP request status: 200
+[00:39:34.363] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:39:34.552] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:39:40.461] Server  LOG     Analyzing image (size: 0.10MB)
+[00:39:40.532] Browser LOG     Compressed image size: 99KB
+[00:39:57.835] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:39:57.929] Browser LOG     Analysis data: {"characteristics":["acoustic","instrumental"],"colors":"The dominant colors are earthy browns, greens, and hints of blue and white from the water, creating a natural palette.","description":"The image depicts a tranquil natural setting with a gently flowing stream surrounded by leafless trees. The warm sunlight creates a serene atmosphere ideal for calm and reflective ambient or acoustic music.","emotion":"The scene evokes a peaceful and reflective emotional tone, inviting a sense of tranquility.","energy":"low","genres":["ambient","indie folk","acoustic"],"lighting":"The lighting is warm with soft, natural sunlight filtering through the trees, creating a serene and peaceful atmosphere.","mood":"calm and serene","moodScores":{"calm":90,"chill":80,"dreamy":70,"happy":60,"melancholy":30},"playlistTheme":"Forest Tranquility","tempo":"slow"}
+[00:39:57.929] Browser LOG     Mood scores: {"calm":90,"chill":80,"dreamy":70,"happy":60,"melancholy":30}
+[00:39:57.963] Server  LOG     User authenticated: "emmacoye"
+[00:40:05.663] Server  LOG     Cookies received: {}
+[00:40:05.664] Server  LOG     Spotify Client ID configured: true
+[00:40:05.664] Server  LOG     Spotify Client Secret configured: true
+[00:40:05.664] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:40:05.770] Server  LOG     User authenticated: "emmacoye"
+[00:40:05.770] Server  LOG     Creating playlist for user: "emmacoye"
+[00:40:05.770] Server  LOG     Using 20 track URIs from preview
+[00:40:05.770] Server  LOG     Attempting to create playlist: {}
+[00:40:05.770] Server  LOG     Creating playlist via raw HTTP API...
+[00:40:05.959] Server  LOG     Playlist created successfully via HTTP API: "34BEq61HtWUhqzDp5eANnC" "Forest Tranquility"
+[00:40:05.959] Server  LOG     Playlist response received
+[00:40:05.959] Server  LOG     Type: "object"
+[00:40:05.960] Server  LOG     Response: {}
+[00:40:05.960] Server  LOG     Playlist created successfully: "34BEq61HtWUhqzDp5eANnC" "Forest Tranquility"
+[00:40:06.209] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:40:09.163] Server  LOG     Cover image uploaded successfully
+[00:42:37.629] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:42:37.629] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:42:37.629] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:42:37.629] Server  LOG     Request host: "127.0.0.1:3000"
+[00:42:37.629] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:42:37.629] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
+[00:42:37.629] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=433urfau5cbfmjupx4uc0r&show_dialog=true"
+[00:42:37.629] Server  LOG     Setting state cookie: "433urfau5cbfmjupx4uc0r"
+[00:42:37.629] Server  LOG     Cookie string: "spotify_auth_state=433urfau5cbfmjupx4uc0r; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:42:39.269] Server  LOG     Callback received - Query params: {}
+[00:42:39.269] Server  LOG     All cookies: {}
+[00:42:39.270] Server  LOG     Cookie header: "spotify_access_token=BQB853XHbKvYyBtgDI0Yrs-dtLcTUL8oUGXNqznP-FA_AnNCQDAgePJv2czuFvxc3WbWLF2dPVBYZMHJCh54cGRU3KF4zO-pL4jzcbrpWAflLmnLXVhyCnDWgeJhL6mo6lqNMV97KgPvDnKQUSsdV94OqtJP5uMX3i8GDd7bXrOfA8UEtMdV1pR5HjjJDX79Lu8qREL-jrcwRReWXWBN1o6o9vBbIeb17jTOSOJCmKYEguRTr2vgHR-3MymV51H-T92jpKqjKm_0iDS1yRcuZz5GmObJqkCARdrcCMEYYF6vIUTgI3Y0H8hoyuoIdyk772gH_FOikDdayfs4x0neoQ; spotify_refresh_token=AQCaMVWsiGZuP14sgllEPmET3D8ulXgQNBKUPiORTxB9fMzxF5FItTEoxZrUJMLaljmCse-FPy6-65mfEIMl-siIUXagUuUuMEXvum6Fz-iGELmAiwn8YZRKsclMXXNp1as; spotify_auth_state=433urfau5cbfmjupx4uc0r"
+[00:42:39.270] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:42:39.270] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:42:39.270] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:42:39.270] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:42:39.270] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:42:39.270] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:42:39.270] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:42:39.376] Server  LOG     ✅ Token exchange successful
+[00:42:39.376] Server  LOG     Token received: {}
+[00:42:39.376] Server  LOG     🔍 Verifying token...
+[00:42:39.376] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:42:39.376] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:42:39.376] Server  LOG        Client Secret length: 32
+[00:42:39.376] Server  LOG        Token length: 342
+[00:42:39.376] Server  LOG        Token starts with: "BQDV4xNuEeBCHxjrj4IH"
+[00:42:39.376] Server  LOG        Making getMe() call to verify token...
+[00:42:39.594] Server  LOG        Raw HTTP request status: 200
+[00:42:39.595] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:42:39.702] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:42:45.568] Server  LOG     Analyzing image (size: 0.10MB)
+[00:42:45.638] Browser LOG     Compressed image size: 99KB
+[00:42:57.619] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:42:57.711] Browser LOG     Analysis data: {"characteristics":["acoustic","instrumental"],"colors":"The image is dominated by earthy tones, with greens and browns from the forest and hints of blue and white from the water.","description":"This tranquil forest scene with a gently flowing stream and sunlight filtering through trees evokes a peaceful and reflective atmosphere. The natural colors and serene setting suggest a playlist filled with calming and acoustic melodies, ideal for relaxation and contemplation.","emotion":"peaceful and reflective","energy":"low","genres":["ambient","acoustic","folk"],"lighting":"The lighting is warm and soft, suggesting either morning or late afternoon sunlight filtering through the trees.","mood":"calm and serene","moodScores":{"calm":90,"chill":70,"dreamy":80,"happy":50,"melancholy":30},"playlistTheme":"Forest Serenity","tempo":"slow"}
+[00:42:57.711] Browser LOG     Mood scores: {"calm":90,"chill":70,"dreamy":80,"happy":50,"melancholy":30}
+[00:42:57.747] Server  LOG     User authenticated: "emmacoye"
+[00:43:05.569] Server  LOG     Cookies received: {}
+[00:43:05.569] Server  LOG     Spotify Client ID configured: true
+[00:43:05.569] Server  LOG     Spotify Client Secret configured: true
+[00:43:05.570] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:43:05.665] Server  LOG     User authenticated: "emmacoye"
+[00:43:05.665] Server  LOG     Creating playlist for user: "emmacoye"
+[00:43:05.665] Server  LOG     Using 20 track URIs from preview
+[00:43:05.665] Server  LOG     After removing duplicates: 20 unique tracks
+[00:43:05.665] Server  LOG     Attempting to create playlist: {}
+[00:43:05.665] Server  LOG     Creating playlist via raw HTTP API...
+[00:43:05.883] Server  LOG     Playlist created successfully via HTTP API: "45aHap3SUu7sLnxIVPdCy8" "Forest Serenity"
+[00:43:05.883] Server  LOG     Playlist response received
+[00:43:05.883] Server  LOG     Type: "object"
+[00:43:05.884] Server  LOG     Response: {}
+[00:43:05.884] Server  LOG     Playlist created successfully: "45aHap3SUu7sLnxIVPdCy8" "Forest Serenity"
+[00:43:06.145] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:43:09.074] Server  LOG     Cover image uploaded successfully
+[00:45:12.590] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:45:12.590] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:45:12.590] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:45:12.590] Server  LOG     Request host: "127.0.0.1:3000"
+[00:45:12.590] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:45:12.590] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
+[00:45:12.590] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=9t027jxw34ou6pitl8e6sq&show_dialog=true"
+[00:45:12.590] Server  LOG     Setting state cookie: "9t027jxw34ou6pitl8e6sq"
+[00:45:12.590] Server  LOG     Cookie string: "spotify_auth_state=9t027jxw34ou6pitl8e6sq; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:45:14.503] Server  LOG     Callback received - Query params: {}
+[00:45:14.503] Server  LOG     All cookies: {}
+[00:45:14.503] Server  LOG     Cookie header: "spotify_access_token=BQDV4xNuEeBCHxjrj4IH8cEzNl3Q_UEooXvFQaAltWZv9igl1AATi0Qlz8ZT4ExeEpgGgf9ZgKqDcsnb4ft5lgMYYSi_q_KftTIEfdwsjByIx5zEJChVvUvGrcWSGndaQS6OxdzdrSjNyO8ZQILZCgPPhQduaDr8SG6OIvU2QrZK_BxXYfIBYnO6gajsmMR_x8eeBg1E21H8fQQybHV7lCVV5cf8BUDMo3EnhiFqHedOsPAgCmU_gpdcN0dkQRD2ehwcG1sj4MpT8eSVdvk9G17oRfjo-lSjmrV6S0Wopz3URHIYl1XKw9bvbluoLwPXZS754LvFjLZxDGXLjPOsnw; spotify_refresh_token=AQDMhSVzQl9zTzOOOkEY3WKPeRzjclBVFxV2ALXpZEO2Ejq5MnkHk3Nx3CUNuEeU8-67XR7C-0k7ahltvsneFYIHz7nT6MFf7kde0VOKgoGTceaFTrEeaCzQ2K9zfdThtVg; spotify_auth_state=9t027jxw34ou6pitl8e6sq"
+[00:45:14.503] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:45:14.503] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:45:14.503] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:45:14.503] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:45:14.503] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:45:14.503] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:45:14.503] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:45:14.622] Server  LOG     ✅ Token exchange successful
+[00:45:14.622] Server  LOG     Token received: {}
+[00:45:14.622] Server  LOG     🔍 Verifying token...
+[00:45:14.623] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:45:14.623] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:45:14.623] Server  LOG        Client Secret length: 32
+[00:45:14.623] Server  LOG        Token length: 342
+[00:45:14.623] Server  LOG        Token starts with: "BQAXskmveDQzZJQvt4QF"
+[00:45:14.623] Server  LOG        Making getMe() call to verify token...
+[00:45:14.858] Server  LOG        Raw HTTP request status: 200
+[00:45:14.860] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:45:14.977] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:45:20.462] Server  LOG     Analyzing image (size: 0.10MB)
+[00:45:20.535] Browser LOG     Compressed image size: 99KB
+[00:45:34.485] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:45:34.574] Browser LOG     Analysis data: {"characteristics":["acoustic","instrumental"],"colors":"The dominant colors are earthy browns and greens, with hints of soft sunlight creating a warm golden hue.","description":"The image depicts a gentle stream flowing through a serene forest landscape, bathed in soft, golden sunlight. The tranquil setting and natural beauty suggest calming acoustic or ambient music, creating a peaceful retreat for the mind.","emotion":"The image evokes a peaceful and serene emotional tone, reflecting tranquility and nature's beauty.","energy":"low","genres":["ambient","acoustic","folk"],"lighting":"The lighting is warm and soft, with gentle sunlight filtering through the trees.","mood":"calm","moodScores":{"calm":90,"chill":75,"dreamy":70,"happy":60,"melancholy":40},"playlistTheme":"Nature Serenity","tempo":"slow"}
+[00:45:34.574] Browser LOG     Mood scores: {"calm":90,"chill":75,"dreamy":70,"happy":60,"melancholy":40}
+[00:45:34.615] Server  LOG     User authenticated: "emmacoye"
+[00:45:47.176] Server  LOG     Cookies received: {}
+[00:45:47.176] Server  LOG     Spotify Client ID configured: true
+[00:45:47.176] Server  LOG     Spotify Client Secret configured: true
+[00:45:47.176] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:45:47.378] Server  LOG     User authenticated: "emmacoye"
+[00:45:47.378] Server  LOG     Creating playlist for user: "emmacoye"
+[00:45:47.378] Server  LOG     Using 20 track URIs from preview
+[00:45:47.378] Server  LOG     After removing duplicates: 20 unique tracks
+[00:45:47.379] Server  LOG     Attempting to create playlist: {}
+[00:45:47.379] Server  LOG     Creating playlist via raw HTTP API...
+[00:45:47.379] Server  LOG     Playlist creation payload: "{\n  \"name\": \"Nature Serenity\",\n  \"description\": \"Created from photo analysis: The image depicts a gentle stream flowing through a serene forest landscape, bathed in soft, golden sunlight. The tranquil setting and natural beauty suggest calming acoustic or ambient music, creating a peaceful retreat for the mind.. Mood: calm, Energy: low, Tempo:\",\n  \"public\": false\n}"
+[00:45:47.379] Server  LOG     Public setting: false
+[00:45:47.621] Server  LOG     Playlist created successfully via HTTP API: "1f1oSevMbu0PGtFr8btm4B" "Nature Serenity"
+[00:45:47.621] Server  LOG     Playlist response received
+[00:45:47.621] Server  LOG     Type: "object"
+[00:45:47.622] Server  LOG     Response: {}
+[00:45:47.622] Server  LOG     Playlist created successfully: "1f1oSevMbu0PGtFr8btm4B" "Nature Serenity"
+[00:45:47.873] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:45:50.251] Server  LOG     Cover image uploaded successfully

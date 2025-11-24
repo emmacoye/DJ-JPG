@@ -68,13 +68,22 @@ Return your response as a JSON object with the following structure:
   "lighting": "description of lighting (bright/dark/warm/cool)",
   "mood": "overall mood (happy/sad/energetic/calm/etc.)",
   "emotion": "emotional tone",
+  "moodScores": {
+    "calm": 0-100,
+    "happy": 0-100,
+    "chill": 0-100,
+    "dreamy": 0-100,
+    "melancholy": 0-100
+  },
   "genres": ["genre1", "genre2", "genre3"],
   "energy": "low/medium/high",
   "tempo": "slow/moderate/fast",
   "characteristics": ["acoustic", "instrumental", etc.],
   "description": "detailed description of the image and how it relates to music",
   "playlistTheme": "a short theme name for the playlist (e.g., 'Sunset Vibes', 'Urban Night', 'Nature Serenity')"
-}`,
+}
+
+The moodScores object should contain percentages (0-100) for each mood based on how well they match the image. The total doesn't need to equal 100 - each mood is scored independently.`,
               },
               {
                 type: 'image_url',
