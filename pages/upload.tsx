@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { Home, Upload as UploadIcon } from 'lucide-react';
+import { Upload as UploadIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Upload() {
@@ -152,10 +152,11 @@ export default function Upload() {
 
   if (isAnalyzing) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-[#F5F1E8]">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-700 mx-auto mb-4"></div>
-          <p className="text-gray-600">Processing image...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-[#504E76] mx-auto mb-4"></div>
+          <p className="text-gray-700 font-medium">Processing image...</p>
+          <p className="text-gray-500 text-sm mt-2">This may take a few seconds</p>
         </div>
       </div>
     );
@@ -163,32 +164,24 @@ export default function Upload() {
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <div className="flex items-center justify-between p-6">
-        <Button variant="ghost" size="icon" asChild>
-          <a href="/">
-            <Home size={24} />
-          </a>
-        </Button>
-      </div>
-
       {/* Main Content */}
       <div className="flex flex-col items-center justify-center px-6 py-8 relative">
         {/* Title */}
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">Step 1: Choose your photo</h1>
+        <h1 className="text-3xl font-bold text-gray-800 mb-2 tracking-tight">Step 1: Choose your photo</h1>
+        <p className="text-gray-600 mb-8 text-sm">Select an image to analyze and create your personalized playlist</p>
         {/* Upload Box */}
         <div className="w-full max-w-2xl">
           <div
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
-            className={`border-2 border-dashed border-gray-600 rounded-xl bg-[#F5F1E8] p-12 text-center transition-colors ${
-              isDragging ? 'border-[#504E76] bg-[#F0EDE4]' : ''
+            className={`border-2 border-dashed border-gray-600 rounded-xl bg-[#F5F1E8] p-12 text-center transition-all duration-200 shadow-sm ${
+              isDragging ? 'border-[#504E76] bg-[#F0EDE4] shadow-md scale-[1.02]' : 'hover:border-gray-700 hover:shadow-md'
             }`}
           >
             {/* Upload Icon */}
             <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 border-2 border-gray-700 rounded-lg flex items-center justify-center bg-white">
+              <div className="w-20 h-20 border-2 border-gray-700 rounded-lg flex items-center justify-center bg-white shadow-sm">
                 <UploadIcon size={40} className="text-gray-800" />
               </div>
             </div>
@@ -204,7 +197,7 @@ export default function Upload() {
             <div>
               <Button
                 onClick={() => fileInputRef.current?.click()}
-                className="bg-[#504E76] hover:bg-[#64628A] text-white"
+                className="bg-[#504E76] hover:bg-[#64628A] text-white shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5"
               >
                 <UploadIcon size={20} />
                 <span>Upload</span>

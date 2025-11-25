@@ -6,8 +6,9 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Separator } from '@/components/ui/separator';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { toast } from 'sonner';
-import { Home } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
 
 interface Track {
   id: string;
@@ -31,8 +32,13 @@ export default function Playlist() {
   const [error, setError] = useState<string | null>(null);
   const [isCreatingPlaylist, setIsCreatingPlaylist] = useState(false);
   const [createdPlaylist, setCreatedPlaylist] = useState<any>(null);
-  const [playingTrack, setPlayingTrack] = useState<string | null>(null);
-  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+  const [popularityFilter, setPopularityFilter] = useState<'mainstream' | 'indie' | 'mixed'>('mainstream');
+  // Cache tracks for each filter option
+  const [tracksCache, setTracksCache] = useState<{
+    mainstream?: Track[];
+    mixed?: Track[];
+    indie?: Track[];
+  }>({});
 
   useEffect(() => {
     // Get image and analysis from sessionStorage
@@ -55,8 +61,8 @@ export default function Playlist() {
       console.log('Analysis data:', analysisData);
       console.log('Mood scores:', analysisData.moodScores);
       
-      // Fetch playlist preview
-      fetchPlaylistPreview(analysisData);
+      // Fetch playlist preview with default filter
+      fetchPlaylistPreview(analysisData, 'mainstream');
     } catch (err) {
       console.error('Error parsing analysis data:', err);
       setError('Failed to load analysis data');
@@ -64,17 +70,17 @@ export default function Playlist() {
     }
   }, [router]);
 
-  // Cleanup audio on unmount
-  useEffect(() => {
-    return () => {
-      if (audio) {
-        audio.pause();
-        audio.src = '';
-      }
-    };
-  }, [audio]);
 
-  const fetchPlaylistPreview = async (analysisData: any) => {
+  const fetchPlaylistPreview = async (analysisData: any, filter?: 'mainstream' | 'indie' | 'mixed', forceRefresh: boolean = false) => {
+    const activeFilter = filter || popularityFilter;
+    
+    // Check if we already have cached tracks for this filter (unless forcing refresh)
+    if (!forceRefresh && tracksCache[activeFilter] && tracksCache[activeFilter]!.length > 0) {
+      setTracks(tracksCache[activeFilter]!);
+      setIsLoading(false);
+      return;
+    }
+    
     try {
       setIsLoading(true);
       setError(null);
@@ -84,7 +90,10 @@ export default function Playlist() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ analysis: analysisData }),
+        body: JSON.stringify({ 
+          analysis: analysisData,
+          popularityFilter: activeFilter,
+        }),
       });
 
       if (!response.ok) {
@@ -103,11 +112,31 @@ export default function Playlist() {
 
       const data = await response.json();
       if (data.success) {
-        setTracks(data.tracks || []);
+        const fetchedTracks = data.tracks || [];
+        // Debug: Log track data to see preview URLs
+        console.log('=== TRACK DATA DEBUG ===');
+        console.log('Total tracks:', fetchedTracks.length);
+        console.log('First track full data:', fetchedTracks[0]);
+        console.log('Tracks with preview URLs:', fetchedTracks.filter((t: Track) => t.preview_url).length);
+        console.log('Tracks without preview URLs:', fetchedTracks.filter((t: Track) => !t.preview_url).length);
+        if (fetchedTracks.length > 0) {
+          console.log('Sample track preview_url:', fetchedTracks[0]?.preview_url);
+          console.log('Sample track keys:', Object.keys(fetchedTracks[0] || {}));
+        }
+        console.log('========================');
+        
+        setTracks(fetchedTracks);
+        
+        // Cache the tracks for this filter
+        setTracksCache(prev => ({
+          ...prev,
+          [activeFilter]: fetchedTracks,
+        }));
+        
         if (data.playlistTheme) {
           setPlaylistTheme(data.playlistTheme);
         }
-        toast.success(`Found ${data.tracks?.length || 0} tracks for your playlist!`);
+        toast.success(`Found ${fetchedTracks.length} tracks for your playlist!`);
       } else {
         throw new Error('Invalid response from server');
       }
@@ -121,49 +150,12 @@ export default function Playlist() {
     }
   };
 
-  const handlePlayPreview = (track: Track) => {
-    if (!track.preview_url) {
-      alert('No preview available for this track');
-      return;
-    }
-
-    // Stop current audio if playing
-    if (audio) {
-      audio.pause();
-      audio.src = '';
-    }
-
-    // If clicking the same track, stop it
-    if (playingTrack === track.id) {
-      setPlayingTrack(null);
-      setAudio(null);
-      return;
-    }
-
-    // Play new track
-    const newAudio = new Audio(track.preview_url);
-    newAudio.play().catch(err => {
-      console.error('Error playing preview:', err);
-      alert('Failed to play preview');
-    });
+  const handleRefreshPlaylist = async () => {
+    if (!analysis) return;
     
-    setAudio(newAudio);
-    setPlayingTrack(track.id);
-
-    // Auto-stop after 30 seconds (preview length)
-    setTimeout(() => {
-      if (newAudio) {
-        newAudio.pause();
-        setPlayingTrack(null);
-        setAudio(null);
-      }
-    }, 30000);
-
-    // Handle audio end
-    newAudio.onended = () => {
-      setPlayingTrack(null);
-      setAudio(null);
-    };
+    // Force refresh the current filter's playlist
+    await fetchPlaylistPreview(analysis, popularityFilter, true);
+    toast.info('Refreshing playlist...');
   };
 
   const handleAddToSpotify = async () => {
@@ -275,28 +267,19 @@ export default function Playlist() {
 
   return (
     <div className="min-h-screen bg-[#F5F1E8]">
-      {/* Header */}
-      <div className="flex items-center justify-between p-6">
-        <Button variant="ghost" size="icon" asChild>
-          <a href="/">
-            <Home size={24} />
-          </a>
-        </Button>
-      </div>
-
       {/* Main Content */}
       <div className="px-6 py-8 max-w-7xl mx-auto">
         {/* Title */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2 tracking-tight">
             Your Playlist is Ready!
           </h1>
-          <p className="text-gray-600">Review your tracks and add them to Spotify</p>
+          <p className="text-gray-600 text-sm">Review your tracks and add them to Spotify</p>
         </div>
 
         {/* Success Message */}
         {createdPlaylist && (
-          <Card className="mb-6 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
+          <Card className="mb-6 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200 shadow-md">
             <CardContent className="p-6">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -313,7 +296,7 @@ export default function Playlist() {
                     href={createdPlaylist.external_urls.spotify}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-[#1DB954] hover:bg-[#1ed760] text-white px-4 py-2 rounded-md transition-colors"
+                    className="inline-flex items-center gap-2 bg-[#1DB954] hover:bg-[#1ed760] text-white px-4 py-2 rounded-md transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 font-medium"
                   >
                     <span>Open in Spotify</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -349,7 +332,7 @@ export default function Playlist() {
             <div className="space-y-4">
               {/* Mood Bars */}
               {analysis && (
-                <Card className="bg-[#FFE8A0] border-[#FFE8A0]">
+                <Card className="bg-[#FFE8A0] border-[#FFE8A0] shadow-sm">
                   <CardHeader>
                     <CardTitle className="text-lg text-gray-800">Mood & Emotion</CardTitle>
                   </CardHeader>
@@ -446,7 +429,7 @@ export default function Playlist() {
 
               {/* Genres */}
               {analysis && analysis.genres && Array.isArray(analysis.genres) && analysis.genres.length > 0 && (
-                <Card className="bg-[#E8E5F0] border-[#E8E5F0]">
+                <Card className="bg-[#E8E5F0] border-[#E8E5F0] shadow-sm">
                   <CardHeader>
                     <CardTitle className="text-lg text-gray-800">Genres</CardTitle>
                   </CardHeader>
@@ -464,7 +447,7 @@ export default function Playlist() {
 
               {/* Energy & Tempo */}
               {(analysis?.energy || analysis?.tempo) && (
-                <Card className="bg-white border-gray-200">
+                <Card className="bg-white border-gray-200 shadow-sm">
                   <CardHeader>
                     <CardTitle className="text-lg text-gray-800">Characteristics</CardTitle>
                   </CardHeader>
@@ -500,9 +483,9 @@ export default function Playlist() {
           </div>
 
           {/* Right Column: Playlist Tracks */}
-          <Card className="flex flex-col h-full">
+          <Card className="flex flex-col h-full shadow-lg">
           <CardHeader className="pb-3">
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start justify-between gap-4 mb-4">
               <div className="flex-1 min-w-0">
                 <CardTitle className="text-2xl mb-1 truncate">{playlistTheme}</CardTitle>
                 {tracks.length > 0 && (
@@ -523,29 +506,91 @@ export default function Playlist() {
                   </div>
                 )}
               </div>
-              {!createdPlaylist && (
-                <Button
-                  onClick={handleAddToSpotify}
-                  disabled={isCreatingPlaylist || isLoading || tracks.length === 0}
-                  className="bg-[#1DB954] hover:bg-[#1ed760] text-white shrink-0"
-                  size="lg"
-                >
-                  {isCreatingPlaylist ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span>Creating...</span>
-                    </>
-                  ) : (
-                    <>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
-                      </svg>
-                      <span>Add to Spotify</span>
-                    </>
-                  )}
-                </Button>
-              )}
             </div>
+            
+            {/* Popularity Filter - Side placement */}
+            {!createdPlaylist && (
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-medium text-gray-600 uppercase tracking-wide">Filter by popularity</span>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleRefreshPlaylist}
+                    disabled={isLoading}
+                    className="h-6 w-6 p-0"
+                    title="Refresh playlist for current filter"
+                  >
+                    <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
+                  </Button>
+                </div>
+                <ToggleGroup
+                  type="single"
+                  value={popularityFilter}
+                  onValueChange={(value) => {
+                    if (value && (value === 'mainstream' || value === 'mixed' || value === 'indie')) {
+                      setPopularityFilter(value);
+                      // Check cache first - if we have tracks for this filter, use them immediately
+                      if (tracksCache[value] && tracksCache[value]!.length > 0) {
+                        setTracks(tracksCache[value]!);
+                      } else if (analysis) {
+                        // Only fetch if we don't have cached data
+                        fetchPlaylistPreview(analysis, value);
+                      }
+                    }
+                  }}
+                  disabled={isLoading}
+                  variant="outline"
+                  size="sm"
+                  className="justify-start"
+                >
+                  <ToggleGroupItem 
+                    value="mainstream" 
+                    aria-label="Mainstream"
+                    className="data-[state=on]:bg-[#504E76] data-[state=on]:text-white data-[state=on]:border-[#504E76] hover:bg-[#504E76]/10"
+                  >
+                    Mainstream
+                  </ToggleGroupItem>
+                  <ToggleGroupItem 
+                    value="mixed" 
+                    aria-label="Mixed"
+                    className="data-[state=on]:bg-[#504E76] data-[state=on]:text-white data-[state=on]:border-[#504E76] hover:bg-[#504E76]/10"
+                  >
+                    Mixed
+                  </ToggleGroupItem>
+                  <ToggleGroupItem 
+                    value="indie" 
+                    aria-label="Indie & Emerging"
+                    className="data-[state=on]:bg-[#504E76] data-[state=on]:text-white data-[state=on]:border-[#504E76] hover:bg-[#504E76]/10"
+                  >
+                    Indie & Emerging
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+            )}
+            
+            {!createdPlaylist && (
+              <Button
+                onClick={handleAddToSpotify}
+                disabled={isCreatingPlaylist || isLoading || tracks.length === 0}
+                className="bg-[#1DB954] hover:bg-[#1ed760] text-white shrink-0 mt-4 shadow-lg shadow-[#1DB954]/30 hover:shadow-xl hover:shadow-[#1DB954]/40 transition-all hover:-translate-y-0.5 disabled:hover:translate-y-0 disabled:opacity-60"
+                size="lg"
+              >
+                {isCreatingPlaylist ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Creating...</span>
+                  </>
+                ) : (
+                  <>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                    <span>Add to Spotify</span>
+                  </>
+                )}
+              </Button>
+            )}
           </CardHeader>
           <Separator />
           <CardContent className="flex-1 overflow-hidden flex flex-col pt-4">
@@ -576,7 +621,10 @@ export default function Playlist() {
                 {tracks.map((track, index) => (
                   <div
                     key={track.id}
-                    className="flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-gray-50 transition-all duration-200 group"
+                    className="flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-gray-50 transition-all duration-200 group border border-transparent hover:border-gray-200 hover:shadow-sm relative"
+                    onClick={(e) => {
+                      console.log('Track row clicked:', track.name);
+                    }}
                   >
                     <div className="flex items-center gap-2 flex-shrink-0">
                       <span className="text-xs text-gray-400 font-medium w-6 text-right group-hover:text-gray-600 transition-colors">
@@ -586,7 +634,7 @@ export default function Playlist() {
                         <img
                           src={track.album_image}
                           alt={track.album}
-                          className="w-10 h-10 rounded object-cover flex-shrink-0 shadow-sm"
+                          className="w-10 h-10 rounded object-cover flex-shrink-0 shadow-sm group-hover:shadow transition-shadow"
                         />
                       ) : (
                         <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-gray-200 to-gray-300 rounded flex items-center justify-center text-gray-500 text-xs font-semibold">
@@ -606,34 +654,6 @@ export default function Playlist() {
                     
                     <div className="flex items-center gap-2 flex-shrink-0">
                       <span className="text-xs text-gray-500 font-mono">{formatDuration(track.duration_ms)}</span>
-                      
-                      {track.preview_url ? (
-                        <button
-                          onClick={() => handlePlayPreview(track)}
-                          className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 ${
-                            playingTrack === track.id
-                              ? 'bg-[#504E76] scale-110'
-                              : 'bg-[#504E76] hover:bg-[#64628A] hover:scale-105'
-                          } text-white shadow-sm`}
-                          title={playingTrack === track.id ? 'Stop preview' : 'Play 30s preview'}
-                        >
-                          {playingTrack === track.id ? (
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
-                            </svg>
-                          ) : (
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M8 5v14l11-7z"/>
-                            </svg>
-                          )}
-                        </button>
-                      ) : (
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center cursor-not-allowed" title="No preview available">
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-gray-400">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
-                          </svg>
-                        </div>
-                      )}
                       
                       <a
                         href={track.external_urls.spotify}

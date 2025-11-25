@@ -2,11 +2,11 @@
   "/": "pages/index.js",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
+  "/_error": "pages/_error.js",
   "/analyze": "pages/analyze.js",
   "/api/analyze": "pages/api/analyze.js",
   "/api/auth/callback": "pages/api/auth/callback.js",
   "/api/auth/login": "pages/api/auth/login.js",
-  "/api/playlist": "pages/api/playlist.js",
   "/api/playlist-preview": "pages/api/playlist-preview.js",
   "/playlist": "pages/playlist.js",
   "/upload": "pages/upload.js"

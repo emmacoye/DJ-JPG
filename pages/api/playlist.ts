@@ -349,7 +349,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Add tracks to playlist (Spotify allows up to 100 tracks per request)
     // Use the exact tracks from the preview
-    const tracksToAdd = finalTrackUris.slice(0, 100); // Spotify allows up to 100 tracks per request
+    // Final deduplication pass - ensure no duplicates make it to Spotify
+    const uniqueTrackUris = Array.from(new Set(finalTrackUris));
+    const tracksToAdd = uniqueTrackUris.slice(0, 100); // Spotify allows up to 100 tracks per request
+    
+    if (uniqueTrackUris.length !== finalTrackUris.length) {
+      console.log(`Removed ${finalTrackUris.length - uniqueTrackUris.length} duplicate tracks before adding to playlist`);
+    }
+    
+    console.log(`Adding ${tracksToAdd.length} unique tracks to playlist`);
     await spotifyApi.addTracksToPlaylist(playlist.id, tracksToAdd);
 
     // Upload cover image if provided

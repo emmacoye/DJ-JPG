@@ -1,24 +1,36 @@
 import { Button } from "@/components/Button";
+import Image from 'next/image';
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col lg:flex-row relative">
       {/* Left Section - Yellow Background */}
       <section className="flex flex-1 flex-col items-center justify-center bg-gradient-to-br from-[#FFD740] to-[#FFE8A0] px-6 py-12 lg:px-8 lg:py-16">
-        <div className="flex w-full max-w-xl flex-col text-center">
+        <div className="flex w-full max-w-xl flex-col items-center text-center">
           <p className="text-sm uppercase tracking-[0.35em] text-black/60">
             Welcome to
           </p>
-          <h1 className="mt-6 text-4xl font-bold text-black sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 text-4xl font-bold text-black sm:text-5xl lg:text-6xl tracking-tight">
             DJ JPG
           </h1>
-          <p className="mt-4 text-lg text-black sm:text-xl">
+          <p className="mt-4 text-lg text-black sm:text-xl font-medium">
           Creating playlists one pixel at a time.
           </p>
-          <p className="mt-2 text-base text-black/70">
+          <p className="mt-2 text-base text-black/70 leading-relaxed">
           Upload your photos and create playlists with songs that match your photos mood.
         </p>
         </div>
+        {/* Cat Mascot */}
+        <div className="w-48 h-48 md:w-64 md:h-64 relative mb-6 animate-bounce-slow">
+            <Image
+              src="/mascot.png"
+              alt="DJ JPG Mascot - Cat with Headphones"
+              width={256}
+              height={256}
+              className="object-contain drop-shadow-lg"
+              priority
+            />
+          </div>
       </section>
 
       {/* Right Section - Beige Background with Steps */}
@@ -145,7 +157,7 @@ export default function Home() {
           <div className="mt-16 sm:mt-20">
             <a
               href="/api/auth/login"
-              className="flex items-center justify-center gap-3 rounded-xl bg-[#504E76] px-6 py-4 text-white transition-colors hover:bg-[#64628A]"
+              className="flex items-center justify-center gap-3 rounded-xl bg-[#504E76] px-6 py-4 text-white font-medium shadow-lg shadow-[#504E76]/20 transition-all hover:bg-[#64628A] hover:shadow-xl hover:shadow-[#504E76]/30 hover:-translate-y-0.5 active:translate-y-0"
             >
               <span className="text-lg font-medium">Login with Spotify</span>
               {/* Spotify Logo */}

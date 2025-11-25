@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Analyze() {
@@ -216,24 +215,16 @@ export default function Analyze() {
 
   return (
     <div className="min-h-screen bg-[#F5F1E8]">
-      {/* Header */}
-      <div className="flex items-center justify-between p-6">
-        <Button variant="ghost" size="icon" asChild>
-          <a href="/">
-            <Home size={24} />
-          </a>
-        </Button>
-      </div>
-
       {/* Main Content */}
       <div className="flex flex-col items-center justify-center px-6 py-8 relative min-h-[calc(100vh-100px)]">
         {/* Title */}
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">Step 2: Analyzing...</h1>
+        <h1 className="text-3xl font-bold text-gray-800 mb-2 tracking-tight">Step 2: Analyzing...</h1>
+        <p className="text-gray-600 mb-8 text-sm">AI is analyzing your image to create the perfect playlist</p>
 
         {/* Image Container with Loading Spinner */}
         <div className="relative w-full max-w-2xl mb-6">
           {imageSrc && (
-            <div className="relative rounded-xl overflow-hidden bg-white shadow-lg">
+            <div className="relative rounded-xl overflow-hidden bg-white shadow-xl">
               <img
                 src={imageSrc}
                 alt="Uploaded photo"
@@ -248,7 +239,7 @@ export default function Analyze() {
           )}
 
           {/* Analysis Banner */}
-          <div className="mt-6 bg-[#FFE8A0] rounded-xl px-6 py-4 text-center">
+          <div className="mt-6 bg-[#FFE8A0] rounded-xl px-6 py-4 text-center shadow-sm">
             <p className="text-gray-800 text-lg font-medium">
               {isAnalyzing
                 ? 'Analyzing colors, lighting, and emotion...'
