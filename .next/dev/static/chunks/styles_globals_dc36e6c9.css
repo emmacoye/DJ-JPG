@@ -1898,6 +1898,12 @@
   }
 
   @media (min-width: 40rem) {
+    .sm\:mt-16 {
+      margin-top: calc(var(--spacing) * 16);
+    }
+  }
+
+  @media (min-width: 40rem) {
     .sm\:mt-20 {
       margin-top: calc(var(--spacing) * 20);
     }

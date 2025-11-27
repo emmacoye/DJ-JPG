@@ -522,7 +522,7 @@ function Home() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "w-48 h-48 md:w-64 md:h-64 relative mb-6 animate-bounce-slow",
+                        className: "w-48 h-48 md:w-64 md:h-64 relative mt-8 mb-6 animate-bounce-slow",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
                             src: "/mascot.png",
                             alt: "DJ JPG Mascot - Cat with Headphones",
@@ -801,7 +801,7 @@ function Home() {
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mt-16 sm:mt-20",
+                            className: "mt-12 sm:mt-16",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                 href: "/api/auth/login",
                                 className: "flex items-center justify-center gap-3 rounded-xl bg-[#504E76] px-6 py-4 text-white font-medium shadow-lg shadow-[#504E76]/20 transition-all hover:bg-[#64628A] hover:shadow-xl hover:shadow-[#504E76]/30 hover:-translate-y-0.5 active:translate-y-0",

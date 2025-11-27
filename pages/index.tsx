@@ -21,7 +21,7 @@ export default function Home() {
         </p>
         </div>
         {/* Cat Mascot */}
-        <div className="w-48 h-48 md:w-64 md:h-64 relative mb-6 animate-bounce-slow">
+        <div className="w-48 h-48 md:w-64 md:h-64 relative mt-8 mb-6 animate-bounce-slow">
             <Image
               src="/mascot.png"
               alt="DJ JPG Mascot - Cat with Headphones"
@@ -154,7 +154,7 @@ export default function Home() {
           </div>
           
           {/* Login with Spotify Button */}
-          <div className="mt-16 sm:mt-20">
+          <div className="mt-12 sm:mt-16">
             <a
               href="/api/auth/login"
               className="flex items-center justify-center gap-3 rounded-xl bg-[#504E76] px-6 py-4 text-white font-medium shadow-lg shadow-[#504E76]/20 transition-all hover:bg-[#64628A] hover:shadow-xl hover:shadow-[#504E76]/30 hover:-translate-y-0.5 active:translate-y-0"

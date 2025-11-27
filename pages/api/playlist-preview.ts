@@ -70,6 +70,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const musicalKeywords = analysis.musicalKeywords || [];
     const characteristics = analysis.characteristics || [];
     const description = analysis.description || '';
+    const artistsFromAnalysis = analysis.artists || []; // Get artists from OpenAI analysis
 
     // Check if this is a nature scene (forest, nature, woods, mountains, etc.)
     const isNatureScene = description?.toLowerCase().includes('forest') || 
@@ -80,253 +81,384 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                          genres[0]?.toLowerCase().includes('folk') ||
                          genres[0]?.toLowerCase().includes('indie folk');
 
-    // Create multiple diverse search queries to ensure artist variety
-    const searchQueries: string[] = [];
+    // Check if this is a classroom/school scene - be more aggressive with detection
+    const descriptionLower = description?.toLowerCase() || '';
+    const isClassroomScene = descriptionLower.includes('classroom') || 
+                            descriptionLower.includes('school') || 
+                            descriptionLower.includes('study') ||
+                            descriptionLower.includes('desk') ||
+                            descriptionLower.includes('student') ||
+                            descriptionLower.includes('teacher') ||
+                            descriptionLower.includes('education') ||
+                            descriptionLower.includes('learning') ||
+                            descriptionLower.includes('academic') ||
+                            descriptionLower.includes('lecture') ||
+                            descriptionLower.includes('whiteboard') ||
+                            descriptionLower.includes('blackboard') ||
+                            descriptionLower.includes('chalkboard') ||
+                            genres[0]?.toLowerCase().includes('lofi') ||
+                            genres[0]?.toLowerCase().includes('lo-fi') ||
+                            genres.some((g: string) => g?.toLowerCase().includes('lofi')) ||
+                            genres.some((g: string) => g?.toLowerCase().includes('lo-fi'));
+
+    // Use artists from OpenAI analysis (primary source)
+    // If analysis didn't provide artists, fall back to genre-based mapping
+    let seedArtists: string[] = [];
     
-    // For nature scenes, add specific artist searches to get similar artists
-    if (isNatureScene) {
-      const natureArtists = ['Noah Kahan', 'Hozier', 'Lizzy McAlpine', 'Mt. Joy', 'Bon Iver', 'The Lumineers', 'Gregory Alan Isakov', 'Phoebe Bridgers', 'Fleet Foxes', 'Iron & Wine'];
-      for (const artist of natureArtists.slice(0, 5)) {
-        searchQueries.push(`artist:"${artist}"`);
-      }
-    }
+    // FORCE lofi artists for classroom scenes, regardless of what OpenAI returns
+    const lofiArtists = ['Lofi Girl', 'Chillhop Music', 'Kupla', 'Idealism', 'Jinsang', 'Nujabes', 'Tomppabeats', 'Birocratic', 'Sleepy Fish', 'Aso', 'eery', 'SwuM', 'Bonobo', 'Tycho', 'Boards of Canada', 'Brian Eno'];
     
-    // Add genre-based searches (one per genre) - prioritize mainstream genres
-    for (const genre of genres.slice(0, 5)) {
-      searchQueries.push(`genre:"${genre}"`);
-      // Add "popular" or "mainstream" to genre searches to get more mainstream results
-      searchQueries.push(`popular ${genre}`);
-    }
-    
-    // Add combined genre + mood searches (always combine mood with genre to avoid title-only matches)
-    if (mood && genres.length > 0) {
-      for (const genre of genres.slice(0, 3)) {
-        // Combine genre with mood - this helps match musical vibe, not just title
-        searchQueries.push(`${genre} ${mood}`);
-        searchQueries.push(`popular ${genre} ${mood}`);
+    if (isClassroomScene) {
+      // For classroom scenes, prioritize lofi artists
+      console.log('Classroom scene detected - forcing lofi/study music');
+      seedArtists = [...lofiArtists];
+      
+      // Also add any lofi artists from the analysis if they exist
+      if (artistsFromAnalysis && artistsFromAnalysis.length > 0) {
+        const lofiFromAnalysis = artistsFromAnalysis.filter((artist: string) => 
+          lofiArtists.some((lofi: string) => artist.toLowerCase().includes(lofi.toLowerCase()) || lofi.toLowerCase().includes(artist.toLowerCase()))
+        );
+        seedArtists = [...new Set([...seedArtists, ...lofiFromAnalysis])];
       }
       
-      // Also add mood variations combined with genres
-      const moodVariations: { [key: string]: string[] } = {
-        'happy': ['upbeat', 'joyful', 'cheerful'],
-        'sad': ['melancholic', 'emotional', 'somber'],
-        'calm': ['peaceful', 'serene', 'tranquil'],
-        'energetic': ['upbeat', 'pumping', 'high energy'],
-        'chill': ['relaxed', 'laid back', 'mellow'],
-        'dreamy': ['ethereal', 'atmospheric', 'ambient'],
-        'nostalgic': ['retro', 'vintage', 'classic'],
-        'romantic': ['intimate', 'soft', 'tender'],
+      // Limit to 25 but prioritize lofi
+      seedArtists = seedArtists.slice(0, 25);
+      console.log(`Using ${seedArtists.length} lofi/study artists for classroom scene`);
+    } else if (artistsFromAnalysis && artistsFromAnalysis.length > 0) {
+      // Use the artists from OpenAI analysis - they're specifically matched to the image
+      seedArtists = artistsFromAnalysis.slice(0, 25); // Use up to 25 artists from analysis
+      console.log(`Using ${seedArtists.length} artists from OpenAI analysis`);
+    } else {
+      // Fallback: Use genre-based artist mapping if analysis didn't provide artists
+      console.log('No artists from analysis, using fallback genre mapping');
+      const genreToArtists: { [key: string]: string[] } = {
+        'indie folk': ['Noah Kahan', 'Hozier', 'Lizzy McAlpine', 'Mt. Joy', 'Bon Iver', 'The Lumineers', 'Gregory Alan Isakov', 'Phoebe Bridgers', 'Fleet Foxes', 'Iron & Wine', 'Ben Howard', 'Jose Gonzalez'],
+        'folk pop': ['Noah Kahan', 'Hozier', 'Lizzy McAlpine', 'Mt. Joy', 'The Lumineers', 'Mumford & Sons', 'Of Monsters and Men', 'Vance Joy'],
+        'folk': ['Noah Kahan', 'Hozier', 'The Lumineers', 'Mumford & Sons', 'Iron & Wine', 'Fleet Foxes', 'Bon Iver'],
+        'pop': ['Taylor Swift', 'Ariana Grande', 'Ed Sheeran', 'Dua Lipa', 'The Weeknd', 'Billie Eilish', 'Olivia Rodrigo', 'Harry Styles'],
+        'indie pop': ['Phoebe Bridgers', 'Clairo', 'Boygenius', 'Lorde', 'Tame Impala', 'Arctic Monkeys', 'The 1975', 'Lana Del Rey'],
+        'hip hop': ['Drake', 'Kendrick Lamar', 'Travis Scott', 'Post Malone', 'J. Cole', 'Tyler, The Creator', 'Kanye West'],
+        'R&B': ['The Weeknd', 'SZA', 'Frank Ocean', 'Daniel Caesar', 'Khalid', 'H.E.R.', 'Alicia Keys'],
+        'country': ['Luke Combs', 'Morgan Wallen', 'Zach Bryan', 'Kacey Musgraves', 'Chris Stapleton', 'Maren Morris'],
+        'acoustic': ['Ed Sheeran', 'John Mayer', 'James Bay', 'Damien Rice', 'Ben Howard', 'Jose Gonzalez'],
+        'rock': ['The Killers', 'Arctic Monkeys', 'Foo Fighters', 'Red Hot Chili Peppers', 'Imagine Dragons'],
+        'electronic': ['Daft Punk', 'The Chemical Brothers', 'ODESZA', 'Flume', 'Disclosure'],
+        'dance': ['Calvin Harris', 'David Guetta', 'Avicii', 'Swedish House Mafia', 'Martin Garrix'],
+        'lofi': ['Lofi Girl', 'Chillhop Music', 'Kupla', 'Idealism', 'Jinsang', 'Nujabes', 'Tomppabeats', 'Birocratic', 'Sleepy Fish', 'Aso', 'eery', 'SwuM', 'Bonobo', 'Tycho'],
+        'lo-fi': ['Lofi Girl', 'Chillhop Music', 'Kupla', 'Idealism', 'Jinsang', 'Nujabes', 'Tomppabeats', 'Birocratic', 'Sleepy Fish', 'Aso', 'eery', 'SwuM', 'Bonobo', 'Tycho'],
+        'ambient': ['Bonobo', 'Tycho', 'Boards of Canada', 'Brian Eno', 'Marconi Union', 'Hammock', 'Stars of the Lid'],
+        'instrumental': ['Bonobo', 'Tycho', 'Nujabes', 'Jinsang', 'Tomppabeats', 'Birocratic'],
+        'chill': ['Lofi Girl', 'Chillhop Music', 'Kupla', 'Bonobo', 'Tycho', 'ODESZA'],
       };
       
-      if (moodVariations[mood.toLowerCase()]) {
-        for (const genre of genres.slice(0, 2)) {
-          for (const variation of moodVariations[mood.toLowerCase()].slice(0, 2)) {
-            searchQueries.push(`${genre} ${variation}`);
+      for (const genre of genres.slice(0, 3)) {
+        const genreKey = genre.toLowerCase();
+        const artists = genreToArtists[genreKey] || [];
+        for (const artist of artists.slice(0, 5)) {
+          if (!seedArtists.includes(artist)) {
+            seedArtists.push(artist);
           }
         }
       }
     }
+
+    // Get seed genres for recommendations API
+    const seedGenres: string[] = [];
     
-    // Add musical keyword searches (always combine with genres to avoid title-only matches)
-    for (const keyword of musicalKeywords.slice(0, 5)) {
-      // Always combine keywords with genres - never search keyword alone
-      if (genres.length > 0) {
-        searchQueries.push(`${genres[0]} ${keyword}`);
-        // Also try with "popular" prefix for mainstream results
-        searchQueries.push(`popular ${genres[0]} ${keyword}`);
-      }
-    }
-    
-    // Add energy/tempo-based searches combined with genres (avoid standalone mood words)
-    if (genres.length > 0) {
-      if (energy === 'high') {
-        searchQueries.push(`${genres[0]} upbeat`);
-        searchQueries.push(`${genres[0]} driving`);
-        searchQueries.push(`popular ${genres[0]}`);
-      } else if (energy === 'low') {
-        searchQueries.push(`${genres[0]} mellow`);
-        searchQueries.push(`${genres[0]} acoustic`);
-        searchQueries.push(`popular ${genres[0]}`);
-      } else {
-        searchQueries.push(`popular ${genres[0]}`);
-      }
-      
-      // Add tempo-based searches combined with genres
-      if (tempo === 'fast') {
-        searchQueries.push(`${genres[0]} upbeat`);
-      } else if (tempo === 'slow') {
-        searchQueries.push(`${genres[0]} ballad`);
-        searchQueries.push(`${genres[0]} acoustic`);
-      }
-    }
-    
-    // Add characteristic-based searches
-    for (const char of characteristics.slice(0, 3)) {
-      if (char && typeof char === 'string') {
-        searchQueries.push(char);
-        // Combine with genres
-        if (genres.length > 0) {
-          searchQueries.push(`${genres[0]} ${char}`);
+    // FORCE chill/ambient genres for classroom scenes
+    if (isClassroomScene) {
+      seedGenres.push('chill', 'ambient');
+      console.log('Forcing chill/ambient genres for classroom scene');
+    } else {
+      for (const genre of genres.slice(0, 2)) {
+        const genreKey = genre.toLowerCase();
+        let spotifyGenre = genreKey
+          .replace(/\s+/g, '-')
+          .replace('r&b', 'r-n-b')
+          .replace('hip-hop', 'hip-hop')
+          .replace('indie-folk', 'indie-folk')
+          .replace('folk-pop', 'folk-pop');
+        
+        // Map lofi/lo-fi to Spotify's genre format
+        if (genreKey === 'lofi' || genreKey === 'lo-fi') {
+          spotifyGenre = 'chill';
         }
-      }
-    }
-    
-    // Extract key words from description for more contextual searches
-    if (description) {
-      const descriptionWords = description
-        .toLowerCase()
-        .split(/\s+/)
-        .filter((word: string) => word.length > 4) // Only longer, meaningful words
-        .filter((word: string) => !['the', 'this', 'that', 'with', 'from', 'image', 'photo', 'picture'].includes(word))
-        .slice(0, 3); // Take top 3 meaningful words
-      
-      for (const word of descriptionWords) {
-        if (genres.length > 0) {
-          searchQueries.push(`${genres[0]} ${word}`);
+        
+        if (!seedGenres.includes(spotifyGenre)) {
+          seedGenres.push(spotifyGenre);
         }
       }
     }
 
+    // Search for artist IDs (needed for recommendations API)
+    // Use more artists (up to 5) for seed, but search through many more for direct track searches
+    const artistIds: string[] = [];
+    const artistSearchPromises = seedArtists.slice(0, 5).map(async (artistName) => {
+      try {
+        const artistSearch = await spotifyApi.searchArtists(artistName, { limit: 1 });
+        if (artistSearch.body.artists?.items?.[0]?.id) {
+          return artistSearch.body.artists.items[0].id;
+        }
+      } catch (error) {
+        console.error(`Error searching for artist "${artistName}":`, error);
+      }
+      return null;
+    });
+    
+    const resolvedIds = await Promise.all(artistSearchPromises);
+    artistIds.push(...resolvedIds.filter((id): id is string => id !== null));
+
+    // Create search queries for direct track searches (as backup/complement to recommendations)
+    const searchQueries: string[] = [];
+    
+    // For classroom scenes, prioritize lofi/study music searches
+    if (isClassroomScene) {
+      // Add lofi-specific search terms
+      searchQueries.push('lofi');
+      searchQueries.push('lo-fi');
+      searchQueries.push('study music');
+      searchQueries.push('chillhop');
+      searchQueries.push('lofi hip hop');
+      
+      // Add artist-based searches for lofi artists
+      for (const artist of lofiArtists.slice(0, 20)) {
+        searchQueries.push(`artist:"${artist}"`);
+      }
+    } else {
+      // Add artist-based searches - use artists from the analysis (up to 25)
+      // This gives us a large pool of tracks to choose from
+      for (const artist of seedArtists.slice(0, 25)) {
+        searchQueries.push(`artist:"${artist}"`);
+      }
+    }
+    
+    // Add genre + mood/energy searches (combine to avoid title-only matches)
+    if (genres.length > 0) {
+      const primaryGenre = genres[0];
+      
+      // Combine genre with mood
+      if (mood) {
+        searchQueries.push(`${primaryGenre} ${mood}`);
+      }
+      
+      // Combine genre with energy descriptors
+      if (energy === 'high') {
+        searchQueries.push(`${primaryGenre} upbeat`);
+      } else if (energy === 'low') {
+        searchQueries.push(`${primaryGenre} mellow`);
+        searchQueries.push(`${primaryGenre} acoustic`);
+      }
+      
+      // Combine genre with musical keywords
+      for (const keyword of musicalKeywords.slice(0, 3)) {
+        searchQueries.push(`${primaryGenre} ${keyword}`);
+      }
+    }
+
     // Perform multiple searches to get diverse results
-    const allTracks: any[] = [];
+    let allTracks: any[] = [];
     const seenTrackIds = new Set<string>(); // Track IDs we've already added
     const artistCounts: { [key: string]: number } = {};
     const maxTracksPerArtist = 3; // Maximum tracks per artist (at most 3)
     const targetTrackCount = 20;
 
-    // Shuffle search queries to get variety
-    const shuffledQueries = searchQueries.sort(() => Math.random() - 0.5);
-    
-    // Search with different queries - fetch enough tracks to ensure we can get 20 after filtering
-    for (const query of shuffledQueries.slice(0, 15)) { // Increase to 15 queries to get more tracks
-      if (allTracks.length >= targetTrackCount * 3) break; // Get 3x target to account for filtering and artist limits
-      
+    // PRIMARY METHOD: Use Spotify Recommendations API for accurate genre matching
+    if (artistIds.length > 0 || seedGenres.length > 0) {
       try {
-        const searchResults = await spotifyApi.searchTracks(query, {
-          limit: 10, // Get fewer per query but more queries
-        });
-
-        if (searchResults.body.tracks?.items) {
-          // Separate tracks with and without preview URLs
-          const tracksWithPreview: any[] = [];
-          const tracksWithoutPreview: any[] = [];
-          
-          for (const track of searchResults.body.tracks.items) {
-            if (!track || !track.id) continue;
-            
-            // Check if track is already in our list using Set (faster and more reliable)
-            if (seenTrackIds.has(track.id)) {
-              continue; // Skip duplicate track
-            }
-            
-            // Get primary artist (first artist)
-            const primaryArtist = track.artists?.[0]?.name || '';
-            
-            // Check if we already have enough tracks from this artist
-            if (primaryArtist && artistCounts[primaryArtist] >= maxTracksPerArtist) {
-              continue; // Skip this track
-            }
-            
-            // Add track ID to seen set
-            seenTrackIds.add(track.id);
-            
-            // Prioritize tracks with preview URLs
-            if (track.preview_url) {
-              tracksWithPreview.push(track);
-            } else {
-              tracksWithoutPreview.push(track);
-            }
+        // Build recommendations parameters
+        const recommendationsParams: any = {
+          limit: 50, // Get more recommendations
+        };
+        
+        // Add seed artists (up to 5)
+        if (artistIds.length > 0) {
+          recommendationsParams.seed_artists = artistIds.slice(0, 5);
+        }
+        
+        // Add seed genres (up to 2)
+        if (seedGenres.length > 0) {
+          recommendationsParams.seed_genres = seedGenres.slice(0, 2);
+        }
+        
+        // Special handling for classroom scenes - prioritize lofi/study music
+        if (isClassroomScene) {
+          recommendationsParams.target_energy = 0.2;
+          recommendationsParams.max_energy = 0.4;
+          recommendationsParams.target_tempo = 85;
+          recommendationsParams.max_tempo = 100;
+          recommendationsParams.target_valence = 0.5;
+          recommendationsParams.target_danceability = 0.3;
+          recommendationsParams.max_danceability = 0.5;
+          recommendationsParams.target_instrumentalness = 0.7;
+          recommendationsParams.min_instrumentalness = 0.5;
+        } else {
+          // Map energy to target_energy (0.0 to 1.0)
+          if (energy === 'high') {
+            recommendationsParams.target_energy = 0.8;
+            recommendationsParams.min_energy = 0.6;
+          } else if (energy === 'low') {
+            recommendationsParams.target_energy = 0.3;
+            recommendationsParams.max_energy = 0.5;
+          } else {
+            recommendationsParams.target_energy = 0.5;
           }
           
-          // Add tracks with preview URLs first, then tracks without
-          allTracks.push(...tracksWithPreview, ...tracksWithoutPreview);
+          // Map tempo to target_tempo (BPM)
+          if (tempo === 'fast') {
+            recommendationsParams.target_tempo = 140;
+            recommendationsParams.min_tempo = 120;
+          } else if (tempo === 'slow') {
+            recommendationsParams.target_tempo = 80;
+            recommendationsParams.max_tempo = 100;
+          } else {
+            recommendationsParams.target_tempo = 110;
+          }
           
-          // Update artist counts
-          [...tracksWithPreview, ...tracksWithoutPreview].forEach(track => {
+          // Map mood to valence (positivity) and danceability
+          if (mood) {
+            const moodLower = mood.toLowerCase();
+            if (['happy', 'upbeat', 'energetic'].includes(moodLower)) {
+              recommendationsParams.target_valence = 0.8;
+              recommendationsParams.target_danceability = 0.7;
+            } else if (['sad', 'melancholy', 'melancholic'].includes(moodLower)) {
+              recommendationsParams.target_valence = 0.3;
+              recommendationsParams.max_valence = 0.5;
+            } else if (['calm', 'chill', 'peaceful'].includes(moodLower)) {
+              recommendationsParams.target_energy = 0.3;
+              recommendationsParams.target_valence = 0.5;
+            } else if (['romantic', 'dreamy'].includes(moodLower)) {
+              recommendationsParams.target_valence = 0.6;
+              recommendationsParams.target_energy = 0.4;
+            }
+          }
+        }
+        
+        const recommendations = await spotifyApi.getRecommendations(recommendationsParams);
+        
+        if (recommendations.body.tracks) {
+          for (const track of recommendations.body.tracks) {
+            if (!track || !track.id) continue;
+            if (seenTrackIds.has(track.id)) continue;
+            
             const primaryArtist = track.artists?.[0]?.name || '';
+            if (primaryArtist && artistCounts[primaryArtist] >= maxTracksPerArtist) {
+              continue;
+            }
+            
+            seenTrackIds.add(track.id);
+            allTracks.push(track);
+            
             if (primaryArtist) {
               artistCounts[primaryArtist] = (artistCounts[primaryArtist] || 0) + 1;
             }
-          });
+          }
         }
       } catch (error) {
-        console.error(`Error searching with query "${query}":`, error);
-        // Continue with next query
+        console.error('Error getting recommendations:', error);
+        // Fall back to search if recommendations fail
       }
     }
 
-    // If we don't have enough tracks, do a fallback search
-    // Continue searching until we have at least 3x target count to account for filtering and artist limits
-    while (allTracks.length < targetTrackCount * 3) {
-      let fallbackQuery = genres[0] || 'pop';
-      
-      // For nature scenes, use more specific indie folk searches
-      if (isNatureScene) {
-        fallbackQuery = 'indie folk';
-      }
+    // SECONDARY METHOD: Direct track searches to complement recommendations
+    const shuffledQueries = searchQueries.sort(() => Math.random() - 0.5);
+    
+    for (const query of shuffledQueries.slice(0, 10)) {
+      if (allTracks.length >= targetTrackCount * 3) break;
       
       try {
-        // Try multiple fallback queries
-        const fallbackQueries = [
-          `popular ${fallbackQuery}`,
-          fallbackQuery,
-          `genre:"${fallbackQuery}"`,
-        ];
+        const searchResults = await spotifyApi.searchTracks(query, {
+          limit: 10,
+        });
+
+        if (searchResults.body.tracks?.items) {
+          for (const track of searchResults.body.tracks.items) {
+            if (!track || !track.id) continue;
+            if (seenTrackIds.has(track.id)) continue;
+            
+            const primaryArtist = track.artists?.[0]?.name || '';
+            if (primaryArtist && artistCounts[primaryArtist] >= maxTracksPerArtist) {
+              continue;
+            }
+            
+            seenTrackIds.add(track.id);
+            allTracks.push(track);
+            
+            if (primaryArtist) {
+              artistCounts[primaryArtist] = (artistCounts[primaryArtist] || 0) + 1;
+            }
+          }
+        }
+      } catch (error) {
+        console.error(`Error searching with query "${query}":`, error);
+      }
+    }
+
+    // If we don't have enough tracks, do a fallback search using more artists from the analysis
+    // Continue searching until we have at least 3x target count to account for filtering and artist limits
+    if (allTracks.length < targetTrackCount * 2 && seedArtists.length > 5) {
+      // Use more artists from the analysis that we haven't searched yet
+      const fallbackArtists = seedArtists.slice(5, 25); // Use artists 6-25 from the list
+      
+      // Search for tracks by these artists
+      for (const artist of fallbackArtists) {
+        if (allTracks.length >= targetTrackCount * 2) break;
         
-        let foundNewTracks = false;
-        for (const query of fallbackQueries) {
-          if (allTracks.length >= targetTrackCount * 2) break;
-          
-          const fallbackResults = await spotifyApi.searchTracks(query, {
-            limit: 50, // Get more tracks per query
+        try {
+          const fallbackResults = await spotifyApi.searchTracks(`artist:"${artist}"`, {
+            limit: 20,
           });
           
           if (fallbackResults.body.tracks?.items) {
             for (const track of fallbackResults.body.tracks.items) {
               if (allTracks.length >= targetTrackCount * 2) break;
               if (!track || !track.id) continue;
-              
-              // Check if track is already in our list using Set (faster and more reliable)
-              if (seenTrackIds.has(track.id)) {
-                continue;
-              }
+              if (seenTrackIds.has(track.id)) continue;
               
               const primaryArtist = track.artists?.[0]?.name || '';
               if (primaryArtist && artistCounts[primaryArtist] >= maxTracksPerArtist) {
                 continue;
               }
               
-              // Add track ID to seen set
               seenTrackIds.add(track.id);
-              
               allTracks.push(track);
-              foundNewTracks = true;
               
               if (primaryArtist) {
                 artistCounts[primaryArtist] = (artistCounts[primaryArtist] || 0) + 1;
               }
             }
           }
+        } catch (error) {
+          console.error(`Error in fallback search for artist "${artist}":`, error);
         }
-        
-        // If we didn't find any new tracks, break to avoid infinite loop
-        if (!foundNewTracks) {
-          break;
-        }
-      } catch (error) {
-        console.error('Error in fallback search:', error);
-        break; // Break on error to avoid infinite loop
-      }
-      
-      // Safety check: if we've tried multiple times and still don't have enough, break
-      if (allTracks.length < targetTrackCount && allTracks.length > 0) {
-        // We have some tracks but not enough - this is okay, we'll work with what we have
-        break;
       }
     }
 
     if (allTracks.length === 0) {
       return res.status(404).json({ error: 'No tracks found matching the analysis' });
+    }
+
+    // For classroom scenes, filter out EDM/electronic/dance tracks that don't match the lofi vibe
+    if (isClassroomScene) {
+      const edmKeywords = ['edm', 'electronic', 'dance', 'house', 'techno', 'trance', 'dubstep', 'rave', 'festival'];
+      allTracks = allTracks.filter(track => {
+        if (!track || !track.name) return true;
+        const trackNameLower = track.name.toLowerCase();
+        const artistNameLower = track.artists?.[0]?.name?.toLowerCase() || '';
+        const albumNameLower = track.album?.name?.toLowerCase() || '';
+        
+        // Filter out tracks with EDM keywords in name/artist/album
+        const hasEdmKeyword = edmKeywords.some(keyword => 
+          trackNameLower.includes(keyword) || 
+          artistNameLower.includes(keyword) || 
+          albumNameLower.includes(keyword)
+        );
+        
+        // Also filter out high-energy tracks (EDM is typically high energy)
+        const isHighEnergy = (track as any).energy && (track as any).energy > 0.7;
+        
+        return !hasEdmKeyword && !isHighEnergy;
+      });
+      console.log(`Filtered EDM tracks for classroom scene, ${allTracks.length} tracks remaining`);
     }
 
     // Apply popularity filter based on user selection
