@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col lg:flex-row relative">
+    <main className="flex min-h-screen flex-col lg:flex-row relative overflow-x-hidden max-w-full">
       {/* Left Section - Yellow Background */}
       <section className="flex flex-1 flex-col items-center justify-center bg-gradient-to-br from-[#FFD740] to-[#FFE8A0] px-6 pt-12 pb-8 lg:px-8 lg:pt-16 lg:pb-12">
         <div className="flex w-full max-w-xl flex-col items-center text-center">
