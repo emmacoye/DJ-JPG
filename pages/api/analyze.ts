@@ -57,9 +57,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 1. **VISUAL-TO-MUSICAL TRANSLATION**: Think about how visual elements translate to musical qualities:
    
-   **COLORS → GENRE**: Bright/vibrant → POP; Warm earth tones → FOLK/COUNTRY; Cool/muted → INDIE POP/ACOUSTIC; Dark → R&B/INDIE POP; Natural greens → FOLK/COUNTRY
+   **COLORS → GENRE**: Bright/vibrant → POP; Warm earth tones → FOLK/COUNTRY; Cool/muted → INDIE POP/ACOUSTIC; Dark → R&B/INDIE POP; Natural greens → FOLK/COUNTRY; Black/dark/metal → METAL, HARD ROCK, ROCK
    
-   **SETTING → GENRE**: Forest/Nature → INDIE FOLK (primary), FOLK POP; Party/Club → POP, HIP HOP; Urban/City → HIP HOP, POP; Beach/Ocean → POP, REGGAE; Night → POP, R&B; Cozy/Indoor → INDIE POP, ACOUSTIC; Desert → FOLK, COUNTRY; Rainy → INDIE POP, ACOUSTIC; **Classroom/School/Study** → LOFI (primary), AMBIENT, INSTRUMENTAL, CHILL (secondary)
+   **SETTING → GENRE**: Forest/Nature → INDIE FOLK (primary), FOLK POP; Party/Club → POP, HIP HOP; Urban/City → HIP HOP, POP; Beach/Ocean → POP, REGGAE; Night → POP, R&B; Cozy/Indoor → INDIE POP, ACOUSTIC; Desert → FOLK, COUNTRY; Rainy → INDIE POP, ACOUSTIC; **Classroom/School/Study** → LOFI (primary), AMBIENT, INSTRUMENTAL, CHILL (secondary); **Concert/Metal/Band/Stage** → METAL (primary), HARD ROCK, ROCK; **Dark/Gothic/Metal aesthetic** → METAL, HARD ROCK, ROCK
    
    **LIGHTING → ENERGY**: Bright = high; Soft = medium; Dark = low-medium
    
@@ -69,7 +69,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 2. **MOOD SCORING**: Score 0-100 based on visual evidence. Primary moods: 60-90, secondary: 30-60, unrelated: 0-30. Each mood is independent.
 
-3. **GENRE SELECTION**: PRIMARY genre (first) must match dominant visual. Use 3-5 mainstream Spotify genres. Use "indie pop" not "indie", "hip hop" not "rap", "R&B" not "rhythm and blues". **For classroom/school scenes: MUST use "lofi" or "lo-fi" as PRIMARY genre**, followed by "ambient", "instrumental", "chill". Avoid niche subgenres.
+3. **GENRE SELECTION**: PRIMARY genre (first) must match dominant visual. Use 3-5 mainstream Spotify genres. Use "indie pop" not "indie", "hip hop" not "rap", "R&B" not "rhythm and blues". **For classroom/school scenes: MUST use "lofi" or "lo-fi" as PRIMARY genre**, followed by "ambient", "instrumental", "chill". **For metal/rock/band scenes: MUST use "metal" or "hard rock" or "rock" as PRIMARY genre**, followed by "alternative rock", "punk", "grunge". Avoid niche subgenres.
 
 4. **MUSICAL KEYWORDS**: Mix musical descriptors (acoustic, instrumental, guitar, piano) + mood terms (upbeat, mellow, dreamy). 3-5 keywords total. Combine with genres in search.
 
@@ -79,6 +79,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
    - Generate 20-25 specific artists whose music matches this image's vibe, genres, mood, and energy
    - Use well-known, mainstream Spotify artists. Prioritize artists matching the PRIMARY genre
    - **For classroom/school scenes: Include lofi/study music artists** like Lofi Girl, Chillhop Music, Kupla, Idealism, Jinsang, Nujabes, Tomppabeats, Birocratic, Sleepy Fish, Aso, eery, SwuM, plus instrumental/ambient artists like Bonobo, Tycho, Boards of Canada, Brian Eno, Marconi Union
+   - **For metal/hard rock/band scenes: Include metal/hard rock artists** like Metallica, Iron Maiden, Black Sabbath, Slipknot, System of a Down, Tool, Avenged Sevenfold, Disturbed, Five Finger Death Punch, Pantera, Megadeth, AC/DC, Guns N' Roses, Led Zeppelin, Black Sabbath, Judas Priest, Motorhead, Slayer, Anthrax
    - Include mix of popular/mainstream + genre-specific artists
    - Use exact Spotify artist names
 
@@ -110,7 +111,7 @@ Return your response as a JSON object with this exact structure:
 
 **CRITICAL REQUIREMENTS**:
 - moodScores: Score based on visual evidence. Primary moods should be 60-90, secondary 30-60, unrelated moods 0-30
-- genres: Must be mainstream Spotify genres. Include 3-5 genres, with the first being the strongest match. For nature/forest scenes, prioritize "indie folk" or "folk pop" as the first genre. **For classroom/school scenes, prioritize "lofi" or "lo-fi" as the PRIMARY genre**, followed by "ambient", "instrumental", "chill"
+- genres: Must be mainstream Spotify genres. Include 3-5 genres, with the first being the strongest match. For nature/forest scenes, prioritize "indie folk" or "folk pop" as the first genre. **For classroom/school scenes, prioritize "lofi" or "lo-fi" as the PRIMARY genre**, followed by "ambient", "instrumental", "chill". **For metal/rock/band scenes, prioritize "metal" or "hard rock" or "rock" as the PRIMARY genre**, followed by "alternative rock", "punk", "grunge"
 - musicalKeywords: 5 keywords that work in Spotify search - mix genre terms and mood/feeling terms
 - description: Must include searchable location/setting words, time references, and mood words that could match song descriptions
 - playlistTheme: Keep it short and evocative - this becomes the playlist name
