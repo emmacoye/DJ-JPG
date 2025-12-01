@@ -1,719 +1,374 @@
-[00:00:00.916] Server  LOG      ✓ Ready in 681ms
-[00:00:03.673] Server  WARN     ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:01.074] Server  LOG      ✓ Ready in 796ms
+[00:00:06.455] Server  WARN     ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:03.844] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:00:52.057] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:00:52.057] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:00:52.057] Server  LOG       http://127.0.0.1:3000/api/auth/callback
-[00:00:52.058] Server  LOG     Request host: "127.0.0.1:3000"
-[00:00:52.058] Server  LOG     Redirect host: "127.0.0.1:3000"
-[00:00:52.058] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
-[00:00:52.058] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=4o1go079khgasvrgbacex7&show_dialog=true"
-[00:00:52.058] Server  LOG     Setting state cookie: "4o1go079khgasvrgbacex7"
-[00:00:52.058] Server  LOG     Cookie string: "spotify_auth_state=4o1go079khgasvrgbacex7; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
-[00:00:58.534] Server  LOG     Callback received - Query params: {}
-[00:00:58.535] Server  LOG     All cookies: {}
-[00:00:58.535] Server  LOG     Cookie header: "spotify_access_token=BQBdocnPpDT5nA_GiVlix4NWdmfM4arTFiAbCDUeiNmvZk8DmML9BWOkBoz0goSKik_mnFIO9tHJPbw5cD3CooNS6jqgrv6ymlyfKXDsDrbahz6Ze9o90_ZftdJtpNx8luzQ-p910uYTaQZuAAgTFWrpxTnxTurz2xlGq86cGHtFF5My1luN6jHVGz4NU4NIhKYRxm7To_povzEQ4aT4z8Y8N1NXnCHurR-zmIS2b9QPH3J3oB_XkcvtKRFDdtRlq4wdvCJDE-lZhk0zLFlxH64PE87_fR6H1EaIOUW89_oArzkM7Tc2vCBQ7-KXG4_h7fPY-jFCC3fFPrTwAb7ahw; spotify_refresh_token=AQBRKNXDnfNbs78R9QVFkcdRMTdBBbX7uOFoB_QtCFta6L8qbamw9t3d-NFbrr0km1gcPVRMJ92DeY4k4Jq2Nk_ZC4hX4MXJpgLni32hfAus53m7-JPlSh6v0EHEPXbne90; spotify_auth_state=4o1go079khgasvrgbacex7"
-[00:00:58.535] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
-[00:00:58.535] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
-[00:00:58.535] Server  LOG        http://127.0.0.1:3000/api/auth/callback
-[00:00:58.535] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
-[00:00:58.535] Server  LOG     🔄 Exchanging authorization code for tokens...
-[00:00:58.535] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:00:58.535] Server  LOG        Client ID: "d4c3aed4f5..."
-[00:00:58.637] Server  LOG     ✅ Token exchange successful
-[00:00:58.637] Server  LOG     Token received: {}
-[00:00:58.637] Server  LOG     🔍 Verifying token...
-[00:00:58.637] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
-[00:00:58.637] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
-[00:00:58.637] Server  LOG        Client Secret length: 32
-[00:00:58.637] Server  LOG        Token length: 342
-[00:00:58.637] Server  LOG        Token starts with: "BQCQt6kArQv6WSGL9BBj"
-[00:00:58.638] Server  LOG        Making getMe() call to verify token...
-[00:00:58.771] Server  LOG        Raw HTTP request status: 200
-[00:00:58.772] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
-[00:00:58.869] Server  LOG     ✅ Token verified via library - user: "emmacoye"
-[00:00:59.266] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:01:05.710] Browser LOG     Compressed image size: 36KB
-[00:01:05.723] Server  LOG     Analyzing image (size: 0.04MB)
-[00:01:11.269] Server  LOG      ✓ Compiled in 14ms
-[00:01:19.625] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:01:19.694] Browser LOG     Analysis data: {"characteristics":["rhythmic","upbeat","intense"],"colors":"contrast of dark uniforms against the bright lights of the basketball court","description":"Inside a vibrant basketball game setting, the bright lights illuminate the intense, competitive atmosphere. The energy is high, with a lively and rhythmic feel that mirrors the fast-paced action on the court. This setting calls for music that matches the drive and dynamism of the players.","emotion":"intense competition","energy":"high","genres":["hip hop","pop","indie pop"],"lighting":"bright indoor sports lighting","mood":"energetic","moodScores":{"calm":10,"chill":20,"dreamy":10,"energetic":80,"happy":40,"melancholy":0,"nostalgic":30,"romantic":0},"musicalKeywords":["energetic","upbeat","hip hop","rhythmic","intense"],"playlistTheme":"Court Energy","tempo":"fast"}
-[00:01:19.694] Browser LOG     Mood scores: {"calm":10,"chill":20,"dreamy":10,"energetic":80,"happy":40,"melancholy":0,"nostalgic":30,"romantic":0}
-[00:01:19.774] Server  LOG     User authenticated: "emmacoye"
-[00:01:26.779] Server  LOG     Returning 20 tracks (target: 20)
-[00:01:26.887] Browser LOG     === TRACK DATA DEBUG ===
-[00:01:26.887] Browser LOG     Total tracks: 20
-[00:01:26.887] Browser LOG     First track full data: {"album":"Cigarettes After Sex","album_image":"https://i.scdn.co/image/ab67616d0000b273dfed999f959177dfc4f33cdc","artists":"Cigarettes After Sex","duration_ms":290146,"external_urls":{"spotify":"https://open.spotify.com/track/1oAwsWBovWRIp7qLMGPIet"},"id":"1oAwsWBovWRIp7qLMGPIet","name":"Apocalypse","preview_url":null,"uri":"spotify:track:1oAwsWBovWRIp7qLMGPIet"}
-[00:01:26.887] Browser LOG     Tracks with preview URLs: 0
-[00:01:26.887] Browser LOG     Tracks without preview URLs: 20
-[00:01:26.887] Browser LOG     Sample track preview_url: null
-[00:01:26.887] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:01:26.887] Browser LOG     ========================
-[00:01:36.197] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:01:36.292] Server  LOG     User authenticated: "emmacoye"
-[00:01:41.909] Server  LOG     Returning 20 tracks (target: 20)
-[00:01:42.019] Browser LOG     === TRACK DATA DEBUG ===
-[00:01:42.019] Browser LOG     Total tracks: 20
-[00:01:42.020] Browser LOG     First track full data: {"album":"100 Human Sounds - Sneezes, Screams, Snores & More","album_image":"https://i.scdn.co/image/ab67616d0000b273ce58255494d8f58d44a3f444","artists":"Pro Sound Effects Library","duration_ms":55658,"external_urls":{"spotify":"https://open.spotify.com/track/75TuuhZB8NTT1lCXprMQLS"},"id":"75TuuhZB8NTT1lCXprMQLS","name":"Woman Groaning","preview_url":null,"uri":"spotify:track:75TuuhZB8NTT1lCXprMQLS"}
-[00:01:42.020] Browser LOG     Tracks with preview URLs: 0
-[00:01:42.020] Browser LOG     Tracks without preview URLs: 20
-[00:01:42.020] Browser LOG     Sample track preview_url: null
-[00:01:42.020] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:01:42.020] Browser LOG     ========================
-[00:01:49.946] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:01:50.069] Server  LOG     User authenticated: "emmacoye"
-[00:01:57.101] Server  LOG     Returning 20 tracks (target: 20)
-[00:01:57.206] Browser LOG     === TRACK DATA DEBUG ===
-[00:01:57.206] Browser LOG     Total tracks: 20
-[00:01:57.206] Browser LOG     First track full data: {"album":"Popular (Music from the HBO Original Series)","album_image":"https://i.scdn.co/image/ab67616d0000b2734c8f092adc59b4bf4212389d","artists":"The Weeknd, Playboi Carti, Madonna","duration_ms":215466,"external_urls":{"spotify":"https://open.spotify.com/track/6WzRpISELf3YglGAh7TXcG"},"id":"6WzRpISELf3YglGAh7TXcG","name":"Popular (with Playboi Carti & Madonna) - From The Idol Vol. 1 (Music from the HBO Original Series)","preview_url":null,"uri":"spotify:track:6WzRpISELf3YglGAh7TXcG"}
-[00:01:57.206] Browser LOG     Tracks with preview URLs: 0
-[00:01:57.206] Browser LOG     Tracks without preview URLs: 20
-[00:01:57.206] Browser LOG     Sample track preview_url: null
-[00:01:57.206] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:01:57.206] Browser LOG     ========================
-[00:02:26.183] Server  LOG     Cookies received: {}
-[00:02:26.183] Server  LOG     Spotify Client ID configured: true
-[00:02:26.183] Server  LOG     Spotify Client Secret configured: true
-[00:02:26.183] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:02:26.346] Server  LOG     User authenticated: "emmacoye"
-[00:02:26.347] Server  LOG     Creating playlist for user: "emmacoye"
-[00:02:26.347] Server  LOG     Using 20 track URIs from preview
-[00:02:26.347] Server  LOG     After removing duplicates: 20 unique tracks
-[00:02:26.347] Server  LOG     Attempting to create playlist: {}
-[00:02:26.347] Server  LOG     Creating playlist via raw HTTP API...
-[00:02:26.347] Server  LOG     Playlist creation payload: "{\n  \"name\": \"Court Energy\",\n  \"description\": \"Created from photo analysis: Inside a vibrant basketball game setting, the bright lights illuminate the intense, competitive atmosphere. The energy is high, with a lively and rhythmic feel that mirrors the fast-paced action on the court. This setting calls for music that matches the drive and\",\n  \"public\": false,\n  \"collaborative\": false\n}"
-[00:02:26.347] Server  LOG     Public setting being sent: false
-[00:02:26.651] Server  LOG     Playlist created successfully via HTTP API: "7ABUGfOE7n85EaSkit6U8d" "Court Energy"
-[00:02:26.651] Server  LOG     Playlist visibility from Spotify response: {}
-[00:02:26.651] Server  LOG     Playlist response received
-[00:02:26.651] Server  LOG     Type: "object"
-[00:02:26.652] Server  LOG     Response: {}
-[00:02:26.652] Server  LOG     Playlist created successfully: "7ABUGfOE7n85EaSkit6U8d" "Court Energy"
-[00:02:26.652] Server  LOG     Initial playlist visibility: false
-[00:02:26.652] Server  LOG     Adding 20 unique tracks to playlist
-[00:02:26.822] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:02:29.418] Server  LOG     Cover image uploaded successfully
-[00:04:04.318] Server  LOG      ✓ Compiled in 44ms
-[00:05:26.079] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:05:26.079] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:05:26.079] Server  LOG       http://127.0.0.1:3000/api/auth/callback
-[00:05:26.079] Server  LOG     Request host: "127.0.0.1:3000"
-[00:05:26.079] Server  LOG     Redirect host: "127.0.0.1:3000"
-[00:05:26.079] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
-[00:05:26.079] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=q68ynag98bwlhljfvoro&show_dialog=true"
-[00:05:26.079] Server  LOG     Setting state cookie: "q68ynag98bwlhljfvoro"
-[00:05:26.079] Server  LOG     Cookie string: "spotify_auth_state=q68ynag98bwlhljfvoro; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
-[00:05:27.976] Server  LOG     Callback received - Query params: {}
-[00:05:27.976] Server  LOG     All cookies: {}
-[00:05:27.976] Server  LOG     Cookie header: "spotify_access_token=BQCQt6kArQv6WSGL9BBja_C1QLfYONoaidZVCGAhhcbnn08eDKfgeDUJhJBHZ0DexBo1CvJGcw2_9tJ0WW0rn2Va7mOA7dDYohoVNVEACQHEUfxLmQhh4bW4OL09NDXVBIAF--48ZIDT-dXpOHa8nTjPef9Ty1wS7MbCQO9xTEjs9f_SUlERTmoO4h8YQYlGg83bl0ybth0j4CxxuWU2Dxg1w14bdf5ccWw3bqo-jh5hOIydmF36fZLAGI877D6bXIA3amYCU9X53gogXC_zw8Bq2BcyepnIVOMW8rSCWc2_ScGp3HTDoM0X_v-ivIRnj0_yh6dH-fwkUvSB3d6Q3g; spotify_refresh_token=AQB6iyi3SkDivNs3vG1qLLrJ9biQ_bMmq96MCZkdGQaCnVkta2LIJxZAV7O6EcDB4pNgZ77ZjL6NI-hZenfqh2q5VDMwzW1wvTCoYcEwEc8INrZN1fNr1NrXln9Q3s2mIVw; spotify_auth_state=q68ynag98bwlhljfvoro"
-[00:05:27.976] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
-[00:05:27.976] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
-[00:05:27.976] Server  LOG        http://127.0.0.1:3000/api/auth/callback
-[00:05:27.976] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
-[00:05:27.976] Server  LOG     🔄 Exchanging authorization code for tokens...
-[00:05:27.976] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:05:27.976] Server  LOG        Client ID: "d4c3aed4f5..."
-[00:05:28.469] Server  LOG     ✅ Token exchange successful
-[00:05:28.469] Server  LOG     Token received: {}
-[00:05:28.469] Server  LOG     🔍 Verifying token...
-[00:05:28.469] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
-[00:05:28.469] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
-[00:05:28.469] Server  LOG        Client Secret length: 32
-[00:05:28.469] Server  LOG        Token length: 342
-[00:05:28.469] Server  LOG        Token starts with: "BQCL8P-Y52PJKwj6lo2C"
-[00:05:28.470] Server  LOG        Making getMe() call to verify token...
-[00:05:28.730] Server  LOG        Raw HTTP request status: 200
-[00:05:28.732] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
-[00:05:28.837] Server  LOG     ✅ Token verified via library - user: "emmacoye"
-[00:05:29.171] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:05:58.344] Server  LOG     Analyzing image (size: 0.01MB)
-[00:05:58.407] Browser LOG     Compressed image size: 9KB
-[00:06:18.404] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:06:18.496] Browser LOG     Analysis data: {"characteristics":["upbeat","playful","warm"],"colors":"warm oranges and soft pastels","description":"A bright, playful scene featuring warm oranges and soft pastels, evoking an upbeat and happy atmosphere. Perfect for a cheerful and lively playlist with playful and indie pop vibes.","emotion":"playful, upbeat","energy":"high","genres":["pop","indie pop","electronic"],"lighting":"bright and cheerful with a soft, playful tone","mood":"happy","moodScores":{"calm":30,"chill":40,"dreamy":50,"energetic":60,"happy":85,"melancholy":10,"nostalgic":25,"romantic":20},"musicalKeywords":["pop","upbeat","happy","playful","indie"],"playlistTheme":"Happy Vibes","tempo":"moderate"}
-[00:06:18.496] Browser LOG     Mood scores: {"calm":30,"chill":40,"dreamy":50,"energetic":60,"happy":85,"melancholy":10,"nostalgic":25,"romantic":20}
-[00:06:18.869] Server  LOG     User authenticated: "emmacoye"
-[00:06:25.807] Server  LOG     Returning 20 tracks (target: 20)
-[00:06:25.914] Browser LOG     === TRACK DATA DEBUG ===
-[00:06:25.914] Browser LOG     Total tracks: 20
-[00:06:25.914] Browser LOG     First track full data: {"album":"Dream Your Life Away (Deluxe Edition)","album_image":"https://i.scdn.co/image/ab67616d0000b2737cffb8896928039a0a10e4e7","artists":"Vance Joy","duration_ms":204280,"external_urls":{"spotify":"https://open.spotify.com/track/2uXlHCUbq9OMUwx3hrk06o"},"id":"2uXlHCUbq9OMUwx3hrk06o","name":"Riptide","preview_url":null,"uri":"spotify:track:2uXlHCUbq9OMUwx3hrk06o"}
-[00:06:25.914] Browser LOG     Tracks with preview URLs: 0
-[00:06:25.914] Browser LOG     Tracks without preview URLs: 20
-[00:06:25.914] Browser LOG     Sample track preview_url: null
-[00:06:25.914] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:06:25.914] Browser LOG     ========================
-[00:06:40.550] Browser LOG     Track row clicked: Warmpop
-[00:07:33.691] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:07:33.691] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:07:33.691] Server  LOG       http://127.0.0.1:3000/api/auth/callback
-[00:07:33.691] Server  LOG     Request host: "127.0.0.1:3000"
-[00:07:33.691] Server  LOG     Redirect host: "127.0.0.1:3000"
-[00:07:33.691] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
-[00:07:33.691] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=j7oet4flncir1tm5hewd8&show_dialog=true"
-[00:07:33.691] Server  LOG     Setting state cookie: "j7oet4flncir1tm5hewd8"
-[00:07:33.691] Server  LOG     Cookie string: "spotify_auth_state=j7oet4flncir1tm5hewd8; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
-[00:07:35.871] Server  LOG     Callback received - Query params: {}
-[00:07:35.871] Server  LOG     All cookies: {}
-[00:07:35.871] Server  LOG     Cookie header: "spotify_access_token=BQCL8P-Y52PJKwj6lo2CjsmjqaRFl586t95UxoVmTDrF2u0Y7rFWML8--p5ixvMAI_S3TrPD7YT_GsUxsra3iNGq9_EF80Huftpc9E2tf-KKQ7xssntnm-8HNMmoJDbe1d5CC_sbnRaup64TayzOwn3-n0WQQAwTs5XIHKtRQ-mac7cadYmnzdZCNJTboP-58FrhbPwe_cs8OpqOA_P9eBHjEk4nOt4_u866fhzMr8e2AvOLOGOxKMuz9YJ4aGyropIRxil659MdVl6XZVX8-HJOCeFTCSlqVjyqz3YgRxQBubo1UCuMCxqk9_K0bVVWEye0nUnxrymM6aZHvBIcgg; spotify_refresh_token=AQAXBYanpSf1CAOn5Q2Mb5C-CthdxcBlKiN0PgvffCFirC80wtwhK-bTy377oY1w6ZP1Rj6ld22h4p085dKGvuN_vbUlEenxmS14PRWIT-95r0LM490gpjgOLn2MtmbS_8M; spotify_auth_state=j7oet4flncir1tm5hewd8"
-[00:07:35.872] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
-[00:07:35.872] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
-[00:07:35.872] Server  LOG        http://127.0.0.1:3000/api/auth/callback
-[00:07:35.872] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
-[00:07:35.872] Server  LOG     🔄 Exchanging authorization code for tokens...
-[00:07:35.872] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:07:35.872] Server  LOG        Client ID: "d4c3aed4f5..."
-[00:07:35.974] Server  LOG     ✅ Token exchange successful
-[00:07:35.974] Server  LOG     Token received: {}
-[00:07:35.974] Server  LOG     🔍 Verifying token...
-[00:07:35.974] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
-[00:07:35.974] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
-[00:07:35.974] Server  LOG        Client Secret length: 32
-[00:07:35.974] Server  LOG        Token length: 342
-[00:07:35.975] Server  LOG        Token starts with: "BQD6slagFoMFwGd4hp5u"
-[00:07:35.975] Server  LOG        Making getMe() call to verify token...
-[00:07:36.133] Server  LOG        Raw HTTP request status: 200
-[00:07:36.136] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
-[00:07:36.270] Server  LOG     ✅ Token verified via library - user: "emmacoye"
-[00:07:36.611] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:07:42.017] Server  LOG     Analyzing image (size: 0.01MB)
-[00:07:42.087] Browser LOG     Compressed image size: 5KB
-[00:07:54.759] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:07:54.853] Browser LOG     Analysis data: {"characteristics":["instrumental"],"colors":"Various","description":"I'm sorry, I can't analyze the content of the image you provided.","emotion":"Neutral","energy":"medium","genres":["Pop"],"lighting":"Mixed","mood":"Neutral","moodScores":{"calm":50,"chill":50,"dreamy":50,"happy":50,"melancholy":50},"musicalKeywords":["pop","mainstream"],"playlistTheme":"General Vibes","tempo":"moderate"}
-[00:07:54.853] Browser LOG     Mood scores: {"calm":50,"chill":50,"dreamy":50,"happy":50,"melancholy":50}
-[00:07:54.858] Server  LOG     User authenticated: "emmacoye"
-[00:07:59.087] Server  LOG     Returning 20 tracks (target: 20)
-[00:07:59.194] Browser LOG     === TRACK DATA DEBUG ===
-[00:07:59.194] Browser LOG     Total tracks: 20
-[00:07:59.194] Browser LOG     First track full data: {"album":"The Life of a Showgirl","album_image":"https://i.scdn.co/image/ab67616d0000b273d7812467811a7da6e6a44902","artists":"Taylor Swift","duration_ms":226073,"external_urls":{"spotify":"https://open.spotify.com/track/53iuhJlwXhSER5J2IYYv1W"},"id":"53iuhJlwXhSER5J2IYYv1W","name":"The Fate of Ophelia","preview_url":null,"uri":"spotify:track:53iuhJlwXhSER5J2IYYv1W"}
-[00:07:59.194] Browser LOG     Tracks with preview URLs: 0
-[00:07:59.194] Browser LOG     Tracks without preview URLs: 20
-[00:07:59.194] Browser LOG     Sample track preview_url: null
-[00:07:59.194] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:07:59.194] Browser LOG     ========================
-[00:08:06.025] Browser LOG     Track row clicked: Opalite
-[00:08:17.705] Browser LOG     Track row clicked: Sorry
-[00:08:45.666] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:08:45.666] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:08:45.666] Server  LOG       http://127.0.0.1:3000/api/auth/callback
-[00:08:45.666] Server  LOG     Request host: "127.0.0.1:3000"
-[00:08:45.666] Server  LOG     Redirect host: "127.0.0.1:3000"
-[00:08:45.666] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
-[00:08:45.666] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=ztjaxhjcc0lntjynaq2me9&show_dialog=true"
-[00:08:45.666] Server  LOG     Setting state cookie: "ztjaxhjcc0lntjynaq2me9"
-[00:08:45.666] Server  LOG     Cookie string: "spotify_auth_state=ztjaxhjcc0lntjynaq2me9; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
-[00:08:47.855] Server  LOG     Callback received - Query params: {}
-[00:08:47.856] Server  LOG     All cookies: {}
-[00:08:47.856] Server  LOG     Cookie header: "spotify_access_token=BQD6slagFoMFwGd4hp5umYFIFIjSp9e6Q-zKMTcXVbsXptK1Z_ihiaPkkEJIWywyBpI8Nhgyqc2ectF6_Br6Kr3V34jnlwPsNw1VOzrwrAorpwclBSvTHPFyqANImDyeTHDewto_d4ZdybFc-MXV1HXbhx-Fj3FOJaDXsrZGZgZEEfRziO5Lmzv4a5pgETpoH04hqHLcPZkEC8Wu1j3kPaNFYPxO9YygLL9bxXK259M-x5sBtynJKT0xqj5EnjW5SrEKB11ZeYyM5KbHzD_5oEmSJ6bZ1Yn96sFT9emEtUkeI--K3fJbuAuHVlXykTKQVgw3d1y5E49YWKYivbLBGg; spotify_refresh_token=AQDHylPrr2PfEqA2L2LqQ9cOqRaA3PJhlOS95i04Hk5PDDCSEvfnJyMBHPFhyfpWtCrmO93r2zRWnnBxhgEpAf7C8zpmiCtNRolQ8fvmwDVzihexwXWNRZzGbN9ydqqs3ww; spotify_auth_state=ztjaxhjcc0lntjynaq2me9"
-[00:08:47.856] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
-[00:08:47.856] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
-[00:08:47.856] Server  LOG        http://127.0.0.1:3000/api/auth/callback
-[00:08:47.856] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
-[00:08:47.856] Server  LOG     🔄 Exchanging authorization code for tokens...
-[00:08:47.856] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:08:47.856] Server  LOG        Client ID: "d4c3aed4f5..."
-[00:08:47.967] Server  LOG     ✅ Token exchange successful
-[00:08:47.967] Server  LOG     Token received: {}
-[00:08:47.968] Server  LOG     🔍 Verifying token...
-[00:08:47.968] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
-[00:08:47.968] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
-[00:08:47.968] Server  LOG        Client Secret length: 32
-[00:08:47.968] Server  LOG        Token length: 342
-[00:08:47.968] Server  LOG        Token starts with: "BQC6BMcwq74eRQv58s2P"
-[00:08:47.968] Server  LOG        Making getMe() call to verify token...
-[00:08:48.067] Server  LOG        Raw HTTP request status: 200
-[00:08:48.069] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
-[00:08:48.175] Server  LOG     ✅ Token verified via library - user: "emmacoye"
-[00:08:48.514] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:08:52.742] Server  LOG     Analyzing image (size: 0.00MB)
-[00:08:52.811] Browser LOG     Compressed image size: 3KB
-[00:09:03.718] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:09:03.812] Browser LOG     Analysis data: {"characteristics":["upbeat","humorous","playful"],"colors":"bright white background with black text","description":"A playful and humorous vibe with a bright, minimalist aesthetic. The image's simple black and white theme evokes a pop and indie pop soundtrack full of upbeat and quirky tunes.","emotion":"playful and humorous","energy":"medium","genres":["pop","indie pop","dance"],"lighting":"bright and minimal","mood":"quirky","moodScores":{"calm":10,"chill":20,"dreamy":0,"energetic":50,"happy":70,"melancholy":0,"nostalgic":0,"romantic":0},"musicalKeywords":["quirky","playful","pop","energetic","happy"],"playlistTheme":"Quirky Pop Tunes","tempo":"moderate"}
-[00:09:03.812] Browser LOG     Mood scores: {"calm":10,"chill":20,"dreamy":0,"energetic":50,"happy":70,"melancholy":0,"nostalgic":0,"romantic":0}
-[00:09:03.820] Server  LOG     User authenticated: "emmacoye"
-[00:09:09.846] Server  LOG     Returning 20 tracks (target: 20)
-[00:09:09.952] Browser LOG     === TRACK DATA DEBUG ===
-[00:09:09.952] Browser LOG     Total tracks: 20
-[00:09:09.952] Browser LOG     First track full data: {"album":"Popular (Music from the HBO Original Series)","album_image":"https://i.scdn.co/image/ab67616d0000b2734c8f092adc59b4bf4212389d","artists":"The Weeknd, Playboi Carti, Madonna","duration_ms":215466,"external_urls":{"spotify":"https://open.spotify.com/track/6WzRpISELf3YglGAh7TXcG"},"id":"6WzRpISELf3YglGAh7TXcG","name":"Popular (with Playboi Carti & Madonna) - From The Idol Vol. 1 (Music from the HBO Original Series)","preview_url":null,"uri":"spotify:track:6WzRpISELf3YglGAh7TXcG"}
-[00:09:09.952] Browser LOG     Tracks with preview URLs: 0
-[00:09:09.952] Browser LOG     Tracks without preview URLs: 20
-[00:09:09.952] Browser LOG     Sample track preview_url: null
-[00:09:09.952] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:09:09.952] Browser LOG     ========================
-[00:09:16.455] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:09:16.548] Server  LOG     User authenticated: "emmacoye"
-[00:09:21.517] Server  LOG     Returning 20 tracks (target: 20)
-[00:09:21.623] Browser LOG     === TRACK DATA DEBUG ===
-[00:09:21.623] Browser LOG     Total tracks: 20
-[00:09:21.623] Browser LOG     First track full data: {"album":"I.","album_image":"https://i.scdn.co/image/ab67616d0000b273f20d15ff288e94492f7097eb","artists":"Cigarettes After Sex","duration_ms":286293,"external_urls":{"spotify":"https://open.spotify.com/track/3W7KHojYGgYaoX9ogKO9hU"},"id":"3W7KHojYGgYaoX9ogKO9hU","name":"Nothing's Gonna Hurt You Baby","preview_url":null,"uri":"spotify:track:3W7KHojYGgYaoX9ogKO9hU"}
-[00:09:21.623] Browser LOG     Tracks with preview URLs: 0
-[00:09:21.623] Browser LOG     Tracks without preview URLs: 20
-[00:09:21.623] Browser LOG     Sample track preview_url: null
-[00:09:21.623] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:09:21.623] Browser LOG     ========================
-[00:09:28.111] Browser LOG     Track row clicked: Popular Monster
-[00:09:59.370] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:09:59.371] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:09:59.371] Server  LOG       http://127.0.0.1:3000/api/auth/callback
-[00:09:59.371] Server  LOG     Request host: "127.0.0.1:3000"
-[00:09:59.371] Server  LOG     Redirect host: "127.0.0.1:3000"
-[00:09:59.371] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
-[00:09:59.371] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=f2u4uusazfsv991uxcvf&show_dialog=true"
-[00:09:59.371] Server  LOG     Setting state cookie: "f2u4uusazfsv991uxcvf"
-[00:09:59.371] Server  LOG     Cookie string: "spotify_auth_state=f2u4uusazfsv991uxcvf; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
-[00:10:00.997] Server  LOG     Callback received - Query params: {}
-[00:10:00.997] Server  LOG     All cookies: {}
-[00:10:00.998] Server  LOG     Cookie header: "spotify_access_token=BQC6BMcwq74eRQv58s2Pl6HF41g8FT1nZCIf2nzg8xhsI0xBAIPc77Er8Jbg6QjKO8eSy60FIzv7K3h8kylxjqdZS3z_aat2AhNRZ2U3o8MitA4XtW0CrjfxtJdN83xXJs-3DRQIyzvkmHtN9jwkBNtXVlCnfm1UTCizLf017kZQCG7Ig-xjHZyA1RL9g4Ro7E6T2gAtdgSMBtD3FZ82tgUmqY0gmATiczyWyqbakDiLWhKikEPmyJNY5RPOCDWoDpPeSE3DUND_EbB2gy9N5LNAUMkfxQWiAR2Ityzx6WbBa1mfGJYvRWaYJYvYxK_XwNczQokm3HsvnwL1X2qOzQ; spotify_refresh_token=AQDwPu6VGhnFzuwohU8Xny7ptLQ7WaPzGpvW-r4TLoEIgqmCY2JxnjFD9tFqG_h9NA6CozpQc-wlhRxx7unyeQa7rrDlU-seypOH3GG0l9WYrccj-MKOdfpr1TpRjlya2WI; spotify_auth_state=f2u4uusazfsv991uxcvf"
-[00:10:00.998] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
-[00:10:00.998] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
-[00:10:00.998] Server  LOG        http://127.0.0.1:3000/api/auth/callback
-[00:10:00.998] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
-[00:10:00.998] Server  LOG     🔄 Exchanging authorization code for tokens...
-[00:10:00.998] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:10:00.998] Server  LOG        Client ID: "d4c3aed4f5..."
-[00:10:01.099] Server  LOG     ✅ Token exchange successful
-[00:10:01.099] Server  LOG     Token received: {}
-[00:10:01.099] Server  LOG     🔍 Verifying token...
-[00:10:01.099] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
-[00:10:01.099] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
-[00:10:01.099] Server  LOG        Client Secret length: 32
-[00:10:01.099] Server  LOG        Token length: 342
-[00:10:01.099] Server  LOG        Token starts with: "BQDb-0gFZcrllpgNMfnJ"
-[00:10:01.099] Server  LOG        Making getMe() call to verify token...
-[00:10:01.193] Server  LOG        Raw HTTP request status: 200
-[00:10:01.195] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
-[00:10:01.323] Server  LOG     ✅ Token verified via library - user: "emmacoye"
-[00:10:01.666] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:10:06.645] Server  LOG     Analyzing image (size: 0.00MB)
-[00:10:06.716] Browser LOG     Compressed image size: 4KB
-[00:10:20.529] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:10:20.623] Browser LOG     Analysis data: {"characteristics":["intense","powerful","dynamic"],"colors":"dark tones with deep blacks and muted grays","description":"Dark and intense, with deep blacks and muted grays setting a powerful and energetic scene. The heavy and dynamic atmosphere perfectly matches a fast-paced, high-energy rock vibe, invoking feelings of intensity and power.","emotion":"intense and powerful","energy":"high","genres":["rock","metal","hard rock"],"lighting":"dark and moody, with a heavy atmosphere","mood":"energetic","moodScores":{"calm":10,"chill":15,"dreamy":5,"energetic":80,"happy":20,"melancholy":40,"nostalgic":30,"romantic":10},"musicalKeywords":["rock","metal","energetic","intense","powerful"],"playlistTheme":"Electric Surge","tempo":"fast"}
-[00:10:20.623] Browser LOG     Mood scores: {"calm":10,"chill":15,"dreamy":5,"energetic":80,"happy":20,"melancholy":40,"nostalgic":30,"romantic":10}
-[00:10:20.657] Server  LOG     User authenticated: "emmacoye"
-[00:10:26.722] Server  LOG     Returning 20 tracks (target: 20)
-[00:10:26.828] Browser LOG     === TRACK DATA DEBUG ===
-[00:10:26.828] Browser LOG     Total tracks: 20
-[00:10:26.828] Browser LOG     First track full data: {"album":"The Life of a Showgirl","album_image":"https://i.scdn.co/image/ab67616d0000b273d7812467811a7da6e6a44902","artists":"Taylor Swift","duration_ms":150517,"external_urls":{"spotify":"https://open.spotify.com/track/5ylJtmaWPJ33cW3En7WOu0"},"id":"5ylJtmaWPJ33cW3En7WOu0","name":"Wood","preview_url":null,"uri":"spotify:track:5ylJtmaWPJ33cW3En7WOu0"}
-[00:10:26.828] Browser LOG     Tracks with preview URLs: 0
-[00:10:26.828] Browser LOG     Tracks without preview URLs: 20
-[00:10:26.828] Browser LOG     Sample track preview_url: null
-[00:10:26.828] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:10:26.828] Browser LOG     ========================
-[00:10:35.886] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:10:36.011] Server  LOG     User authenticated: "emmacoye"
-[00:10:42.758] Server  LOG     Returning 20 tracks (target: 20)
-[00:10:42.866] Browser LOG     === TRACK DATA DEBUG ===
-[00:10:42.866] Browser LOG     Total tracks: 20
-[00:10:42.866] Browser LOG     First track full data: {"album":"The Melody And The Energetic Nature Of Volume","album_image":"https://i.scdn.co/image/ab67616d0000b273f08d9ffaa18abb52111e5127","artists":"Evans Blue","duration_ms":231866,"external_urls":{"spotify":"https://open.spotify.com/track/3iEUxTn1IJQ6qqzWVaynNv"},"id":"3iEUxTn1IJQ6qqzWVaynNv","name":"A Cross and a Girl Named Blessed","preview_url":null,"uri":"spotify:track:3iEUxTn1IJQ6qqzWVaynNv"}
-[00:10:42.866] Browser LOG     Tracks with preview URLs: 0
-[00:10:42.866] Browser LOG     Tracks without preview URLs: 20
-[00:10:42.866] Browser LOG     Sample track preview_url: null
-[00:10:42.866] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:10:42.866] Browser LOG     ========================
-[00:11:00.302] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:11:00.507] Server  LOG     User authenticated: "emmacoye"
-[00:11:07.290] Server  LOG     Returning 20 tracks (target: 20)
-[00:11:07.400] Browser LOG     === TRACK DATA DEBUG ===
-[00:11:07.400] Browser LOG     Total tracks: 20
-[00:11:07.400] Browser LOG     First track full data: {"album":"Upbeat Rock","album_image":"https://i.scdn.co/image/ab67616d0000b273a3764a859383322b93edfba2","artists":"Villatic","duration_ms":290100,"external_urls":{"spotify":"https://open.spotify.com/track/6u9fhTQYA63UqnRb4kI7Jd"},"id":"6u9fhTQYA63UqnRb4kI7Jd","name":"Metal Rock","preview_url":null,"uri":"spotify:track:6u9fhTQYA63UqnRb4kI7Jd"}
-[00:11:07.400] Browser LOG     Tracks with preview URLs: 0
-[00:11:07.400] Browser LOG     Tracks without preview URLs: 20
-[00:11:07.400] Browser LOG     Sample track preview_url: null
-[00:11:07.400] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:11:07.400] Browser LOG     ========================
-[00:11:29.583] Server  LOG     Analyzing image (size: 0.00MB)
-[00:15:54.226] Server  LOG     Analyzing image (size: 0.00MB)
-[00:15:54.299] Browser LOG     Compressed image size: 4KB
-[00:16:06.393] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:16:06.459] Browser LOG     Analysis data: {"characteristics":["aggressive","intense","powerful"],"colors":"dark tones with black and deep blues","description":"The dark and intense mood suggests a playlist filled with powerful rock and metal tracks. Perfect for getting into an energetic and aggressive mindset.","emotion":"intense, aggressive","energy":"high","genres":["rock","metal","alternative"],"lighting":"dark, moody lighting","mood":"energetic","moodScores":{"calm":10,"chill":15,"dreamy":10,"energetic":80,"happy":20,"melancholy":40,"nostalgic":30,"romantic":10},"musicalKeywords":["rock","metal","intense","aggressive","energetic"],"playlistTheme":"Heavy Vibes","tempo":"fast"}
-[00:16:06.459] Browser LOG     Mood scores: {"calm":10,"chill":15,"dreamy":10,"energetic":80,"happy":20,"melancholy":40,"nostalgic":30,"romantic":10}
-[00:16:06.521] Server  LOG     User authenticated: "emmacoye"
-[00:16:07.846] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:16:12.034] Server  LOG     Returning 20 tracks (target: 20)
-[00:16:12.141] Browser LOG     === TRACK DATA DEBUG ===
-[00:16:12.141] Browser LOG     Total tracks: 20
-[00:16:12.141] Browser LOG     First track full data: {"album":"Hot Fuss","album_image":"https://i.scdn.co/image/ab67616d0000b273ccdddd46119a4ff53eaf1f5d","artists":"The Killers","duration_ms":222973,"external_urls":{"spotify":"https://open.spotify.com/track/003vvx7Niy0yvhvHt4a68B"},"id":"003vvx7Niy0yvhvHt4a68B","name":"Mr. Brightside","preview_url":null,"uri":"spotify:track:003vvx7Niy0yvhvHt4a68B"}
-[00:16:12.141] Browser LOG     Tracks with preview URLs: 0
-[00:16:12.141] Browser LOG     Tracks without preview URLs: 20
-[00:16:12.141] Browser LOG     Sample track preview_url: null
-[00:16:12.141] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:16:12.141] Browser LOG     ========================
-[00:16:35.938] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:16:36.037] Server  LOG     User authenticated: "emmacoye"
-[00:16:37.532] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:16:41.136] Server  LOG     Returning 20 tracks (target: 20)
-[00:16:41.248] Browser LOG     === TRACK DATA DEBUG ===
-[00:16:41.248] Browser LOG     Total tracks: 20
-[00:16:41.248] Browser LOG     First track full data: {"album":"The Melody And The Energetic Nature Of Volume","album_image":"https://i.scdn.co/image/ab67616d0000b273f08d9ffaa18abb52111e5127","artists":"Evans Blue","duration_ms":233240,"external_urls":{"spotify":"https://open.spotify.com/track/5qmV4noRVGX6oDvQlm3Y9M"},"id":"5qmV4noRVGX6oDvQlm3Y9M","name":"Cold (But I'm Still Here) - Single Version","preview_url":null,"uri":"spotify:track:5qmV4noRVGX6oDvQlm3Y9M"}
-[00:16:41.248] Browser LOG     Tracks with preview URLs: 0
-[00:16:41.248] Browser LOG     Tracks without preview URLs: 20
-[00:16:41.248] Browser LOG     Sample track preview_url: null
-[00:16:41.248] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:16:41.248] Browser LOG     ========================
-[00:19:48.775] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:19:48.775] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:19:48.775] Server  LOG       http://127.0.0.1:3000/api/auth/callback
-[00:19:48.775] Server  LOG     Request host: "127.0.0.1:3000"
-[00:19:48.775] Server  LOG     Redirect host: "127.0.0.1:3000"
-[00:19:48.775] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
-[00:19:48.775] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=dxl18t6g0tewndq3nnbyxh&show_dialog=true"
-[00:19:48.775] Server  LOG     Setting state cookie: "dxl18t6g0tewndq3nnbyxh"
-[00:19:48.775] Server  LOG     Cookie string: "spotify_auth_state=dxl18t6g0tewndq3nnbyxh; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
-[00:19:50.269] Server  LOG     Callback received - Query params: {}
-[00:19:50.269] Server  LOG     All cookies: {}
-[00:19:50.269] Server  LOG     Cookie header: "spotify_access_token=BQDb-0gFZcrllpgNMfnJNI_H1Lz0Og74-IdwwyE79nAblK-OY3iMnI85pzay58Ndxc0SnNWKOYWOy0BmZ2Wv277tK__WpmtibYQQ_CkcP7LAJxXStTePdyAo4F8QLFlF_GsKj9eWN6nsJ62LKPHsophXktIzc5GD3sM-4Q92fTtE_UWHac24maXqi8g2_XH4F2LD3CqcGL-u3yqRJGrVKajcf9MKdsNXa9tLRYFrjnMLvbkz2QAyoQTOILsVg6Eav2lJcUduGhXmHKVXxhF-wN6_3gmVcDi-DR4y-KJW1VnXm7ynrI8QX1FzSq7rNqmuWQes-bTQ2ieOcGYqU_MUTg; spotify_refresh_token=AQDzKLr5wDED40HIUGTy23otqpfj90IDpvz-vGZnOKF6-pv5RDB8ztjpKfdQ492zMxSMA49NHRhtaeENKd18kTlc5sSacD2KMFkqoQGwLgkBc5abdQFWwttzwgFdfb8yqVU; spotify_auth_state=dxl18t6g0tewndq3nnbyxh"
-[00:19:50.269] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
-[00:19:50.269] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
-[00:19:50.269] Server  LOG        http://127.0.0.1:3000/api/auth/callback
-[00:19:50.269] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
-[00:19:50.269] Server  LOG     🔄 Exchanging authorization code for tokens...
-[00:19:50.269] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:19:50.269] Server  LOG        Client ID: "d4c3aed4f5..."
-[00:19:50.371] Server  LOG     ✅ Token exchange successful
-[00:19:50.371] Server  LOG     Token received: {}
-[00:19:50.371] Server  LOG     🔍 Verifying token...
-[00:19:50.371] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
-[00:19:50.371] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
-[00:19:50.371] Server  LOG        Client Secret length: 32
-[00:19:50.371] Server  LOG        Token length: 342
-[00:19:50.371] Server  LOG        Token starts with: "BQDPuVXKJx_H99vFI3ob"
-[00:19:50.371] Server  LOG        Making getMe() call to verify token...
-[00:19:50.471] Server  LOG        Raw HTTP request status: 200
-[00:19:50.473] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
-[00:19:50.575] Server  LOG     ✅ Token verified via library - user: "emmacoye"
-[00:19:50.901] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:19:58.028] Server  LOG     Analyzing image (size: 0.00MB)
-[00:19:58.082] Browser LOG     Compressed image size: 4KB
-[00:20:14.343] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:20:14.415] Browser LOG     Analysis data: {"artists":["Five Finger Death Punch","Metallica","Slipknot","Avenged Sevenfold","Disturbed","Pantera","System of a Down","Korn","Rammstein","Megadeth","Iron Maiden","Judas Priest","Tool","A Perfect Circle","Rage Against the Machine","Godsmack","Black Sabbath","Linkin Park","Anthrax","Motörhead","Alice in Chains","Slayer","Bring Me the Horizon","Shinedown","Sevendust","Breaking Benjamin","Bullet for My Valentine","Trivium","Lamb of God","Volbeat"],"characteristics":["powerful","intense","bold"],"colors":"dark black and deep grays","description":"Dark and bold, this scene evokes an intense and powerful presence, perfect for energy-driven metal and hard rock vibes.","emotion":"intense and powerful","energy":"high","genres":["metal","hard rock","alternative"],"lighting":"dark and bold","mood":"energetic","moodScores":{"calm":10,"chill":10,"dreamy":0,"energetic":90,"happy":20,"melancholy":30,"nostalgic":30,"romantic":10},"musicalKeywords":["metal","rock","intense","energetic","powerful"],"playlistTheme":"Power Surge","tempo":"fast"}
-[00:20:14.415] Browser LOG     Mood scores: {"calm":10,"chill":10,"dreamy":0,"energetic":90,"happy":20,"melancholy":30,"nostalgic":30,"romantic":10}
-[00:20:14.449] Server  LOG     User authenticated: "emmacoye"
-[00:20:14.449] Server  LOG     Using 30 artists from OpenAI analysis
-[00:20:15.032] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:20:20.555] Server  LOG     Returning 20 tracks (target: 20)
-[00:20:20.659] Browser LOG     === TRACK DATA DEBUG ===
-[00:20:20.659] Browser LOG     Total tracks: 20
-[00:20:20.659] Browser LOG     First track full data: {"album":"Toxicity","album_image":"https://i.scdn.co/image/ab67616d0000b27307bc7d2a745636c356b4d0aa","artists":"System Of A Down","duration_ms":210240,"external_urls":{"spotify":"https://open.spotify.com/track/2DlHlPMa4M17kufBvI2lEN"},"id":"2DlHlPMa4M17kufBvI2lEN","name":"Chop Suey!","preview_url":null,"uri":"spotify:track:2DlHlPMa4M17kufBvI2lEN"}
-[00:20:20.659] Browser LOG     Tracks with preview URLs: 0
-[00:20:20.659] Browser LOG     Tracks without preview URLs: 20
-[00:20:20.659] Browser LOG     Sample track preview_url: null
-[00:20:20.659] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:20:20.659] Browser LOG     ========================
-[00:20:49.961] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:20:50.108] Server  LOG     User authenticated: "emmacoye"
-[00:20:50.108] Server  LOG     Using 30 artists from OpenAI analysis
-[00:20:50.618] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:20:55.381] Server  LOG     Returning 20 tracks (target: 20)
-[00:20:55.489] Browser LOG     === TRACK DATA DEBUG ===
-[00:20:55.489] Browser LOG     Total tracks: 20
-[00:20:55.489] Browser LOG     First track full data: {"album":"eMOTIVe","album_image":"https://i.scdn.co/image/ab67616d0000b273b899c5d781cdb8bd0788b27f","artists":"A Perfect Circle","duration_ms":250173,"external_urls":{"spotify":"https://open.spotify.com/track/7slyp653Si99N4yQcJ2E9T"},"id":"7slyp653Si99N4yQcJ2E9T","name":"Passive","preview_url":null,"uri":"spotify:track:7slyp653Si99N4yQcJ2E9T"}
-[00:20:55.489] Browser LOG     Tracks with preview URLs: 0
-[00:20:55.489] Browser LOG     Tracks without preview URLs: 20
-[00:20:55.489] Browser LOG     Sample track preview_url: null
-[00:20:55.489] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:20:55.489] Browser LOG     ========================
-[00:21:33.591] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:21:33.747] Server  LOG     User authenticated: "emmacoye"
-[00:21:33.747] Server  LOG     Using 30 artists from OpenAI analysis
-[00:21:34.296] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:21:39.517] Server  LOG     Returning 20 tracks (target: 20)
-[00:21:39.624] Browser LOG     === TRACK DATA DEBUG ===
-[00:21:39.624] Browser LOG     Total tracks: 20
-[00:21:39.624] Browser LOG     First track full data: {"album":"The Blood Of Gods","album_image":"https://i.scdn.co/image/ab67616d0000b2731a68fdaa4d24db7aacfabada","artists":"Gwar","duration_ms":308188,"external_urls":{"spotify":"https://open.spotify.com/track/6V9Bizfcpz1E9iTkhw1QIt"},"id":"6V9Bizfcpz1E9iTkhw1QIt","name":"Fuck This Place","preview_url":null,"uri":"spotify:track:6V9Bizfcpz1E9iTkhw1QIt"}
-[00:21:39.624] Browser LOG     Tracks with preview URLs: 0
-[00:21:39.624] Browser LOG     Tracks without preview URLs: 20
-[00:21:39.624] Browser LOG     Sample track preview_url: null
-[00:21:39.624] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:21:39.624] Browser LOG     ========================
-[00:22:02.100] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:22:02.100] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:22:02.100] Server  LOG       http://127.0.0.1:3000/api/auth/callback
-[00:22:02.100] Server  LOG     Request host: "127.0.0.1:3000"
-[00:22:02.100] Server  LOG     Redirect host: "127.0.0.1:3000"
-[00:22:02.100] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
-[00:22:02.100] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=rehkw8wwpihe858ozcxlz&show_dialog=true"
-[00:22:02.100] Server  LOG     Setting state cookie: "rehkw8wwpihe858ozcxlz"
-[00:22:02.100] Server  LOG     Cookie string: "spotify_auth_state=rehkw8wwpihe858ozcxlz; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
-[00:22:03.816] Server  LOG     Callback received - Query params: {}
-[00:22:03.816] Server  LOG     All cookies: {}
-[00:22:03.816] Server  LOG     Cookie header: "spotify_access_token=BQDPuVXKJx_H99vFI3obJtLV4S_jIMGYeVcyZLFBZmkV7RQQdz3e8mpirAlWMR6az_55p4PQdb5gIlgKQPgoKa03p0YPnj0S8XVGXGJPwps3IpMrk4BZDWP9nEVX-oqZEfH8YIj-PZHwvAbMaRxLYPh87R_HXcCs9WezHAIPn7LcA1k67S6JUJovqK7bLiZobnV99TfqQ9yTIe_o66XEkdBsCX8iXZei40ob8W-GZkJxKAu-iMvk5PsJkEMgDZUeZ83IEFzxW-MP_zh9-g-lVEdDzXhfKmHXAjvFKY76c6RBUzXCfiOYtgDnQOr6W1061NK3B_0g3O4SAXgEOP5QdA; spotify_refresh_token=AQBjgdpd4WsmMZRB3O8zJ2Fp5xQP4PcaOfDkO2qKts_8BTsT-zIPJ4dFv1s8EhoA7f-mAsg8aVRz-KpBLQYSM9czj7tc7O7nUr7XvzIMFZHO0fopVZdpmYEosZAOWpqsgME; spotify_auth_state=rehkw8wwpihe858ozcxlz"
-[00:22:03.816] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
-[00:22:03.816] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
-[00:22:03.816] Server  LOG        http://127.0.0.1:3000/api/auth/callback
-[00:22:03.816] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
-[00:22:03.816] Server  LOG     🔄 Exchanging authorization code for tokens...
-[00:22:03.816] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:22:03.816] Server  LOG        Client ID: "d4c3aed4f5..."
-[00:22:03.910] Server  LOG     ✅ Token exchange successful
-[00:22:03.910] Server  LOG     Token received: {}
-[00:22:03.910] Server  LOG     🔍 Verifying token...
-[00:22:03.910] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
-[00:22:03.910] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
-[00:22:03.910] Server  LOG        Client Secret length: 32
-[00:22:03.910] Server  LOG        Token length: 342
-[00:22:03.910] Server  LOG        Token starts with: "BQCRvFnQZ8hLwZnwcV7p"
-[00:22:03.911] Server  LOG        Making getMe() call to verify token...
-[00:22:04.036] Server  LOG        Raw HTTP request status: 200
-[00:22:04.039] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
-[00:22:04.144] Server  LOG     ✅ Token verified via library - user: "emmacoye"
-[00:22:04.483] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:22:29.589] Server  LOG     Analyzing image (size: 0.01MB)
-[00:22:29.654] Browser LOG     Compressed image size: 6KB
-[00:22:45.728] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:22:45.821] Browser LOG     Analysis data: {"artists":["Noah Kahan","Hozier","Lizzy McAlpine","Mt. Joy","Bon Iver","The Lumineers","Gregory Alan Isakov","Phoebe Bridgers","Fleet Foxes","Iron & Wine","Ben Howard","Jose Gonzalez","Angus & Julia Stone","The Head and the Heart","Vance Joy","Of Monsters and Men","Sufjan Stevens","The Paper Kites","First Aid Kit","Roo Panes","Ray LaMontagne","Laura Marling","Carrie & Lowell","Leif Vollebekk","Wild Child","Maggie Rogers","James Vincent McMorrow","Tallest Man on Earth","Novo Amor","Allen Stone","Alexi Murdoch"],"characteristics":["acoustic","instrumental","warm"],"colors":"muted greens and natural earth tones","description":"A serene morning scene set in muted earth tones and soft lighting, evoking a sense of calm and peaceful introspection. Perfect for a gentle walk through nature or a quiet moment of reflection.","emotion":"peaceful and grounded","energy":"medium","genres":["indie folk","folk pop","acoustic"],"lighting":"soft morning light with a gentle ambiance","mood":"calm","moodScores":{"calm":80,"chill":70,"dreamy":40,"energetic":20,"happy":25,"melancholy":30,"nostalgic":50,"romantic":35},"musicalKeywords":["acoustic","indie","calm","folk","chill"],"playlistTheme":"Tranquil Tracks","tempo":"moderate"}
-[00:22:45.821] Browser LOG     Mood scores: {"calm":80,"chill":70,"dreamy":40,"energetic":20,"happy":25,"melancholy":30,"nostalgic":50,"romantic":35}
-[00:22:45.862] Server  LOG     User authenticated: "emmacoye"
-[00:22:45.862] Server  LOG     Using 30 artists from OpenAI analysis
-[00:22:46.369] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:22:51.091] Server  LOG     Returning 20 tracks (target: 20)
-[00:22:51.200] Browser LOG     === TRACK DATA DEBUG ===
-[00:22:51.200] Browser LOG     Total tracks: 20
-[00:22:51.200] Browser LOG     First track full data: {"album":"My Head Is An Animal","album_image":"https://i.scdn.co/image/ab67616d0000b273cb3f67e8026e2e493a1e8262","artists":"Of Monsters and Men","duration_ms":266600,"external_urls":{"spotify":"https://open.spotify.com/track/2ihCaVdNZmnHZWt0fvAM7B"},"id":"2ihCaVdNZmnHZWt0fvAM7B","name":"Little Talks","preview_url":null,"uri":"spotify:track:2ihCaVdNZmnHZWt0fvAM7B"}
-[00:22:51.200] Browser LOG     Tracks with preview URLs: 0
-[00:22:51.200] Browser LOG     Tracks without preview URLs: 20
-[00:22:51.200] Browser LOG     Sample track preview_url: null
-[00:22:51.200] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:22:51.200] Browser LOG     ========================
-[00:23:04.315] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:23:04.500] Server  LOG     User authenticated: "emmacoye"
-[00:23:04.500] Server  LOG     Using 30 artists from OpenAI analysis
-[00:23:05.251] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:23:09.938] Server  LOG     Returning 20 tracks (target: 20)
-[00:23:10.045] Browser LOG     === TRACK DATA DEBUG ===
-[00:23:10.046] Browser LOG     Total tracks: 20
-[00:23:10.046] Browser LOG     First track full data: {"album":"Sun Giant","album_image":"https://i.scdn.co/image/ab67616d0000b2734a8854d880d67850e1c7b98c","artists":"Fleet Foxes","duration_ms":275306,"external_urls":{"spotify":"https://open.spotify.com/track/3Ck96jIZdVzpWbbZ6mojsE"},"id":"3Ck96jIZdVzpWbbZ6mojsE","name":"Mykonos","preview_url":null,"uri":"spotify:track:3Ck96jIZdVzpWbbZ6mojsE"}
-[00:23:10.046] Browser LOG     Tracks with preview URLs: 0
-[00:23:10.046] Browser LOG     Tracks without preview URLs: 20
-[00:23:10.046] Browser LOG     Sample track preview_url: null
-[00:23:10.046] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:23:10.046] Browser LOG     ========================
-[00:24:56.849] Server  LOG     Cookies received: {}
-[00:24:56.849] Server  LOG     Spotify Client ID configured: true
-[00:24:56.849] Server  LOG     Spotify Client Secret configured: true
-[00:24:56.849] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:24:56.962] Server  LOG     User authenticated: "emmacoye"
-[00:24:56.963] Server  LOG     Creating playlist for user: "emmacoye"
-[00:24:56.963] Server  LOG     Using 20 track URIs from preview
-[00:24:56.963] Server  LOG     After removing duplicates: 20 unique tracks
-[00:24:56.963] Server  LOG     Attempting to create playlist: {}
-[00:24:56.963] Server  LOG     Creating playlist via raw HTTP API...
-[00:24:56.963] Server  LOG     Playlist creation payload: "{\n  \"name\": \"Tranquil Tracks\",\n  \"description\": \"Created from photo analysis: A serene morning scene set in muted earth tones and soft lighting, evoking a sense of calm and peaceful introspection. Perfect for a gentle walk through nature or a quiet moment of reflection.. Mood: calm, Energy: medium, Tempo: moderate\",\n  \"public\": false,\n  \"collaborative\": false\n}"
-[00:24:56.963] Server  LOG     Public setting being sent: false
-[00:24:57.161] Server  LOG     Playlist created successfully via HTTP API: "4PCw8VZdUzWvDl2T3T85gy" "Tranquil Tracks"
-[00:24:57.161] Server  LOG     Playlist visibility from Spotify response: {}
-[00:24:57.161] Server  LOG     Playlist response received
-[00:24:57.161] Server  LOG     Type: "object"
-[00:24:57.161] Server  LOG     Response: {}
-[00:24:57.161] Server  LOG     Playlist created successfully: "4PCw8VZdUzWvDl2T3T85gy" "Tranquil Tracks"
-[00:24:57.161] Server  LOG     Initial playlist visibility: false
-[00:24:57.161] Server  LOG     Adding 20 unique tracks to playlist
-[00:24:57.328] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:24:59.200] Server  LOG     Cover image uploaded successfully
-[00:25:28.253] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:25:28.253] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:25:28.253] Server  LOG       http://127.0.0.1:3000/api/auth/callback
-[00:25:28.253] Server  LOG     Request host: "127.0.0.1:3000"
-[00:25:28.253] Server  LOG     Redirect host: "127.0.0.1:3000"
-[00:25:28.253] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
-[00:25:28.253] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=7vxp502ivvlaslnrte5x&show_dialog=true"
-[00:25:28.253] Server  LOG     Setting state cookie: "7vxp502ivvlaslnrte5x"
-[00:25:28.253] Server  LOG     Cookie string: "spotify_auth_state=7vxp502ivvlaslnrte5x; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
-[00:25:29.646] Server  LOG     Callback received - Query params: {}
-[00:25:29.646] Server  LOG     All cookies: {}
-[00:25:29.646] Server  LOG     Cookie header: "spotify_access_token=BQCRvFnQZ8hLwZnwcV7pF5Gjdr9R8SloTHysG9DlvqO3En338MGbHO111eDyDCyIQRo0Rrp58a4dHVmpeL8S100mGWCpPppysMJgQjDa6z2qKIFgVXVcqe6Blv1xf0_MDjg8gGdBY9sejfzfgHcQW_Ew1Mgf_8er-st0YDOOLryltLIUWgPsW6oalku555nyOupwY2uAyFs-xkdfyCcUBIFX016A57GPy-7hr0MV0bncoMyDTPaGv6b3dkCf29qVUNvIWMuqkxKKcVgUMAsBRkTN7m4rj49nOEWFoRl5mAV9kyZ_T-XT4WdIWE0NEIaqedmAy_nwfx-wYqkjGu4IYQ; spotify_refresh_token=AQCREUGoFZ28dF7s-uz8YeMPIsod64RnibijLjL2o-lwKiRfKUS-8BdDwfiLSYTvlRBHbVQtP05hGF51UvVDT80htc4M5tRmi837I0W5othXpwjXd7w-YhNVKxEE3yWm8ww; spotify_auth_state=7vxp502ivvlaslnrte5x"
-[00:25:29.646] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
-[00:25:29.646] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
-[00:25:29.646] Server  LOG        http://127.0.0.1:3000/api/auth/callback
-[00:25:29.646] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
-[00:25:29.646] Server  LOG     🔄 Exchanging authorization code for tokens...
-[00:25:29.646] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:25:29.646] Server  LOG        Client ID: "d4c3aed4f5..."
-[00:25:29.734] Server  LOG     ✅ Token exchange successful
-[00:25:29.734] Server  LOG     Token received: {}
-[00:25:29.734] Server  LOG     🔍 Verifying token...
-[00:25:29.734] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
-[00:25:29.734] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
-[00:25:29.734] Server  LOG        Client Secret length: 32
-[00:25:29.734] Server  LOG        Token length: 342
-[00:25:29.734] Server  LOG        Token starts with: "BQAkkuU44mied3l0ZGHU"
-[00:25:29.734] Server  LOG        Making getMe() call to verify token...
-[00:25:29.846] Server  LOG        Raw HTTP request status: 200
-[00:25:29.848] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
-[00:25:29.998] Server  LOG     ✅ Token verified via library - user: "emmacoye"
-[00:25:30.312] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:25:33.594] Server  LOG     Analyzing image (size: 0.01MB)
-[00:25:33.662] Browser LOG     Compressed image size: 7KB
-[00:25:45.716] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:25:45.809] Browser LOG     Analysis data: {"artists":["Taylor Swift","Ed Sheeran","Ariana Grande","The Weeknd","Dua Lipa"],"characteristics":["instrumental"],"colors":"Various","description":"I'm sorry, I can't help with identifying or analyzing people in images.","emotion":"Neutral","energy":"medium","genres":["Pop"],"lighting":"Mixed","mood":"Neutral","moodScores":{"calm":50,"chill":50,"dreamy":50,"happy":50,"melancholy":50},"musicalKeywords":["pop","mainstream"],"playlistTheme":"General Vibes","tempo":"moderate"}
-[00:25:45.809] Browser LOG     Mood scores: {"calm":50,"chill":50,"dreamy":50,"happy":50,"melancholy":50}
-[00:25:45.852] Server  LOG     User authenticated: "emmacoye"
-[00:25:45.852] Server  LOG     Using 5 artists from OpenAI analysis
-[00:25:46.415] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:25:50.294] Server  LOG     Returning 20 tracks (target: 20)
-[00:25:50.402] Browser LOG     === TRACK DATA DEBUG ===
-[00:25:50.402] Browser LOG     Total tracks: 20
-[00:25:50.402] Browser LOG     First track full data: {"album":"The Life of a Showgirl","album_image":"https://i.scdn.co/image/ab67616d0000b273d7812467811a7da6e6a44902","artists":"Taylor Swift","duration_ms":226073,"external_urls":{"spotify":"https://open.spotify.com/track/53iuhJlwXhSER5J2IYYv1W"},"id":"53iuhJlwXhSER5J2IYYv1W","name":"The Fate of Ophelia","preview_url":null,"uri":"spotify:track:53iuhJlwXhSER5J2IYYv1W"}
-[00:25:50.402] Browser LOG     Tracks with preview URLs: 0
-[00:25:50.402] Browser LOG     Tracks without preview URLs: 20
-[00:25:50.402] Browser LOG     Sample track preview_url: null
-[00:25:50.402] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:25:50.402] Browser LOG     ========================
-[00:26:10.079] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:26:10.215] Server  LOG     User authenticated: "emmacoye"
-[00:26:10.215] Server  LOG     Using 5 artists from OpenAI analysis
-[00:26:10.736] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:26:14.557] Server  LOG     Returning 20 tracks (target: 20)
-[00:26:14.669] Browser LOG     === TRACK DATA DEBUG ===
-[00:26:14.669] Browser LOG     Total tracks: 20
-[00:26:14.669] Browser LOG     First track full data: {"album":"Waltz","album_image":"https://i.scdn.co/image/ab67616d0000b2731b27656cfab2a3f64a9328f9","artists":"Neutral Snap","duration_ms":181290,"external_urls":{"spotify":"https://open.spotify.com/track/2qoPV27QG5ImKYJwbqnLFr"},"id":"2qoPV27QG5ImKYJwbqnLFr","name":"Waltz","preview_url":null,"uri":"spotify:track:2qoPV27QG5ImKYJwbqnLFr"}
-[00:26:14.669] Browser LOG     Tracks with preview URLs: 0
-[00:26:14.669] Browser LOG     Tracks without preview URLs: 20
-[00:26:14.669] Browser LOG     Sample track preview_url: null
-[00:26:14.669] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:26:14.669] Browser LOG     ========================
-[00:26:46.096] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:26:46.096] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
-[00:26:46.096] Server  LOG       http://127.0.0.1:3000/api/auth/callback
-[00:26:46.096] Server  LOG     Request host: "127.0.0.1:3000"
-[00:26:46.096] Server  LOG     Redirect host: "127.0.0.1:3000"
-[00:26:46.096] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
-[00:26:46.096] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=p9d9uhaj4djm4ggjv1ffe&show_dialog=true"
-[00:26:46.096] Server  LOG     Setting state cookie: "p9d9uhaj4djm4ggjv1ffe"
-[00:26:46.096] Server  LOG     Cookie string: "spotify_auth_state=p9d9uhaj4djm4ggjv1ffe; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
-[00:26:47.474] Server  LOG     Callback received - Query params: {}
-[00:26:47.474] Server  LOG     All cookies: {}
-[00:26:47.474] Server  LOG     Cookie header: "spotify_access_token=BQAkkuU44mied3l0ZGHUzw37xkm34IDyYaQr14zQ7L0xRMz1mmAosacfbsnZ8WCf_yyyalfWWRZYCQCiFJzXR9Zwz5RKbsg0WKPCKBouPbN_lkfDR0nt5eOsEMPMPGdUpv_Pychotw3DY38ANwFoik7NKWycWRsx2u_-mmXleYtr2Em_X4-vXpVVixorXp2Zad5z25KYDjzrPgnR0AJL4FP2miu4tox_FdyJXq4cJXt2adJwoWZgKnTrszfOYOgROOSvhoB8eT7xVPtDv9pAsMMnr8iCIHf_hSI2EBBHpTOztzFENT8uUnGwVNq64_DU0yqwvjQXVFI1kfZ4QNeLMQ; spotify_refresh_token=AQDazIJRlvs4tK4M9KjgarpgXuBeTV4nwwYoGWw6Q1I7MNziq6iflfC8vRPyvZlLnfsxx3ylDtI6K88pIgXappw2t_xEM0mS9_0z69bp-VoC4RNIqplyyBy9Sa3y4DkcwqE; spotify_auth_state=p9d9uhaj4djm4ggjv1ffe"
-[00:26:47.474] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
-[00:26:47.474] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
-[00:26:47.474] Server  LOG        http://127.0.0.1:3000/api/auth/callback
-[00:26:47.474] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
-[00:26:47.474] Server  LOG     🔄 Exchanging authorization code for tokens...
-[00:26:47.474] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
-[00:26:47.474] Server  LOG        Client ID: "d4c3aed4f5..."
-[00:26:47.582] Server  LOG     ✅ Token exchange successful
-[00:26:47.582] Server  LOG     Token received: {}
-[00:26:47.582] Server  LOG     🔍 Verifying token...
-[00:26:47.582] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
-[00:26:47.582] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
-[00:26:47.582] Server  LOG        Client Secret length: 32
-[00:26:47.582] Server  LOG        Token length: 342
-[00:26:47.582] Server  LOG        Token starts with: "BQCFQRl_F3kkkAt_--Ks"
-[00:26:47.582] Server  LOG        Making getMe() call to verify token...
-[00:26:47.807] Server  LOG        Raw HTTP request status: 200
-[00:26:47.810] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
-[00:26:48.011] Server  LOG     ✅ Token verified via library - user: "emmacoye"
-[00:26:48.350] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:26:52.644] Server  LOG     Analyzing image (size: 0.04MB)
-[00:26:52.714] Browser LOG     Compressed image size: 38KB
-[00:27:49.562] Server  LOG     Analyzing image (size: 0.01MB)
-[00:27:49.646] Browser LOG     Compressed image size: 15KB
-[00:28:04.681] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:28:04.774] Browser LOG     Analysis data: {"artists":["Taylor Swift","Ariana Grande","Dua Lipa","The Weeknd","Ed Sheeran","Drake","Kendrick Lamar","Post Malone","J. Cole","Tyler The Creator","Billie Eilish","Olivia Rodrigo","Harry Styles","Lorde","The 1975","Tame Impala","SZA","Frank Ocean","Khalid","H.E.R.","Kanye West","Travis Scott","Cardi B","Bruno Mars","Rihanna","Justin Bieber","Shawn Mendes","Camila Cabello","Charlie Puth","Miley Cyrus"],"characteristics":["bright","vibrant","urban"],"colors":"bright blue sky with contrasting yellow from the traffic light","description":"An urban scene with a bright blue sky and vivid yellow traffic light captures a lively city atmosphere. The energetic mood and vibrant colors suggest an upbeat and rhythmic musical vibe, perfect for a city drive or a bustling day out.","emotion":"vibrant and urban","energy":"high","genres":["pop","hip hop","indie pop"],"lighting":"bright sunlight illuminating the scene","mood":"energetic","moodScores":{"calm":20,"chill":40,"dreamy":30,"energetic":80,"happy":70,"melancholy":10,"nostalgic":20,"romantic":10},"musicalKeywords":["pop","energetic","urban","vibrant","fast"],"playlistTheme":"City Energies","tempo":"fast"}
-[00:28:04.774] Browser LOG     Mood scores: {"calm":20,"chill":40,"dreamy":30,"energetic":80,"happy":70,"melancholy":10,"nostalgic":20,"romantic":10}
-[00:28:04.884] Server  LOG     User authenticated: "emmacoye"
-[00:28:04.884] Server  LOG     Using 30 artists from OpenAI analysis
-[00:28:05.481] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:28:10.290] Server  LOG     Returning 20 tracks (target: 20)
-[00:28:10.400] Browser LOG     === TRACK DATA DEBUG ===
-[00:28:10.400] Browser LOG     Total tracks: 20
-[00:28:10.400] Browser LOG     First track full data: {"album":"The Life of a Showgirl","album_image":"https://i.scdn.co/image/ab67616d0000b273d7812467811a7da6e6a44902","artists":"Taylor Swift","duration_ms":226073,"external_urls":{"spotify":"https://open.spotify.com/track/53iuhJlwXhSER5J2IYYv1W"},"id":"53iuhJlwXhSER5J2IYYv1W","name":"The Fate of Ophelia","preview_url":null,"uri":"spotify:track:53iuhJlwXhSER5J2IYYv1W"}
-[00:28:10.400] Browser LOG     Tracks with preview URLs: 0
-[00:28:10.400] Browser LOG     Tracks without preview URLs: 20
-[00:28:10.400] Browser LOG     Sample track preview_url: null
-[00:28:10.400] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:28:10.400] Browser LOG     ========================
-[00:28:18.809] Server  LOG     Analyzing image (size: 0.01MB)
-[00:28:59.893] Server  LOG     Analyzing image (size: 0.01MB)
-[00:28:59.968] Browser LOG     Compressed image size: 9KB
-[00:29:13.371] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:29:13.460] Browser LOG     Analysis data: {"artists":["Bon Iver","Iron & Wine","The XX","Cigarettes After Sex","Sufjan Stevens","Phoebe Bridgers","Lana Del Rey","The Lumineers","Fleet Foxes","Jose Gonzalez","Angus & Julia Stone","Ben Howard","Tom Odell","Lucy Rose","Daughter","Keaton Henson","Roo Panes","Beach House","Of Monsters and Men","Gregory Alan Isakov","Aurora","Vance Joy","Rhye","Maggie Rogers","Mt. Joy","London Grammar","Hozier","Noah Kahan","Lizzy McAlpine","First Aid Kit"],"characteristics":["minimal","instrumental","contemplative"],"colors":"cool grays and muted browns","description":"This soft-lit indoor scene with its cool grays and muted browns evokes a serene and contemplative mood. The minimalistic design, reminiscent of a modern art gallery, feels calm yet makes space for introspection. Perfectly paired with mellow and ambient indie pop tunes.","emotion":"serene and contemplative","energy":"medium","genres":["indie pop","acoustic","ambient"],"lighting":"soft and diffused lighting in an indoor setting","mood":"calm","moodScores":{"calm":85,"chill":70,"dreamy":60,"energetic":30,"happy":20,"melancholy":40,"nostalgic":50,"romantic":25},"musicalKeywords":["acoustic","instrumental","calm","chill","dreamy"],"playlistTheme":"Art Gallery Vibes","tempo":"moderate"}
-[00:29:13.460] Browser LOG     Mood scores: {"calm":85,"chill":70,"dreamy":60,"energetic":30,"happy":20,"melancholy":40,"nostalgic":50,"romantic":25}
-[00:29:13.470] Server  LOG     User authenticated: "emmacoye"
-[00:29:13.470] Server  LOG     Using 30 artists from OpenAI analysis
-[00:29:14.080] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:29:18.987] Server  LOG     Returning 20 tracks (target: 20)
-[00:29:19.094] Browser LOG     === TRACK DATA DEBUG ===
-[00:29:19.094] Browser LOG     Total tracks: 20
-[00:29:19.094] Browser LOG     First track full data: {"album":"ASTROWORLD","album_image":"https://i.scdn.co/image/ab67616d0000b273daec894c14c0ca42d76eeb32","artists":"Travis Scott","duration_ms":190557,"external_urls":{"spotify":"https://open.spotify.com/track/2cYqizR4lgvp4Qu6IQ3qGN"},"id":"2cYqizR4lgvp4Qu6IQ3qGN","name":"BUTTERFLY EFFECT","preview_url":null,"uri":"spotify:track:2cYqizR4lgvp4Qu6IQ3qGN"}
-[00:29:19.094] Browser LOG     Tracks with preview URLs: 0
-[00:29:19.094] Browser LOG     Tracks without preview URLs: 20
-[00:29:19.094] Browser LOG     Sample track preview_url: null
-[00:29:19.094] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:29:19.094] Browser LOG     ========================
-[00:29:30.066] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:29:30.173] Server  LOG     User authenticated: "emmacoye"
-[00:29:30.173] Server  LOG     Using 30 artists from OpenAI analysis
-[00:29:30.736] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:29:35.476] Server  LOG     Returning 20 tracks (target: 20)
-[00:29:35.583] Browser LOG     === TRACK DATA DEBUG ===
-[00:29:35.583] Browser LOG     Total tracks: 20
-[00:29:35.583] Browser LOG     First track full data: {"album":"Ultra 85","album_image":"https://i.scdn.co/image/ab67616d0000b2735bc558ce727fdf4fd1eb5771","artists":"Logic, Lucy Rose","duration_ms":259566,"external_urls":{"spotify":"https://open.spotify.com/track/7gOuGhI4JHBkLdXD4arUiJ"},"id":"7gOuGhI4JHBkLdXD4arUiJ","name":"Innerstellar - feat. Lucy Rose","preview_url":null,"uri":"spotify:track:7gOuGhI4JHBkLdXD4arUiJ"}
-[00:29:35.583] Browser LOG     Tracks with preview URLs: 0
-[00:29:35.583] Browser LOG     Tracks without preview URLs: 20
-[00:29:35.583] Browser LOG     Sample track preview_url: null
-[00:29:35.583] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:29:35.583] Browser LOG     ========================
-[00:34:52.658] Server  LOG     Analyzing image (size: 0.01MB)
-[00:34:58.540] Server  LOG     Analyzing image (size: 0.04MB)
-[00:34:58.625] Browser LOG     Compressed image size: 38KB
-[00:35:09.388] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:35:09.452] Browser LOG     Analysis data: {"artists":["Lofi Girl","Chillhop Music","Kupla","Idealism","Jinsang","Nujabes","Tomppabeats","Birocratic","Sleepy Fish","Aso","eery","SwuM","Bonobo","Tycho","Boards of Canada","Brian Eno","Marconi Union","Emancipator","Oatmello","Phlocalyst","Saib","G Mills","Jazzinuf","Kudos","Flovry"],"characteristics":["instrumental","chill","ambient"],"colors":"bright daylight with soft whites and muted greens","description":"A bright and airy classroom filled with focused students, perfect for a playlist that captures the calm and studious atmosphere. Natural lighting and muted colors set a tranquil mood ideal for study sessions.","emotion":"focused and studious","energy":"medium","genres":["lofi","ambient","instrumental","chill"],"lighting":"bright natural lighting within an indoor setting","mood":"calm","moodScores":{"calm":85,"chill":70,"dreamy":40,"energetic":30,"happy":50,"melancholy":20,"nostalgic":45,"romantic":15},"musicalKeywords":["lofi","ambient","instrumental","chill","studious"],"playlistTheme":"Classroom Vibes","tempo":"moderate"}
-[00:35:09.452] Browser LOG     Mood scores: {"calm":85,"chill":70,"dreamy":40,"energetic":30,"happy":50,"melancholy":20,"nostalgic":45,"romantic":15}
-[00:35:09.568] Server  LOG     User authenticated: "emmacoye"
-[00:35:09.568] Server  LOG     Using 25 artists from OpenAI analysis
-[00:35:10.274] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:35:14.522] Server  LOG     Returning 20 tracks (target: 20)
-[00:35:14.629] Browser LOG     === TRACK DATA DEBUG ===
-[00:35:14.629] Browser LOG     Total tracks: 20
-[00:35:14.629] Browser LOG     First track full data: {"album":"Taking Drugs","album_image":"https://i.scdn.co/image/ab67616d0000b273118f3e811ba6bc58c2617d47","artists":"SAIBOTAJE","duration_ms":149706,"external_urls":{"spotify":"https://open.spotify.com/track/4wA6flTk0CJE1HjbXrlzbB"},"id":"4wA6flTk0CJE1HjbXrlzbB","name":"Taking Drugs","preview_url":null,"uri":"spotify:track:4wA6flTk0CJE1HjbXrlzbB"}
-[00:35:14.629] Browser LOG     Tracks with preview URLs: 0
-[00:35:14.629] Browser LOG     Tracks without preview URLs: 20
-[00:35:14.629] Browser LOG     Sample track preview_url: null
-[00:35:14.629] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:35:14.629] Browser LOG     ========================
-[00:35:27.026] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:35:27.168] Server  LOG     User authenticated: "emmacoye"
-[00:35:27.168] Server  LOG     Using 25 artists from OpenAI analysis
-[00:35:27.834] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:35:32.241] Server  LOG     Returning 20 tracks (target: 20)
-[00:35:32.348] Browser LOG     === TRACK DATA DEBUG ===
-[00:35:32.348] Browser LOG     Total tracks: 20
-[00:35:32.348] Browser LOG     First track full data: {"album":"Gradation","album_image":"https://i.scdn.co/image/ab67616d0000b2738e7172495211fe4f7b804e57","artists":"Shizuka Kudo","duration_ms":235133,"external_urls":{"spotify":"https://open.spotify.com/track/5glngcx2zSAHgBrgJ6uSkO"},"id":"5glngcx2zSAHgBrgJ6uSkO","name":"Mugo N…Iroppoi","preview_url":null,"uri":"spotify:track:5glngcx2zSAHgBrgJ6uSkO"}
-[00:35:32.348] Browser LOG     Tracks with preview URLs: 0
-[00:35:32.348] Browser LOG     Tracks without preview URLs: 20
-[00:35:32.348] Browser LOG     Sample track preview_url: null
-[00:35:32.348] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:35:32.348] Browser LOG     ========================
-[00:35:34.573] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:35:34.728] Server  LOG     User authenticated: "emmacoye"
-[00:35:34.728] Server  LOG     Using 25 artists from OpenAI analysis
-[00:35:35.248] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:35:39.583] Server  LOG     Returning 20 tracks (target: 20)
-[00:35:39.692] Browser LOG     === TRACK DATA DEBUG ===
-[00:35:39.693] Browser LOG     Total tracks: 20
-[00:35:39.693] Browser LOG     First track full data: {"album":"Lofi Massage and Spa","album_image":"https://i.scdn.co/image/ab67616d0000b27361bccfedd745960b4a079e4f","artists":"The Peaceful Garden","duration_ms":189295,"external_urls":{"spotify":"https://open.spotify.com/track/23gElcY8uTFSxMgHSJeeTe"},"id":"23gElcY8uTFSxMgHSJeeTe","name":"Lofi Lofi","preview_url":null,"uri":"spotify:track:23gElcY8uTFSxMgHSJeeTe"}
-[00:35:39.693] Browser LOG     Tracks with preview URLs: 0
-[00:35:39.693] Browser LOG     Tracks without preview URLs: 20
-[00:35:39.693] Browser LOG     Sample track preview_url: null
-[00:35:39.693] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:35:39.693] Browser LOG     ========================
-[00:35:43.576] Browser LOG     Track row clicked: Taking Drugs
-[00:37:19.850] Server  LOG     Analyzing image (size: 0.04MB)
-[00:37:31.778] Server  LOG     Using access token from cookies (length: 342 ")"
-[00:37:31.850] Browser LOG     Analysis data: {"artists":["Lofi Girl","Chillhop Music","Kupla","Idealism","Jinsang","Nujabes","Tomppabeats","Birocratic","Sleepy Fish","Aso","eery","SwuM","Bonobo","Tycho","Boards of Canada","Brian Eno","Marconi Union","Oatmello","Mt. Fujitive","Eeph","potsu","Joey Pecoraro","Travis Bretzer","Bcalm","S N U G"],"characteristics":["acoustic","instrumental","relaxed"],"colors":"neutral tones with bright accents","description":"A bright classroom setting with students engaged in learning. The calm and focused atmosphere is perfect for a relaxed study session, capturing a sense of calm and focus.","emotion":"focused and relaxed","energy":"medium","genres":["lofi","ambient","instrumental","chill"],"lighting":"bright indoor lighting","mood":"calm","moodScores":{"calm":80,"chill":70,"dreamy":50,"energetic":40,"happy":60,"melancholy":20,"nostalgic":30,"romantic":10},"musicalKeywords":["lofi","calm","instrumental","chill","relaxed"],"playlistTheme":"Study Vibes","tempo":"moderate"}
-[00:37:31.850] Browser LOG     Mood scores: {"calm":80,"chill":70,"dreamy":50,"energetic":40,"happy":60,"melancholy":20,"nostalgic":30,"romantic":10}
-[00:37:31.941] Server  LOG     User authenticated: "emmacoye"
-[00:37:31.941] Server  LOG     Classroom scene detected - forcing lofi/study music
-[00:37:31.941] Server  LOG     Using 16 lofi/study artists for classroom scene
-[00:37:31.941] Server  LOG     Forcing chill/ambient genres for classroom scene
-[00:37:32.490] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
-[00:37:37.166] Server  LOG     Filtered EDM tracks for classroom scene, 61 tracks remaining
-[00:37:37.167] Server  LOG     Returning 20 tracks (target: 20)
-[00:37:37.279] Browser LOG     === TRACK DATA DEBUG ===
-[00:37:37.279] Browser LOG     Total tracks: 20
-[00:37:37.279] Browser LOG     First track full data: {"album":"The Lo-Fis","album_image":"https://i.scdn.co/image/ab67616d0000b273c3545bbe806b845c2b52bc20","artists":"Steve Lacy","duration_ms":178328,"external_urls":{"spotify":"https://open.spotify.com/track/0f8eRy9A0n6zXpKSHSCAEp"},"id":"0f8eRy9A0n6zXpKSHSCAEp","name":"Infrunami","preview_url":null,"uri":"spotify:track:0f8eRy9A0n6zXpKSHSCAEp"}
-[00:37:37.279] Browser LOG     Tracks with preview URLs: 0
-[00:37:37.279] Browser LOG     Tracks without preview URLs: 20
-[00:37:37.279] Browser LOG     Sample track preview_url: null
-[00:37:37.279] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
-[00:37:37.279] Browser LOG     ========================
-[00:37:45.539] Browser LOG     Track row clicked: Lavender
+[00:00:06.645] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:02:29.662] Server  LOG      ✓ Compiled in 52ms
+[00:02:39.016] Server  LOG      ✓ Compiled in 108ms
+[00:03:15.704] Server  LOG      ✓ Compiled in 19ms
+[00:03:22.260] Server  LOG      ✓ Compiled in 35ms
+[00:03:29.942] Server  LOG      ✓ Compiled in 19ms
+[00:04:04.308] Server  LOG      ✓ Compiled in 95ms
+[00:04:05.265] Server  LOG      ✓ Compiled in 21ms
+[00:05:24.027] Server  LOG      ✓ Compiled in 52ms
+[00:07:31.973] Server  LOG      ✓ Compiled in 54ms
+[00:07:32.051] Browser WARN    Unexpected import of module [project]/node_modules/next/dist/shared/lib/match-local-pattern.js [client] (ecmascript) from module [project]/node_modules/next/dist/shared/lib/image-loader.js [client] (ecmascript), which was deleted by an HMR update
+[00:07:32.051] Browser WARN    Unexpected import of module [project]/node_modules/next/dist/shared/lib/match-local-pattern.js [client] (ecmascript) from module [project]/node_modules/next/dist/shared/lib/image-loader.js [client] (ecmascript), which was deleted by an HMR update
+[00:07:32.051] Browser WARN    Unexpected import of module [project]/node_modules/next/dist/shared/lib/match-local-pattern.js [client] (ecmascript) from module [project]/node_modules/next/dist/shared/lib/image-loader.js [client] (ecmascript), which was deleted by an HMR update
+[00:07:40.800] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:07:40.800] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:07:40.800] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:07:40.800] Server  LOG     Request host: "127.0.0.1:3000"
+[00:07:40.800] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:07:40.800] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
+[00:07:40.800] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=qn278o7fwxkkvki863yivn&show_dialog=true"
+[00:07:40.800] Server  LOG     Setting state cookie: "qn278o7fwxkkvki863yivn"
+[00:07:40.800] Server  LOG     Cookie string: "spotify_auth_state=qn278o7fwxkkvki863yivn; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:07:42.682] Server  LOG     Callback received - Query params: {}
+[00:07:42.682] Server  LOG     All cookies: {}
+[00:07:42.682] Server  LOG     Cookie header: "spotify_access_token=BQCFQRl_F3kkkAt_--Ksf08M4dwOprA1fbIjXnIWDWM459GoispxTv7RdK_NJ1L7eX1di-ivlcLGq_KgqkipbVLqezMI3BSWktpKeYTj-JwbeER_hAsBfac83aChW8dBT6WHJFvoPIfrr5GjUf4hzMilw35VW3ieQQuPGUaQi-cWzttqacGNST8VHSxl_0o7noSZjt5XKqKnNG8_BYWv2AUyf2Q9dMKWYzeUD-rUC0ryOwMzn4TO35ucee1GZOoDBDRAfVLczyc9YM92PC21_OzCwJDDuG_Ky86f_9CjB3BlIVyeuFx00QvKEhVRgzb_zX2h_JwTfmezikaNH2WTYQ; spotify_refresh_token=AQCASqNvwoJ9bGO3SxMGJe5-4Kz9niWjiuRShKtfA6YuGiW9ESQ5ds8S7GATTO3QxVYSHyKce0YN9xZ6expi-40u1mPkvyMFL8ALz-c-eJO98g5HT4EP2HV3wubWHKmDiXg; spotify_auth_state=qn278o7fwxkkvki863yivn"
+[00:07:42.682] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:07:42.682] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:07:42.682] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:07:42.682] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:07:42.682] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:07:42.682] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:07:42.682] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:07:42.878] Server  LOG     ✅ Token exchange successful
+[00:07:42.878] Server  LOG     Token received: {}
+[00:07:42.878] Server  LOG     🔍 Verifying token...
+[00:07:42.879] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:07:42.879] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:07:42.879] Server  LOG        Client Secret length: 32
+[00:07:42.879] Server  LOG        Token length: 342
+[00:07:42.879] Server  LOG        Token starts with: "BQBs1CGHw6uWtyCQTCln"
+[00:07:42.879] Server  LOG        Making getMe() call to verify token...
+[00:07:43.124] Server  LOG        Raw HTTP request status: 200
+[00:07:43.127] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:07:43.298] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:08:08.872] Server  LOG      ✓ Compiled in 55ms
+[00:08:08.991] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:08:27.087] Browser LOG     Compressed image size: 6KB
+[00:08:27.229] Server  LOG     Analyzing image (size: 0.01MB)
+[00:08:53.156] Server  LOG      ✓ Compiled in 94ms
+[00:08:53.189] Server  LOG     Analyzing image (size: 0.01MB)
+[00:09:06.735] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:09:06.768] Browser LOG     Analysis data: {"artists":["Ben Howard","Iron & Wine","Fleet Foxes","Sufjan Stevens","Bon Iver","The Tallest Man On Earth","Angus & Julia Stone","José González","Damien Rice","The Paper Kites","Hozier","First Aid Kit","Mumford & Sons","Passenger","Laura Marling","The Lumineers","Gregory Alan Isakov","Vance Joy","Lumineers","Novo Amor","Matthew and the Atlas","The Weepies","Amber Run","James Vincent McMorrow","Radical Face"],"characteristics":["acoustic","instrumental","guitar"],"colors":"natural greens and muted grays","description":"A serene scene set in nature, featuring soft natural lighting and muted green hues. The mood is calm and reflective, perfect for indie folk tunes that capture the tranquility of an outdoor escape.","emotion":"peaceful, reflective","energy":"medium","genres":["indie folk","folk pop","acoustic"],"lighting":"soft natural lighting in an outdoor setting","mood":"calm","moodScores":{"calm":85,"chill":80,"dreamy":60,"energetic":15,"happy":20,"melancholy":40,"nostalgic":50,"romantic":30},"musicalKeywords":["acoustic","calm","folk","guitar","reflective"],"playlistTheme":"Nature's Hymn","tempo":"moderate"}
+[00:09:06.768] Browser LOG     Mood scores: {"calm":85,"chill":80,"dreamy":60,"energetic":15,"happy":20,"melancholy":40,"nostalgic":50,"romantic":30}
+[00:09:06.938] Server  LOG     User authenticated: "emmacoye"
+[00:09:06.938] Server  LOG     Using 25 artists from OpenAI analysis
+[00:09:07.744] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
+[00:09:12.910] Server  LOG     Returning 20 tracks (target: 20)
+[00:09:13.015] Browser LOG     === TRACK DATA DEBUG ===
+[00:09:13.015] Browser LOG     Total tracks: 20
+[00:09:13.015] Browser LOG     First track full data: {"album":"Bathing Beach","album_image":"https://i.scdn.co/image/ab67616d0000b273277620423172f5a151f452e3","artists":"Novo Amor","duration_ms":257533,"external_urls":{"spotify":"https://open.spotify.com/track/7qH9Z4dJEN0l9bidizW7fq"},"id":"7qH9Z4dJEN0l9bidizW7fq","name":"Anchor","preview_url":null,"uri":"spotify:track:7qH9Z4dJEN0l9bidizW7fq"}
+[00:09:13.015] Browser LOG     Tracks with preview URLs: 0
+[00:09:13.015] Browser LOG     Tracks without preview URLs: 20
+[00:09:13.015] Browser LOG     Sample track preview_url: null
+[00:09:13.015] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
+[00:09:13.015] Browser LOG     ========================
+[00:09:49.817] Server  LOG      ✓ Compiled in 16ms
+[00:10:08.853] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:10:08.968] Browser LOG     Analysis data: {"artists":["Ben Howard","Iron & Wine","Fleet Foxes","Sufjan Stevens","Bon Iver","The Tallest Man On Earth","Angus & Julia Stone","José González","Damien Rice","The Paper Kites","Hozier","First Aid Kit","Mumford & Sons","Passenger","Laura Marling","The Lumineers","Gregory Alan Isakov","Vance Joy","Lumineers","Novo Amor","Matthew and the Atlas","The Weepies","Amber Run","James Vincent McMorrow","Radical Face"],"characteristics":["acoustic","instrumental","guitar"],"colors":"natural greens and muted grays","description":"A serene scene set in nature, featuring soft natural lighting and muted green hues. The mood is calm and reflective, perfect for indie folk tunes that capture the tranquility of an outdoor escape.","emotion":"peaceful, reflective","energy":"medium","genres":["indie folk","folk pop","acoustic"],"lighting":"soft natural lighting in an outdoor setting","mood":"calm","moodScores":{"calm":85,"chill":80,"dreamy":60,"energetic":15,"happy":20,"melancholy":40,"nostalgic":50,"romantic":30},"musicalKeywords":["acoustic","calm","folk","guitar","reflective"],"playlistTheme":"Nature's Hymn","tempo":"moderate"}
+[00:10:08.968] Browser LOG     Mood scores: {"calm":85,"chill":80,"dreamy":60,"energetic":15,"happy":20,"melancholy":40,"nostalgic":50,"romantic":30}
+[00:10:08.968] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:10:09.055] Server  LOG     User authenticated: "emmacoye"
+[00:10:09.055] Server  LOG     Using 25 artists from OpenAI analysis
+[00:10:09.740] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
+[00:10:11.864] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:10:11.864] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:10:11.864] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:10:11.864] Server  LOG     Request host: "127.0.0.1:3000"
+[00:10:11.864] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:10:11.864] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
+[00:10:11.864] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=tru53y1peoki2iz6vs1goa&show_dialog=true"
+[00:10:11.864] Server  LOG     Setting state cookie: "tru53y1peoki2iz6vs1goa"
+[00:10:11.864] Server  LOG     Cookie string: "spotify_auth_state=tru53y1peoki2iz6vs1goa; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:10:13.848] Server  LOG     Callback received - Query params: {}
+[00:10:13.848] Server  LOG     All cookies: {}
+[00:10:13.848] Server  LOG     Cookie header: "spotify_access_token=BQBs1CGHw6uWtyCQTCln1tXGHxm_cOfC0OMtK5Ow6Wj6Vm_LDBOTfWR8-NJ3IyXluozXHW6DIY9u0DsnHoU2qtZCovaWqFIJsBBSuDjFNWmv-KjEza7SzF0X9wiTtF7bC2nqSrsdDy7cra2sQBmTbcld5dRAwgPq2F1_5qog9yy5CdWC_0SOFHfq6qXkI00oGZMiSxjqBd9DIkfVLaAdu-7dYiNCHFHBlHAZjp34c8ukj6MCzRrbS2iWFsJ_9-CuKwUm0Ze-NvJVMgvXXxb-x78MaNz3emxDKEFw8FpHGIT3wcm7SQI6RijP8mHnI66fiublkJKynn65D2nLQ-p8Sw; spotify_refresh_token=AQDvxO4CJsp3mQ3mXLs_djLvcjsmyYgaOozTlb0oNsX7hrZw0pAJng8PtK8J-VQ9ViU4FFkj1hKyop2uJIKqeDvfK-jPKHuYQD6LarkZti64FrydpcKo4gqanu5szQ7_gUA; spotify_auth_state=tru53y1peoki2iz6vs1goa"
+[00:10:13.848] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:10:13.848] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:10:13.848] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:10:13.848] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:10:13.848] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:10:13.848] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:10:13.848] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:10:14.001] Server  LOG     ✅ Token exchange successful
+[00:10:14.001] Server  LOG     Token received: {}
+[00:10:14.001] Server  LOG     🔍 Verifying token...
+[00:10:14.001] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:10:14.001] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:10:14.001] Server  LOG        Client Secret length: 32
+[00:10:14.001] Server  LOG        Token length: 342
+[00:10:14.001] Server  LOG        Token starts with: "BQBBGfSqk8Ft70mgTG0G"
+[00:10:14.001] Server  LOG        Making getMe() call to verify token...
+[00:10:14.241] Server  LOG        Raw HTTP request status: 200
+[00:10:14.243] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:10:14.418] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:10:14.824] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:10:15.789] Server  LOG     Returning 20 tracks (target: 20)
+[00:10:20.862] Server  LOG     Analyzing image (size: 0.01MB)
+[00:10:20.916] Browser LOG     Compressed image size: 6KB
+[00:10:38.461] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:10:38.552] Browser LOG     Analysis data: {"artists":["Sufjan Stevens","Iron & Wine","Bon Iver","Fleet Foxes","The Paper Kites","José González","Angus & Julia Stone","Nick Drake","Gregory Alan Isakov","The Tallest Man On Earth","Ben Howard","Ray LaMontagne","First Aid Kit","Damien Rice","Mumford & Sons","Andrew Bird","The Head and the Heart","Vance Joy","The Lumineers","Of Monsters and Men","Novo Amor","Tall Heights","Lord Huron","Langhorne Slim","Matthew and the Atlas"],"characteristics":["acoustic","instrumental","guitar"],"colors":"natural greens and muted earth tones","description":"A serene countryside scene captured in soft, natural lighting, surrounded by muted greens and earth tones. Perfect for reflective walks or calm afternoons in nature.","emotion":"peaceful, reflective","energy":"medium","genres":["indie folk","folk pop","acoustic"],"lighting":"soft and ambient out in nature","mood":"calm","moodScores":{"calm":85,"chill":70,"dreamy":55,"energetic":20,"happy":40,"melancholy":30,"nostalgic":65,"romantic":25},"musicalKeywords":["acoustic","reflective","guitar","peaceful","nature"],"playlistTheme":"Nature's Calm","tempo":"moderate"}
+[00:10:38.552] Browser LOG     Mood scores: {"calm":85,"chill":70,"dreamy":55,"energetic":20,"happy":40,"melancholy":30,"nostalgic":65,"romantic":25}
+[00:10:38.655] Server  LOG     User authenticated: "emmacoye"
+[00:10:38.655] Server  LOG     Using 25 artists from OpenAI analysis
+[00:10:39.356] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
+[00:10:45.072] Server  LOG     Returning 20 tracks (target: 20)
+[00:10:45.177] Browser LOG     === TRACK DATA DEBUG ===
+[00:10:45.177] Browser LOG     Total tracks: 20
+[00:10:45.177] Browser LOG     First track full data: {"album":"Dream Your Life Away","album_image":"https://i.scdn.co/image/ab67616d0000b273d3ce97395ff522b0d70c1094","artists":"Vance Joy","duration_ms":204280,"external_urls":{"spotify":"https://open.spotify.com/track/7yq4Qj7cqayVTp3FF9CWbm"},"id":"7yq4Qj7cqayVTp3FF9CWbm","name":"Riptide","preview_url":null,"uri":"spotify:track:7yq4Qj7cqayVTp3FF9CWbm"}
+[00:10:45.177] Browser LOG     Tracks with preview URLs: 0
+[00:10:45.177] Browser LOG     Tracks without preview URLs: 20
+[00:10:45.177] Browser LOG     Sample track preview_url: null
+[00:10:45.177] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
+[00:10:45.177] Browser LOG     ========================
+[00:10:45.791] Server  LOG      ✓ Compiled in 39ms
+[00:10:46.550] Server  LOG      ✓ Compiled in 30ms
+[00:10:46.634] Browser LOG     Analysis data: {"artists":["Sufjan Stevens","Iron & Wine","Bon Iver","Fleet Foxes","The Paper Kites","José González","Angus & Julia Stone","Nick Drake","Gregory Alan Isakov","The Tallest Man On Earth","Ben Howard","Ray LaMontagne","First Aid Kit","Damien Rice","Mumford & Sons","Andrew Bird","The Head and the Heart","Vance Joy","The Lumineers","Of Monsters and Men","Novo Amor","Tall Heights","Lord Huron","Langhorne Slim","Matthew and the Atlas"],"characteristics":["acoustic","instrumental","guitar"],"colors":"natural greens and muted earth tones","description":"A serene countryside scene captured in soft, natural lighting, surrounded by muted greens and earth tones. Perfect for reflective walks or calm afternoons in nature.","emotion":"peaceful, reflective","energy":"medium","genres":["indie folk","folk pop","acoustic"],"lighting":"soft and ambient out in nature","mood":"calm","moodScores":{"calm":85,"chill":70,"dreamy":55,"energetic":20,"happy":40,"melancholy":30,"nostalgic":65,"romantic":25},"musicalKeywords":["acoustic","reflective","guitar","peaceful","nature"],"playlistTheme":"Nature's Calm","tempo":"moderate"}
+[00:10:46.634] Browser LOG     Mood scores: {"calm":85,"chill":70,"dreamy":55,"energetic":20,"happy":40,"melancholy":30,"nostalgic":65,"romantic":25}
+[00:11:23.484] Server  LOG      ✓ Compiled in 26ms
+[00:11:23.570] Browser LOG     Analysis data: {"artists":["Sufjan Stevens","Iron & Wine","Bon Iver","Fleet Foxes","The Paper Kites","José González","Angus & Julia Stone","Nick Drake","Gregory Alan Isakov","The Tallest Man On Earth","Ben Howard","Ray LaMontagne","First Aid Kit","Damien Rice","Mumford & Sons","Andrew Bird","The Head and the Heart","Vance Joy","The Lumineers","Of Monsters and Men","Novo Amor","Tall Heights","Lord Huron","Langhorne Slim","Matthew and the Atlas"],"characteristics":["acoustic","instrumental","guitar"],"colors":"natural greens and muted earth tones","description":"A serene countryside scene captured in soft, natural lighting, surrounded by muted greens and earth tones. Perfect for reflective walks or calm afternoons in nature.","emotion":"peaceful, reflective","energy":"medium","genres":["indie folk","folk pop","acoustic"],"lighting":"soft and ambient out in nature","mood":"calm","moodScores":{"calm":85,"chill":70,"dreamy":55,"energetic":20,"happy":40,"melancholy":30,"nostalgic":65,"romantic":25},"musicalKeywords":["acoustic","reflective","guitar","peaceful","nature"],"playlistTheme":"Nature's Calm","tempo":"moderate"}
+[00:11:23.570] Browser LOG     Mood scores: {"calm":85,"chill":70,"dreamy":55,"energetic":20,"happy":40,"melancholy":30,"nostalgic":65,"romantic":25}
+[00:11:39.807] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:11:40.043] Server  LOG     User authenticated: "emmacoye"
+[00:11:40.043] Server  LOG     Using 25 artists from OpenAI analysis
+[00:11:40.819] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
+[00:11:45.638] Server  LOG     Returning 20 tracks (target: 20)
+[00:11:45.743] Browser LOG     === TRACK DATA DEBUG ===
+[00:11:45.743] Browser LOG     Total tracks: 20
+[00:11:45.744] Browser LOG     First track full data: {"album":"All or Nothing / Fast Car","album_image":"https://i.scdn.co/image/ab67616d0000b2730311e8a2ad627a67c9b1f09f","artists":"Ryan Montbleau, Tall Heights","duration_ms":267331,"external_urls":{"spotify":"https://open.spotify.com/track/7zW1tKbxhWzuD6UDIP6GWP"},"id":"7zW1tKbxhWzuD6UDIP6GWP","name":"All or Nothing (feat. Tall Heights)","preview_url":null,"uri":"spotify:track:7zW1tKbxhWzuD6UDIP6GWP"}
+[00:11:45.744] Browser LOG     Tracks with preview URLs: 0
+[00:11:45.744] Browser LOG     Tracks without preview URLs: 20
+[00:11:45.744] Browser LOG     Sample track preview_url: null
+[00:11:45.744] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
+[00:11:45.744] Browser LOG     ========================
+[00:11:51.301] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:11:51.301] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:11:51.301] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:11:51.301] Server  LOG     Request host: "127.0.0.1:3000"
+[00:11:51.301] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:11:51.301] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
+[00:11:51.301] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=vyr7nkigr3ujyh46s70rk&show_dialog=true"
+[00:11:51.301] Server  LOG     Setting state cookie: "vyr7nkigr3ujyh46s70rk"
+[00:11:51.301] Server  LOG     Cookie string: "spotify_auth_state=vyr7nkigr3ujyh46s70rk; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:11:53.283] Server  LOG     Callback received - Query params: {}
+[00:11:53.284] Server  LOG     All cookies: {}
+[00:11:53.284] Server  LOG     Cookie header: "spotify_access_token=BQBBGfSqk8Ft70mgTG0GiXgrAkulIqdNM0TEfS4x1U9G4YbxYxfkDv-eFpIz15fjoJb9EvCXL4rT2SuTMdGqiT6OwjOx8BmYU1mHyub5cW6eeunKMmItEcjJ90c0yi_izlmBN4gdFkwYfEXKeBFb2CrWp8bByXAn-GTvVr6cE2xp_aGpprA17IJJdM_kwXgmLVxFgxaHKXKwABiEEicMTuDmLuz-JXec5cGZy6VYb0YY5ihqib-Kr5ko0ea__Zu8TUp6-McLUPLRuBz7IWl1YUNs-FMAZBIy1GXpCSU6MSwet-cKqceqUilP0CtHUFetv6BZL7jjtTFfvjexDSDPcQ; spotify_refresh_token=AQCrufoxeKREBO4JHrUygmTebvO-OlyseOPRR9YJpH_Ssqn5PJU9RyEHLFrCQO7t7IVhFeewuY5CxjbRy1sgpEKNRJRlJ9yJTbFknfM_QWSShOMBKhY5iOfmRQcAlzI6ZRs; spotify_auth_state=vyr7nkigr3ujyh46s70rk"
+[00:11:53.284] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:11:53.284] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:11:53.284] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:11:53.284] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:11:53.284] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:11:53.284] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:11:53.284] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:11:53.473] Server  LOG     ✅ Token exchange successful
+[00:11:53.473] Server  LOG     Token received: {}
+[00:11:53.474] Server  LOG     🔍 Verifying token...
+[00:11:53.474] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:11:53.474] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:11:53.474] Server  LOG        Client Secret length: 32
+[00:11:53.474] Server  LOG        Token length: 342
+[00:11:53.474] Server  LOG        Token starts with: "BQAzI31ryTJ6tMQ_x_Z6"
+[00:11:53.474] Server  LOG        Making getMe() call to verify token...
+[00:11:53.660] Server  LOG        Raw HTTP request status: 200
+[00:11:53.663] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:11:53.877] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:11:54.259] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:12:00.251] Server  LOG     Analyzing image (size: 0.04MB)
+[00:12:00.300] Browser LOG     Compressed image size: 36KB
+[00:12:42.300] Server  LOG     Analyzing image (size: 0.04MB)
+[00:12:42.332] Server  LOG      ✓ Compiled in 37ms
+[00:13:15.845] Server  LOG     Analyzing image (size: 0.04MB)
+[00:13:15.874] Server  LOG      ✓ Compiled in 15ms
+[00:13:18.001] Server  LOG     Analyzing image (size: 0.04MB)
+[00:13:18.032] Server  LOG      ✓ Compiled in 65ms
+[00:13:26.742] Server  LOG     Analyzing image (size: 0.04MB)
+[00:13:26.772] Server  LOG      ✓ Compiled in 34ms
+[00:13:32.205] Server  LOG      ✓ Compiled in 33ms
+[00:14:11.664] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:14:11.737] Browser LOG     Analysis data: {"artists":["Drake","J. Cole","Kanye West","Kendrick Lamar","Travis Scott","Cardi B","Migos","Post Malone","Lil Wayne","Rihanna","Beyoncé","Dua Lipa","The Weeknd","Nicki Minaj","Future","A$AP Rocky","Childish Gambino","Anderson .Paak","SZA","Ty Dolla $ign","21 Savage","Lil Uzi Vert","Doja Cat","Megan Thee Stallion","Offset"],"characteristics":["driving beat","dynamic","intense"],"colors":"dark arena with flashes of green and white","description":"This image captures the high-energy atmosphere of a professional basketball game with players intensely focused on the court. The bright spotlight contrasts with the darker arena, highlighting the dynamic and competitive nature of the scene.","emotion":"dynamic, competitive","energy":"high","genres":["hip hop","pop","R&B"],"lighting":"bright spotlight on players with darker surrounding","mood":"energetic","moodScores":{"calm":20,"chill":15,"dreamy":10,"energetic":85,"happy":30,"melancholy":5,"nostalgic":20,"romantic":0},"musicalKeywords":["energetic","dynamic","intense","fast-paced","competitive"],"playlistTheme":"Court Vibes","tempo":"fast"}
+[00:14:11.737] Browser LOG     Mood scores: {"calm":20,"chill":15,"dreamy":10,"energetic":85,"happy":30,"melancholy":5,"nostalgic":20,"romantic":0}
+[00:14:11.971] Server  LOG     User authenticated: "emmacoye"
+[00:14:11.971] Server  LOG     Using 25 artists from OpenAI analysis
+[00:14:12.585] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
+[00:14:15.506] Server  LOG     Analyzing image (size: 0.04MB)
+[00:14:17.968] Server  LOG     Returning 20 tracks (target: 20)
+[00:14:18.075] Browser LOG     === TRACK DATA DEBUG ===
+[00:14:18.075] Browser LOG     Total tracks: 20
+[00:14:18.075] Browser LOG     First track full data: {"album":"Hurry Up Tomorrow","album_image":"https://i.scdn.co/image/ab67616d0000b273982320da137d0de34410df61","artists":"The Weeknd, Playboi Carti","duration_ms":256000,"external_urls":{"spotify":"https://open.spotify.com/track/0FIDCNYYjNvPVimz5icugS"},"id":"0FIDCNYYjNvPVimz5icugS","name":"Timeless (feat Playboi Carti)","preview_url":null,"uri":"spotify:track:0FIDCNYYjNvPVimz5icugS"}
+[00:14:18.075] Browser LOG     Tracks with preview URLs: 0
+[00:14:18.075] Browser LOG     Tracks without preview URLs: 20
+[00:14:18.075] Browser LOG     Sample track preview_url: null
+[00:14:18.075] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
+[00:14:18.075] Browser LOG     ========================
+[00:14:29.746] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:14:29.826] Browser LOG     Analysis data: {"artists":["Drake","Kanye West","Kendrick Lamar","J. Cole","Post Malone","Travis Scott","Cardi B","Future","The Weeknd","Rihanna","Beyoncé","SZA","Bruno Mars","Dua Lipa","Ariana Grande","Lil Wayne","21 Savage","Lil Uzi Vert","Young Thug","Tyler, The Creator","Migos","Doja Cat","JAY-Z","Nicki Minaj","Anderson .Paak"],"characteristics":["upbeat","dynamic","rhythmic"],"colors":"cool blues and muted grays","description":"This dynamic and energetic scene is set in an indoor basketball arena, characterized by cool blues and muted grays. The atmosphere is tense and competitive, perfectly matched with high-energy hip hop and pop with a fast tempo.","emotion":"intense, competitive","energy":"high","genres":["hip hop","pop","r&b"],"lighting":"bright and focused, typical of indoor sports arenas","mood":"energetic","moodScores":{"calm":20,"chill":30,"dreamy":20,"energetic":85,"happy":50,"melancholy":10,"nostalgic":40,"romantic":10},"musicalKeywords":["energetic","upbeat","rhythmic","dynamic","intense"],"playlistTheme":"Court Energy","tempo":"fast"}
+[00:14:29.826] Browser LOG     Mood scores: {"calm":20,"chill":30,"dreamy":20,"energetic":85,"happy":50,"melancholy":10,"nostalgic":40,"romantic":10}
+[00:14:29.920] Server  LOG     User authenticated: "emmacoye"
+[00:14:29.920] Server  LOG     Using 25 artists from OpenAI analysis
+[00:14:30.636] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
+[00:14:35.706] Server  LOG     Returning 20 tracks (target: 20)
+[00:14:35.812] Browser LOG     === TRACK DATA DEBUG ===
+[00:14:35.812] Browser LOG     Total tracks: 20
+[00:14:35.812] Browser LOG     First track full data: {"album":"Black Panther The Album Music From And Inspired By","album_image":"https://i.scdn.co/image/ab67616d0000b273c027ad28821777b00dcaa888","artists":"Kendrick Lamar, SZA","duration_ms":232186,"external_urls":{"spotify":"https://open.spotify.com/track/3GCdLUSnKSMJhs4Tj6CV3s"},"id":"3GCdLUSnKSMJhs4Tj6CV3s","name":"All The Stars (with SZA) - From \"Black Panther: The Album\"","preview_url":null,"uri":"spotify:track:3GCdLUSnKSMJhs4Tj6CV3s"}
+[00:14:35.812] Browser LOG     Tracks with preview URLs: 0
+[00:14:35.812] Browser LOG     Tracks without preview URLs: 20
+[00:14:35.812] Browser LOG     Sample track preview_url: null
+[00:14:35.812] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
+[00:14:35.812] Browser LOG     ========================
+[00:14:44.101] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:14:44.274] Server  LOG     User authenticated: "emmacoye"
+[00:14:44.274] Server  LOG     Using 25 artists from OpenAI analysis
+[00:14:45.024] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
+[00:14:50.838] Server  LOG     Returning 20 tracks (target: 20)
+[00:14:50.988] Browser LOG     === TRACK DATA DEBUG ===
+[00:14:50.988] Browser LOG     Total tracks: 20
+[00:14:50.988] Browser LOG     First track full data: {"album":"Chill, Underscores, Hip Hop: Rhythmic Underscores","album_image":"https://i.scdn.co/image/ab67616d0000b273e21032da9bb0043b6b90b130","artists":"The Clair Marlo Project, Alexander Ace Baker","duration_ms":191426,"external_urls":{"spotify":"https://open.spotify.com/track/6oCyUvYu0BTEDinOSp36lD"},"id":"6oCyUvYu0BTEDinOSp36lD","name":"Swimmers","preview_url":null,"uri":"spotify:track:6oCyUvYu0BTEDinOSp36lD"}
+[00:14:50.988] Browser LOG     Tracks with preview URLs: 0
+[00:14:50.988] Browser LOG     Tracks without preview URLs: 20
+[00:14:50.988] Browser LOG     Sample track preview_url: null
+[00:14:50.988] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
+[00:14:50.988] Browser LOG     ========================
+[00:15:54.474] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:15:54.474] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:15:54.474] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:15:54.474] Server  LOG     Request host: "127.0.0.1:3000"
+[00:15:54.474] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:15:54.474] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
+[00:15:54.474] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=9v5zikakmmmdycwiz0n8mp&show_dialog=true"
+[00:15:54.474] Server  LOG     Setting state cookie: "9v5zikakmmmdycwiz0n8mp"
+[00:15:54.474] Server  LOG     Cookie string: "spotify_auth_state=9v5zikakmmmdycwiz0n8mp; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:15:56.290] Server  LOG     Callback received - Query params: {}
+[00:15:56.290] Server  LOG     All cookies: {}
+[00:15:56.290] Server  LOG     Cookie header: "spotify_access_token=BQAzI31ryTJ6tMQ_x_Z6fpT-3LyqGRmStKh1w5qb3JFT1oY2-hD01gewk7VU5buE2UJGRCbEzkzwybSCk6q-xKiDGDVWrVyFO8wMB_IV8uOKwgPcz10bPi4r1DjtypcuUEqTsFrh27hmIYm4ueWJsizMby05mPwARRBXn_3qEHtM2P5cYf9dh60_4WKd5APwJvO2rP8S7DfEOAJIhkMQoPnffXP19Wr9crMl5hTEplgbq_DmqR0hDIb6Aj6Ga7Vz5JDUPG8hPnV07eiZxIgAJLtiiBKnPOF73bWYzJSfbxSNQDWH81K0ylfsXK5U7lvRTl1s-tpL5Fhy6DC3pdDVRA; spotify_refresh_token=AQAza4_6edjQxJBMij8dLt-rYQnpyyfnYd6_DkZFCaToZLVLu6nWHsVMypNEFrRQAjnRgrHGi54VNKKOzJMNp8xo5f0srmP5pOYhUz-LYgDhPl8xmR_J_PhUQDzgAjnN_gw; spotify_auth_state=9v5zikakmmmdycwiz0n8mp"
+[00:15:56.290] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:15:56.290] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:15:56.290] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:15:56.290] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:15:56.290] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:15:56.290] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:15:56.290] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:15:56.458] Server  LOG     ✅ Token exchange successful
+[00:15:56.458] Server  LOG     Token received: {}
+[00:15:56.458] Server  LOG     🔍 Verifying token...
+[00:15:56.459] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:15:56.459] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:15:56.459] Server  LOG        Client Secret length: 32
+[00:15:56.459] Server  LOG        Token length: 342
+[00:15:56.459] Server  LOG        Token starts with: "BQAUzuzwyQNBw7N998t2"
+[00:15:56.459] Server  LOG        Making getMe() call to verify token...
+[00:15:56.741] Server  LOG        Raw HTTP request status: 200
+[00:15:56.743] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:15:56.918] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:15:57.279] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:16:04.018] Server  LOG     Analyzing image (size: 0.04MB)
+[00:16:04.070] Browser LOG     Compressed image size: 38KB
+[00:16:21.189] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:16:21.279] Browser LOG     Analysis data: {"artists":["Lofi Girl","Chillhop Music","Kupla","Idealism","Jinsang","Nujabes","Tomppabeats","Birocratic","Sleepy Fish","Aso","eery","SwuM","Bonobo","Tycho","Boards of Canada","Brian Eno","Marconi Union","Emancipator","DJ Okawari","Olafur Arnalds","Ryo Fukui","Guggenz","Philanthrope","G Mills","Stan Forebee"],"characteristics":["acoustic","instrumental","piano"],"colors":"neutral beiges and soft whites","description":"A bright classroom scene filled with attentive students, creating a focused and studious atmosphere perfect for lo-fi and ambient tunes to aid concentration. The natural light flowing in and neutral colors set a calm and chill vibe.","emotion":"focused and studious","energy":"medium","genres":["lofi","ambient","instrumental","chill"],"lighting":"bright indoor lighting with a natural touch","mood":"calm","moodScores":{"calm":85,"chill":80,"dreamy":40,"energetic":30,"happy":50,"melancholy":20,"nostalgic":25,"romantic":15},"musicalKeywords":["lofi","acoustic","mellow","instrumental","study"],"playlistTheme":"Study Sessions","tempo":"moderate"}
+[00:16:21.279] Browser LOG     Mood scores: {"calm":85,"chill":80,"dreamy":40,"energetic":30,"happy":50,"melancholy":20,"nostalgic":25,"romantic":15}
+[00:16:21.471] Server  LOG     User authenticated: "emmacoye"
+[00:16:21.471] Server  LOG     Classroom scene detected - forcing lofi/study music
+[00:16:21.471] Server  LOG     Using 16 lofi/study artists for classroom scene
+[00:16:21.471] Server  LOG     Forcing chill/ambient genres for classroom scene
+[00:16:22.321] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
+[00:16:27.608] Server  LOG     Filtered EDM tracks for classroom scene, 59 tracks remaining
+[00:16:27.608] Server  LOG     Returning 20 tracks (target: 20)
+[00:16:27.718] Browser LOG     === TRACK DATA DEBUG ===
+[00:16:27.718] Browser LOG     Total tracks: 20
+[00:16:27.718] Browser LOG     First track full data: {"album":"The Lo-Fis","album_image":"https://i.scdn.co/image/ab67616d0000b273c3545bbe806b845c2b52bc20","artists":"Steve Lacy","duration_ms":178328,"external_urls":{"spotify":"https://open.spotify.com/track/0f8eRy9A0n6zXpKSHSCAEp"},"id":"0f8eRy9A0n6zXpKSHSCAEp","name":"Infrunami","preview_url":null,"uri":"spotify:track:0f8eRy9A0n6zXpKSHSCAEp"}
+[00:16:27.718] Browser LOG     Tracks with preview URLs: 0
+[00:16:27.718] Browser LOG     Tracks without preview URLs: 20
+[00:16:27.718] Browser LOG     Sample track preview_url: null
+[00:16:27.718] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
+[00:16:27.718] Browser LOG     ========================
+[00:16:35.424] Browser LOG     Track row clicked: Tides
+[00:16:52.426] Browser LOG     Track row clicked: Sabotage
+[00:17:07.424] Browser LOG     Track row clicked: until i lose my hearing. - instrumental
+[00:18:04.728] Server  LOG      ✓ Compiled in 48ms
+[00:18:15.541] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:18:15.541] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:18:15.541] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:18:15.541] Server  LOG     Request host: "127.0.0.1:3000"
+[00:18:15.541] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:18:15.541] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
+[00:18:15.541] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=5hc52nm978jb947anklfsk&show_dialog=true"
+[00:18:15.541] Server  LOG     Setting state cookie: "5hc52nm978jb947anklfsk"
+[00:18:15.541] Server  LOG     Cookie string: "spotify_auth_state=5hc52nm978jb947anklfsk; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:18:17.718] Server  LOG     Callback received - Query params: {}
+[00:18:17.718] Server  LOG     All cookies: {}
+[00:18:17.718] Server  LOG     Cookie header: "spotify_access_token=BQAUzuzwyQNBw7N998t2pmYc7I0Q8KHfNjTO-SaxQDZQwePBP6IBWy6Q1f8-Uy56L1u7_BL-lMcO0S3lkr3v3GsKMuAf9TY8VyMAYIO7UT1QRFkm_YxSLBsCXIOhqM3gu5IeoI3I8LSbirh2Ykl3nc09xLfvfG2YO8I3Pfz7C4EGgmZcmFOgbRW1laCFXMaq1xw1xA6efj4ELxC0Q8pEv-8Bi6F3v94YJCpbXW0dmV4QBymrUHcmpVE21IEi_jCrQrMmyVTtMiZg4MM9b3gGyVncd1oDgoW_yLvjVK27mrLi5LktgFGqpz_5ja1kFjpYW1psEFvV51iDM6M5tUE9XA; spotify_refresh_token=AQAUJ6ID0-77QPpBDpyecgHCcaSfabnC81K04YuvqcoIwGNY9PbeEJS-aLmfMZxeEB7Ydzr31nROZdT__SscWTBA4awrZLAzcqp6kcQqokYbD04C_SLW6qeKoXukC79Igx0; spotify_auth_state=5hc52nm978jb947anklfsk"
+[00:18:17.718] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:18:17.718] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:18:17.718] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:18:17.718] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:18:17.718] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:18:17.718] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:18:17.718] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:18:17.892] Server  LOG     ✅ Token exchange successful
+[00:18:17.892] Server  LOG     Token received: {}
+[00:18:17.892] Server  LOG     🔍 Verifying token...
+[00:18:17.892] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:18:17.892] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:18:17.892] Server  LOG        Client Secret length: 32
+[00:18:17.892] Server  LOG        Token length: 342
+[00:18:17.892] Server  LOG        Token starts with: "BQBQz2MqbqTfMHmak-Wq"
+[00:18:17.892] Server  LOG        Making getMe() call to verify token...
+[00:18:18.112] Server  LOG        Raw HTTP request status: 200
+[00:18:18.114] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:18:18.341] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:18:18.755] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:18:52.674] Server  LOG      ✓ Compiled in 28ms
+[00:19:03.209] Server  LOG     Using Redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:19:03.209] Server  LOG     Make sure this EXACT URI is added in your Spotify app settings:
+[00:19:03.209] Server  LOG       http://127.0.0.1:3000/api/auth/callback
+[00:19:03.209] Server  LOG     Request host: "127.0.0.1:3000"
+[00:19:03.209] Server  LOG     Redirect host: "127.0.0.1:3000"
+[00:19:03.209] Server  LOG     Requesting Spotify scopes: "user-read-email user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify ugc-image-upload"
+[00:19:03.209] Server  LOG     Authorization URL: "https://accounts.spotify.com/authorize?response_type=code&client_id=CLIENT_ID_HIDDEN&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-library-read%20user-library-modify%20ugc-image-upload&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fauth%2Fcallback&state=659n3ttxfmhcbrdw45kkre&show_dialog=true"
+[00:19:03.209] Server  LOG     Setting state cookie: "659n3ttxfmhcbrdw45kkre"
+[00:19:03.209] Server  LOG     Cookie string: "spotify_auth_state=659n3ttxfmhcbrdw45kkre; HttpOnly; SameSite=lax; Path=/; Max-Age=600"
+[00:19:05.035] Server  LOG     Callback received - Query params: {}
+[00:19:05.035] Server  LOG     All cookies: {}
+[00:19:05.035] Server  LOG     Cookie header: "spotify_access_token=BQBQz2MqbqTfMHmak-WqnEzRfudUvYxOv9QxkUCd6cbgpubVZUOtF__4TpCKUTQ-H4Ek2EW36DMvNU7ZCZlnk50sU-vViqS7kwUENIptkKVURI8R7nlW1qjsk-0nsDctcggf2ge2CNrFmYpqba85sSSgX7PbiExFaIUfaRvGfFd8d8GBKqR2JNMDXczwFrGDt821pgiaGtjwCihONWzaYhLhuEkrX4x6NWFZ6aJcsY4fIXkJG5Q-n6U7VwqzNuNNVO-crevuuB55gdIWaF8om1LkphST-r5evrTUBkf0xhklDimQ3z2NWSaD-fXd82MeQFc1-z_4YER-vmsiQH9KjA; spotify_refresh_token=AQCLKRHpW51rMvKw51scB6b2iGDE4nHMreZf7FZJoCLegGM9e78mP3HHVGzHAo-kBNNtYm3pdNWt3FFphdC4INo_AS-VA_-FRSSoRqJIEOQpvXIDYTzURQt4FZau3HKTo4k; spotify_auth_state=659n3ttxfmhcbrdw45kkre"
+[00:19:05.035] Server  LOG     🔍 Using Redirect URI for token exchange: "http://127.0.0.1:3000/api/auth/callback"
+[00:19:05.035] Server  LOG     ⚠️  Make sure this EXACT URI is in your Spotify app settings:
+[00:19:05.035] Server  LOG        http://127.0.0.1:3000/api/auth/callback
+[00:19:05.035] Server  LOG        (Check: https://developer.spotify.com/dashboard → Your App → Settings → Redirect URIs)
+[00:19:05.036] Server  LOG     🔄 Exchanging authorization code for tokens...
+[00:19:05.036] Server  LOG        Using redirect URI: "http://127.0.0.1:3000/api/auth/callback"
+[00:19:05.036] Server  LOG        Client ID: "d4c3aed4f5..."
+[00:19:05.225] Server  LOG     ✅ Token exchange successful
+[00:19:05.225] Server  LOG     Token received: {}
+[00:19:05.225] Server  LOG     🔍 Verifying token...
+[00:19:05.225] Server  LOG        Client ID used for token exchange: "d4c3aed4f57e434..."
+[00:19:05.225] Server  LOG        Full Client ID from .env: "d4c3aed4f57e4342880aac6fbaa12e42"
+[00:19:05.225] Server  LOG        Client Secret length: 32
+[00:19:05.225] Server  LOG        Token length: 342
+[00:19:05.225] Server  LOG        Token starts with: "BQBpKMFyMJJH3eT7Bvmw"
+[00:19:05.225] Server  LOG        Making getMe() call to verify token...
+[00:19:05.490] Server  LOG        Raw HTTP request status: 200
+[00:19:05.491] Server  LOG     ✅ Token verified via raw HTTP - user: "emmacoye"
+[00:19:05.681] Server  LOG     ✅ Token verified via library - user: "emmacoye"
+[00:19:06.094] Browser WARN    Image with src "/mascot.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:19:10.908] Server  LOG     Analyzing image (size: 0.01MB)
+[00:19:10.970] Browser LOG     Compressed image size: 9KB
+[00:19:29.246] Server  LOG     Using access token from cookies (length: 342 ")"
+[00:19:29.326] Browser LOG     Analysis data: {"artists":["Lofi Girl","Chillhop Music","Kupla","Idealism","Jinsang","Nujabes","Tomppabeats","Birocratic","Sleepy Fish","Aso","eery","SwuM","Bonobo","Tycho","Boards of Canada","Brian Eno","Marconi Union","saib.","eevee","Kudasai","Leavv","Philanthrope","Hans Zimmer","Ólafur Arnalds","Stimming"],"characteristics":["acoustic","instrumental","guitar"],"colors":"warm earth tones with soft orange and brown","description":"A cozy scene with a cute cat wearing headphones, colored in warm earth tones. The mood is relaxed and calm, perfect for a soft, dreamy listening experience.","emotion":"content and relaxed","energy":"medium","genres":["lofi","ambient","instrumental","chill"],"lighting":"soft and cozy indoor lighting","mood":"calm","moodScores":{"calm":85,"chill":75,"dreamy":60,"energetic":10,"happy":50,"melancholy":20,"nostalgic":40,"romantic":30},"musicalKeywords":["lofi","chill","dreamy","soft","instrumental"],"playlistTheme":"Cozy Cat Vibes","tempo":"moderate"}
+[00:19:29.326] Browser LOG     Mood scores: {"calm":85,"chill":75,"dreamy":60,"energetic":10,"happy":50,"melancholy":20,"nostalgic":40,"romantic":30}
+[00:19:29.430] Server  LOG     User authenticated: "emmacoye"
+[00:19:29.430] Server  LOG     Classroom scene detected - forcing lofi/study music
+[00:19:29.430] Server  LOG     Using 16 lofi/study artists for classroom scene
+[00:19:29.430] Server  LOG     Forcing chill/ambient genres for classroom scene
+[00:19:30.126] Server  ERROR   Error getting recommendations: WebapiError: [object Object]
+[00:19:35.921] Server  LOG     Filtered EDM tracks for classroom scene, 61 tracks remaining
+[00:19:35.922] Server  LOG     Returning 20 tracks (target: 20)
+[00:19:36.028] Browser LOG     === TRACK DATA DEBUG ===
+[00:19:36.028] Browser LOG     Total tracks: 20
+[00:19:36.028] Browser LOG     First track full data: {"album":"The Lo-Fis","album_image":"https://i.scdn.co/image/ab67616d0000b273c3545bbe806b845c2b52bc20","artists":"Steve Lacy","duration_ms":178328,"external_urls":{"spotify":"https://open.spotify.com/track/0f8eRy9A0n6zXpKSHSCAEp"},"id":"0f8eRy9A0n6zXpKSHSCAEp","name":"Infrunami","preview_url":null,"uri":"spotify:track:0f8eRy9A0n6zXpKSHSCAEp"}
+[00:19:36.028] Browser LOG     Tracks with preview URLs: 0
+[00:19:36.028] Browser LOG     Tracks without preview URLs: 20
+[00:19:36.028] Browser LOG     Sample track preview_url: null
+[00:19:36.028] Browser LOG     Sample track keys: ["id","name","artists","album","preview_url","external_urls","uri","duration_ms","album_image"]
+[00:19:36.028] Browser LOG     ========================

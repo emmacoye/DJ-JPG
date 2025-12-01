@@ -2,6 +2,8 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { Upload as UploadIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 
 export default function Upload() {
   const [isDragging, setIsDragging] = useState(false);
@@ -163,6 +165,8 @@ export default function Upload() {
   }
 
   return (
+    <>
+    <Navbar />
     <div className="min-h-screen">
       {/* Main Content */}
       <div className="flex flex-col items-center justify-center px-6 py-8 relative">
@@ -221,6 +225,8 @@ export default function Upload() {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
 

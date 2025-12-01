@@ -6,12 +6,10 @@ import Footer from "@/components/Footer";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
+    <div className="flex flex-col min-h-screen bg-white">     
       <main className="flex-1">
         <Component {...pageProps} />
       </main>
-      <Footer />
       <Toaster />
     </div>
   );

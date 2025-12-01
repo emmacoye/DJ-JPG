@@ -36,9 +36,8 @@ export default function Navbar() {
                 variant="ghost"
                 size="icon"
                 asChild
-                className="hover:bg-gray-100"
               >
-                <Link href="/">
+                <Link href="/upload">
                   <Home className="w-5 h-5" />
                 </Link>
               </Button>
