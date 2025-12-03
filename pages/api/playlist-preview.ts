@@ -71,6 +71,61 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const characteristics = analysis.characteristics || [];
     const description = analysis.description || '';
     const artistsFromAnalysis = analysis.artists || []; // Get artists from OpenAI analysis
+    const school = analysis.school || null; // Get school name if detected
+
+    // School-specific songs mapping
+    const schoolSongs: { [key: string]: string[] } = {
+      'unc chapel hill': ['Carolina on my mind', 'Carolina in my mind', 'Carolina', 'Tar Heel', 'UNC', 'Chapel Hill'],
+      'unc': ['Carolina on my mind', 'Carolina in my mind', 'Carolina', 'Tar Heel', 'UNC', 'Chapel Hill'],
+      'university of north carolina': ['Carolina on my mind', 'Carolina in my mind', 'Carolina', 'Tar Heel', 'UNC', 'Chapel Hill'],
+      'duke university': ['Duke', 'Blue Devil', 'Duke Blue Devils'],
+      'duke': ['Duke', 'Blue Devil', 'Duke Blue Devils'],
+      'harvard university': ['Harvard', 'Crimson'],
+      'harvard': ['Harvard', 'Crimson'],
+      'yale university': ['Yale', 'Bulldog'],
+      'yale': ['Yale', 'Bulldog'],
+      'stanford university': ['Stanford', 'Cardinal'],
+      'stanford': ['Stanford', 'Cardinal'],
+      'mit': ['MIT', 'Massachusetts Institute of Technology'],
+      'massachusetts institute of technology': ['MIT', 'Massachusetts Institute of Technology'],
+      'princeton university': ['Princeton', 'Tiger'],
+      'princeton': ['Princeton', 'Tiger'],
+      'columbia university': ['Columbia', 'Lion'],
+      'columbia': ['Columbia', 'Lion'],
+      'university of pennsylvania': ['Penn', 'Quaker'],
+      'penn': ['Penn', 'Quaker'],
+      'upenn': ['Penn', 'Quaker'],
+    };
+
+    // Check if a specific school is detected
+    let detectedSchool: string | null = null;
+    let schoolSearchTerms: string[] = [];
+    
+    if (school) {
+      const schoolLower = school.toLowerCase();
+      // Check for exact matches or partial matches
+      for (const [schoolKey, songs] of Object.entries(schoolSongs)) {
+        if (schoolLower.includes(schoolKey) || schoolKey.includes(schoolLower)) {
+          detectedSchool = schoolKey;
+          schoolSearchTerms = songs;
+          console.log(`School detected: ${school} - Adding school-specific songs: ${songs.join(', ')}`);
+          break;
+        }
+      }
+      
+      // If no exact match, try to extract school name from description
+      if (!detectedSchool && description) {
+        const descLower = description.toLowerCase();
+        for (const [schoolKey, songs] of Object.entries(schoolSongs)) {
+          if (descLower.includes(schoolKey)) {
+            detectedSchool = schoolKey;
+            schoolSearchTerms = songs;
+            console.log(`School detected from description: ${schoolKey} - Adding school-specific songs: ${songs.join(', ')}`);
+            break;
+          }
+        }
+      }
+    }
 
     // Check if this is a nature scene (forest, nature, woods, mountains, etc.)
     const isNatureScene = description?.toLowerCase().includes('forest') || 
@@ -211,6 +266,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Create search queries for direct track searches (as backup/complement to recommendations)
     const searchQueries: string[] = [];
     
+    // Add school-specific songs FIRST (highest priority) if a school is detected
+    if (detectedSchool && schoolSearchTerms.length > 0) {
+      console.log(`Adding ${schoolSearchTerms.length} school-specific search queries for ${detectedSchool}`);
+      // Add direct song title searches for school-specific songs
+      for (const songTerm of schoolSearchTerms) {
+        searchQueries.push(`"${songTerm}"`);
+      }
+      // Also add searches combining school name with common music terms
+      const schoolName = school || detectedSchool;
+      searchQueries.push(`${schoolName} fight song`);
+      searchQueries.push(`${schoolName} anthem`);
+      searchQueries.push(`${schoolName} song`);
+    }
+    
     // For classroom scenes, prioritize lofi/study music searches
     if (isClassroomScene) {
       // Add lofi-specific search terms
@@ -255,6 +324,41 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
     }
 
+    // Helper function to check if a track is school-related
+    const isSchoolRelatedTrack = (track: any): boolean => {
+      if (!detectedSchool || schoolSearchTerms.length === 0) return false;
+      
+      const trackName = (track.name || '').toLowerCase();
+      const artistName = (track.artists?.[0]?.name || '').toLowerCase();
+      const albumName = (track.album?.name || '').toLowerCase();
+      
+      // Check if track name, artist, or album contains any school-specific terms
+      for (const term of schoolSearchTerms) {
+        const termLower = term.toLowerCase();
+        if (trackName.includes(termLower) || artistName.includes(termLower) || albumName.includes(termLower)) {
+          return true;
+        }
+      }
+      
+      // Also check for school name in track metadata
+      const schoolNameLower = (school || detectedSchool).toLowerCase();
+      if (trackName.includes(schoolNameLower) || artistName.includes(schoolNameLower)) {
+        return true;
+      }
+      
+      return false;
+    };
+
+    // Helper function for shuffling arrays (Fisher-Yates shuffle)
+    const shuffleArray = <T,>(arr: T[]): T[] => {
+      const shuffled = [...arr];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    };
+
     // Perform multiple searches to get diverse results
     let allTracks: any[] = [];
     const seenTrackIds = new Set<string>(); // Track IDs we've already added
@@ -270,14 +374,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           limit: 50, // Get more recommendations
         };
         
-        // Add seed artists (up to 5)
+        // Add seed artists (up to 5) - shuffle to get different results on refresh
         if (artistIds.length > 0) {
-          recommendationsParams.seed_artists = artistIds.slice(0, 5);
+          const shuffledArtistIds = [...artistIds].sort(() => Math.random() - 0.5);
+          recommendationsParams.seed_artists = shuffledArtistIds.slice(0, 5);
         }
         
-        // Add seed genres (up to 2)
+        // Add seed genres (up to 2) - shuffle to get different results on refresh
         if (seedGenres.length > 0) {
-          recommendationsParams.seed_genres = seedGenres.slice(0, 2);
+          const shuffledGenres = [...seedGenres].sort(() => Math.random() - 0.5);
+          recommendationsParams.seed_genres = shuffledGenres.slice(0, 2);
         }
         
         // Special handling for classroom scenes - prioritize lofi/study music
@@ -336,7 +442,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const recommendations = await spotifyApi.getRecommendations(recommendationsParams);
         
         if (recommendations.body.tracks) {
-          for (const track of recommendations.body.tracks) {
+          // Shuffle recommendations to get different order on each refresh
+          const shuffledTracks = [...recommendations.body.tracks].sort(() => Math.random() - 0.5);
+          
+          for (const track of shuffledTracks) {
             if (!track || !track.id) continue;
             if (seenTrackIds.has(track.id)) continue;
             
@@ -360,9 +469,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // SECONDARY METHOD: Direct track searches to complement recommendations
-    const shuffledQueries = searchQueries.sort(() => Math.random() - 0.5);
+    // Prioritize school-specific queries if a school is detected
+    // Shuffle queries to ensure different results on each refresh
+    let orderedQueries: string[] = [];
+    if (detectedSchool && schoolSearchTerms.length > 0) {
+      // Put school-specific queries first
+      const schoolQueries = searchQueries.filter(q => 
+        schoolSearchTerms.some(term => q.toLowerCase().includes(term.toLowerCase()))
+      );
+      const otherQueries = searchQueries.filter(q => 
+        !schoolSearchTerms.some(term => q.toLowerCase().includes(term.toLowerCase()))
+      );
+      // Shuffle other queries for variety
+      orderedQueries = [...schoolQueries, ...shuffleArray(otherQueries)];
+    } else {
+      // Shuffle all queries for randomization
+      orderedQueries = shuffleArray(searchQueries);
+    }
     
-    for (const query of shuffledQueries.slice(0, 10)) {
+    for (const query of orderedQueries.slice(0, 15)) { // Increased from 10 to 15 to give more room for school searches
       if (allTracks.length >= targetTrackCount * 3) break;
       
       try {
@@ -500,8 +625,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const medPop = allTracks.filter(t => (t.popularity || 0) >= 40 && (t.popularity || 0) < 70);
       const lowPop = allTracks.filter(t => (t.popularity || 0) < 40);
       
-      // Shuffle within each tier
-      const shuffleArray = (arr: any[]) => arr.sort(() => Math.random() - 0.5);
+      // Shuffle within each tier (using the shuffleArray function defined above)
       
       // Mix: take some from each tier, proportional to availability
       const totalNeeded = targetTrackCount;
@@ -526,10 +650,49 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       filteredTracks = shuffleArray(filteredTracks);
     }
     
-    // Shuffle within the filtered results for variety (unless already sorted)
-    if (filter !== 'mainstream' && filter !== 'indie') {
-      const shuffleArray = (arr: any[]) => arr.sort(() => Math.random() - 0.5);
-      filteredTracks = shuffleArray(filteredTracks);
+    // Prioritize school-related tracks if a school is detected
+    if (detectedSchool && schoolSearchTerms.length > 0) {
+      const schoolTracks = filteredTracks.filter(track => isSchoolRelatedTrack(track));
+      const nonSchoolTracks = filteredTracks.filter(track => !isSchoolRelatedTrack(track));
+      
+      console.log(`Found ${schoolTracks.length} school-related tracks for ${detectedSchool}`);
+      
+      // Prioritize school tracks: include at least 2-3 school-related tracks if available
+      // But don't force too many if we don't have enough
+      const schoolTrackCount = Math.min(schoolTracks.length, 5); // Max 5 school tracks
+      const remainingCount = targetTrackCount - schoolTrackCount;
+      
+      // Combine: school tracks first, then fill with non-school tracks
+      filteredTracks = [
+        ...schoolTracks.slice(0, schoolTrackCount),
+        ...nonSchoolTracks.slice(0, remainingCount)
+      ];
+      
+      // If we still need more tracks, add remaining school tracks or non-school tracks
+      if (filteredTracks.length < targetTrackCount) {
+        const usedIds = new Set(filteredTracks.map(t => t.id));
+        const remaining = [...schoolTracks.slice(schoolTrackCount), ...nonSchoolTracks.slice(remainingCount)]
+          .filter(t => !usedIds.has(t.id));
+        filteredTracks = [...filteredTracks, ...remaining.slice(0, targetTrackCount - filteredTracks.length)];
+      }
+    }
+    
+    // Always shuffle the final tracks to ensure variety on refresh (unless school tracks are prioritized)
+    // Even for mainstream/indie filters, shuffle after sorting to get different results
+    if (!detectedSchool || filteredTracks.length > 5) {
+      // Shuffle all tracks, but if school tracks are prioritized, keep first few school tracks
+      if (detectedSchool && schoolSearchTerms.length > 0) {
+        // Keep first 2-3 school tracks, shuffle the rest
+        const schoolTracksInList = filteredTracks.filter(t => isSchoolRelatedTrack(t));
+        const nonSchoolTracksInList = filteredTracks.filter(t => !isSchoolRelatedTrack(t));
+        const keepSchoolCount = Math.min(3, schoolTracksInList.length);
+        filteredTracks = [
+          ...schoolTracksInList.slice(0, keepSchoolCount),
+          ...shuffleArray([...schoolTracksInList.slice(keepSchoolCount), ...nonSchoolTracksInList])
+        ];
+      } else {
+        filteredTracks = shuffleArray(filteredTracks);
+      }
     }
     
     const shuffledTracks = filteredTracks;
@@ -772,11 +935,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Take exactly 20 tracks (or as many as we have if less than 20)
     uniqueTracks = uniqueTracks.slice(0, targetTrackCount);
 
+    // FINAL ABSOLUTE DEDUPLICATION: Remove any duplicate tracks by ID
+    const absoluteUniqueTracks: typeof uniqueTracks = [];
+    const absoluteSeenIds = new Set<string>();
+    
+    for (const track of uniqueTracks) {
+      if (!track || !track.id) continue;
+      if (absoluteSeenIds.has(track.id)) {
+        console.log(`Removing duplicate track: ${track.name} by ${track.artists} (ID: ${track.id})`);
+        continue; // Skip duplicate
+      }
+      absoluteSeenIds.add(track.id);
+      absoluteUniqueTracks.push(track);
+    }
+    
+    uniqueTracks = absoluteUniqueTracks;
+
     if (uniqueTracks.length === 0) {
       return res.status(404).json({ error: 'No valid tracks found' });
     }
 
-    console.log(`Returning ${uniqueTracks.length} tracks (target: ${targetTrackCount})`);
+    console.log(`Returning ${uniqueTracks.length} unique tracks (target: ${targetTrackCount})`);
 
     return res.json({
       success: true,

@@ -75,7 +75,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 5. **DESCRIPTION**: 2-3 sentences capturing image essence. Include setting, time, colors, mood. Use searchable terms (sunset, rainy day, city lights, mountain view).
 
-6. **ARTIST SELECTION (CRITICAL)**:
+6. **SCHOOL/UNIVERSITY DETECTION**: If the image represents a specific school, college, or university (e.g., UNC Chapel Hill, Duke, Harvard, etc.), identify the school name. Look for:
+   - School logos, mascots, or emblems
+   - School names on buildings, signs, or banners
+   - Distinctive architecture or landmarks associated with specific universities
+   - School colors or uniforms
+   - If a school is detected, include the school name in the "school" field. If no specific school is identified, set "school" to null.
+
+7. **ARTIST SELECTION (CRITICAL)**:
    - Generate 20-25 specific artists whose music matches this image's vibe, genres, mood, and energy
    - Use well-known, mainstream Spotify artists. Prioritize artists matching the PRIMARY genre
    - **For classroom/school scenes: Include lofi/study music artists** like Lofi Girl, Chillhop Music, Kupla, Idealism, Jinsang, Nujabes, Tomppabeats, Birocratic, Sleepy Fish, Aso, eery, SwuM, plus instrumental/ambient artists like Bonobo, Tycho, Boards of Canada, Brian Eno, Marconi Union
@@ -106,6 +113,7 @@ Return your response as a JSON object with this exact structure:
   "musicalKeywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5"],
   "description": "2-3 sentence description rich with searchable terms about the image's setting, mood, and musical vibe",
   "playlistTheme": "short, catchy playlist name (2-4 words) that captures the vibe (e.g., 'Sunset Drive', 'Rainy Day Blues', 'City Lights', 'Forest Walk')",
+  "school": "school name if detected (e.g., 'UNC Chapel Hill', 'Duke University', 'Harvard University') or null if no specific school is identified",
   "artists": ["Artist Name 1", "Artist Name 2", ... "Artist Name 20-25"]
 }
 
@@ -188,6 +196,7 @@ Return your response as a JSON object with this exact structure:
         characteristics: ['instrumental'],
         musicalKeywords: ['pop', 'mainstream'],
         playlistTheme: 'General Vibes',
+        school: null,
         artists: ['Taylor Swift', 'Ed Sheeran', 'Ariana Grande', 'The Weeknd', 'Dua Lipa'],
       };
     }

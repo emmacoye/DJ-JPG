@@ -155,6 +155,13 @@ export default function Playlist() {
   const handleRefreshPlaylist = async () => {
     if (!analysis) return;
     
+    // Clear the cache for the current filter to force a new fetch
+    setTracksCache(prev => {
+      const newCache = { ...prev };
+      delete newCache[popularityFilter];
+      return newCache;
+    });
+    
     // Force refresh the current filter's playlist
     await fetchPlaylistPreview(analysis, popularityFilter, true);
     toast.info('Refreshing playlist...');
