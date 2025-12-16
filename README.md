@@ -1,6 +1,6 @@
 # DJ-JPG
 
-DJ-JPG is a web application that integrates with the Spotify Web API to generate custom playlists based on AI-driven image analysis. Users authenticate with Spotify, upload an image, and receive a playlist whose mood, energy, and genre are inferred from visual features in the image—turning memories into a personalized soundtrack.
+DJ-JPG is a web application that integrates with the Spotify Web API to generate playlists based on AI-driven image analysis. Users authenticate with Spotify, upload an image, and receive a playlist whose mood, energy, and genre are inferred from the image's visual features. DJ-JPG is turning memories into a personalized soundtrack.
 
 ## How It Works
 
@@ -8,13 +8,13 @@ DJ-JPG is a web application that integrates with the Spotify Web API to generate
 - Users log in via OAuth using the Spotify Web API, granting permission to create and modify playlists on their behalf.
 
 #### Image Upload & Analysis:
-- Uploaded images are processed using an AI model to extract high-level attributes such as mood, color palette, and emotional tone.
+- Uploaded images are processed using an AI model to extract high-level characteristics such as the image's mood, color, and emotional tone.
 
-#### Prompt Engineering & AI Mapping:
-- These visual attributes are translated into structured prompts that map image characteristics to musical features (e.g., valence, energy, tempo, genre).
+#### Prompt Engineering:
+- These visual attributes are translated into structured prompts that map image characteristics to musical features (e.g., valence, energy, tempo, genre), which then provides a list of artists with those attributes.
 
 #### Playlist Generation:
-- The app queries Spotify’s recommendation and search endpoints to curate tracks that match the inferred mood, then programmatically creates and populates a playlist in the user’s Spotify account.
+- The app queries Spotify’s recommendation and search endpoints to curate tracks that match the inferred mood (with artists), then programmatically creates and populates a playlist in the user’s Spotify account.
 
 ## Tech Stack
 
@@ -30,7 +30,7 @@ Tooling: Cursor AI for development, debugging, and rapid prototyping
 
 ## Project Context
 
-DJ-JPG was developed as a group class assignment exploring emerging technologies and AI-assisted development workflows. As the primary developer, I used Cursor AI to accelerate implementation, debug edge cases, and explore the strengths and limitations of AI-supported coding in a real-world application.
+DJ-JPG was developed as a group class assignment exploring emerging technologies and AI-assisted development. As the primary developer, I used Cursor AI to accelerate implementation, debug edge cases, and explore the strengths and limitations of AI-supported coding in a real-world application.
 
 ## Getting Started
 
