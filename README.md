@@ -4,16 +4,16 @@ DJ-JPG is a web application that integrates with the Spotify Web API to generate
 
 ## How It Works
 
-### Spotify Authentication: 
+#### Spotify Authentication: 
 - Users log in via OAuth using the Spotify Web API, granting permission to create and modify playlists on their behalf.
 
-### Image Upload & Analysis:
+#### Image Upload & Analysis:
 - Uploaded images are processed using an AI model to extract high-level attributes such as mood, color palette, and emotional tone.
 
-### Prompt Engineering & AI Mapping:
+#### Prompt Engineering & AI Mapping:
 - These visual attributes are translated into structured prompts that map image characteristics to musical features (e.g., valence, energy, tempo, genre).
 
-### Playlist Generation:
+#### Playlist Generation:
 - The app queries Spotify’s recommendation and search endpoints to curate tracks that match the inferred mood, then programmatically creates and populates a playlist in the user’s Spotify account.
 
 ## Tech Stack
